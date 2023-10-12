@@ -15,7 +15,7 @@ import './Assets/Css/Global.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Header />
+      <Header/>
       <Routes>
         <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
