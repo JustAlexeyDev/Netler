@@ -23,7 +23,7 @@ class PostFile(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(User, related_name="comment_likes")
+    likes = models.ManyToManyField(User, related_name="comment_likes", blank=True)
     text = models.CharField(max_length=2200)
     post_date = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self' , null=True , blank=True , on_delete=models.CASCADE , related_name='replies')
