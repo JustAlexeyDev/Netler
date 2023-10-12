@@ -1,0 +1,24 @@
+:root {
+  --whiteBackground: #fff;
+  --darkBackground: #1c1c1c;
+  --whiteText: #fff;
+  --darkText: #1c1c1c;
+  --accent: #fff;
+}
+@font-face {
+  font-family: RegularFont;
+  src: url(../Fonts/SFProDisplay-Regular.ttf);
+}
+@font-face {
+  font-family: LightFont;
+  src: url(../Fonts/SFProDisplay-Light.ttf);
+}
+@font-face {
+  font-family: BoldFont;
+  src: url(../Fonts/SFProDisplay-Bold.ttf);
+}
+body {
+  background-color: var(--darkBackground);
+  color: var(--whiteText);
+  font-family: RegularFont;
+}
