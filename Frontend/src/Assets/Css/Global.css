@@ -1,3 +1,9 @@
+/* Test */
+/* ONLY FOR DEV */
+.hidden {
+  display: none;
+}
+
 :root {
   --whiteBackground: #fff;
   --darkBackground: #1c1c1c;

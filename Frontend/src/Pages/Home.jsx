@@ -2,7 +2,7 @@ const Home = () => {
 
   return(
     <div className="Page">
-      <div>
+      <div className="">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, inventore. Voluptates dolorem eaque officia numquam aliquam exercitationem nisi dolor quasi neque, architecto aliquid assumenda temporibus ipsam reiciendis repudiandae, sit nihil?
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, quia eos ratione molestias omnis quidem obcaecati, nihil aut ab, voluptatem ut quisquam! Odio eveniet, illo magni quis maxime ex vitae?
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat aperiam deleniti odio dicta voluptate doloremque perferendis laudantium libero. Dignissimos pariatur sit recusandae. Inventore voluptates reprehenderit animi culpa praesentium eos similique.
