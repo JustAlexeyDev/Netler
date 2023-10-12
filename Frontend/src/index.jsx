@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 // Import Pages
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
+import Login from "./Pages/Login";
 // Import Css
 import './Assets/Css/Reset.css';
 import './Assets/Css/Global.css';
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>
