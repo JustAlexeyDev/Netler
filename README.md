@@ -11,3 +11,31 @@
 
 ## Проект
 Netler - это социальная сеть ...
+
+## Описание работы прототипа:
+
+## Технологии:
+- Frontend:
+- - Языки:
+  - - HTML
+  - - CSS
+  - - JavaScript
+  - Библиотеки:
+  - - ReactJS
+  - Пакеты:
+  - - react
+    - react-dom
+    - react-scripts
+    - react-router
+    - react-router-dom
+  - Фреймворки:
+  - - vite.js
+- Backend:
+- - Языки:
+  - - Python 3.10.11
+  - Библиотеки:
+  - - Rest Framework
+    - django-taggit
+  - База Данных:
+  - - PostgreSQL
+   
