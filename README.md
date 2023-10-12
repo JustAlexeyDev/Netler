@@ -1,7 +1,6 @@
 # Netler - Социальная сеть | Очная смена ITBootCamp 2023
-Netler is social network | Project for ITBootCamp 2023
 
-## Состав команды
+## Состав Команды
 |Role           |Name                       |
 |---------------|---------------------------|
 |Manager        |Кривошапкин Виталий        |
@@ -9,3 +8,6 @@ Netler is social network | Project for ITBootCamp 2023
 |               |Таркова Ангелина           |
 |Developers     |Frontend: Коротких Алексей |
 |               |Backend: Габышев Николай   |
+
+## Проект
+Netler - это социальная сеть ...
