@@ -36,16 +36,15 @@ const Home = () => {
                   <span><img src={post.avatar}/></span>
                   <span>{post.author_name}</span>
                 </div>
+                <hr />
                 {post.files.length > 0 && (
-                  <div>
-                    {post.files.map(file => (
-                      <div>
-                        {file}
-                        <img src={file} alt='Photo'/>
-                      </div>
-                    ))}
+                  <div className='Post-image'>
+                      {post.files.map(file => (
+                          <img src={file.file} alt='Photo'/>
+                      ))}
                   </div>
                 )}
+                <hr />
                 <div className="Post-Nav">
                   <span className='center'>
                     <div className='center'>
