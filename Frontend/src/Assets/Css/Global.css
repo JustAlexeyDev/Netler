@@ -11,6 +11,7 @@
   --darkText: #1c1c1c;
   --accent: #1890FF;
   --HorizontalLine: #454545;
+  --darkSecondBackground: #151515;
 }
 @font-face {
   font-family: RegularFont;
@@ -25,7 +26,11 @@
   src: url(../Fonts/SFProDisplay-Bold.ttf);
 }
 body {
-  background-color: var(--darkBackground);
+  background: rgb(10,10,10);
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
   color: var(--whiteText);
   font-family: RegularFont;
 }
@@ -60,11 +65,18 @@ body {
   left: 0;
   bottom: 0;
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 60px;
   padding: 16px;
   background-color: var(--darkBackground);
   box-shadow: 0px -1px 0px var(--HorizontalLine);
+}
+.Footer_Box {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  justify-content: space-between;
 }
 .LoginPage_Enter {
   display: flex;
@@ -142,9 +154,38 @@ body {
 .Post-Container {
   display: flex;
   flex-direction: columns;
-  background-color: var(--accent);
+  background-color: var(--darkSecondBackground);
   border-radius: 10px;
   padding: 16px;
   gap: 10px;
-  
+  width: 350px;
+  height: auto;
+}
+.Post-Box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.Post-Header {
+  display: flex;
+  gap: 10px;
+}
+.Post-Nav {
+  display: flex;
+}
+.Post-Description {
+  display: flex;
+  flex-direction: column;
+}
+.Profile-Banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.Prifile-Banner_image {
+  display: flex;
+  height: 130px;
+  width: 430px;
+  background-color: #1890FF;
 }
