@@ -6,6 +6,7 @@ import axios from "axios";
 import React from "react";
 // Vars
 const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
+const imagesURL = 'http://127.0.0.1:8000/posts_files/'
 // Render
 const Home = () => {
   const [posts, setPosts] = useState(null);
@@ -13,6 +14,10 @@ const Home = () => {
   useEffect(() => {
     axios.get(postsURL).then((response) => {
       setPosts(response.data);
+    });
+  }, []);
+  useEffect(() => {
+    axios.get(imagesURL).then((response) => {
       setFiles(response.data);
     });
   }, []);
@@ -31,11 +36,12 @@ const Home = () => {
                   <span><img src={post.avatar}/></span>
                   <span>{post.author_name}</span>
                 </div>
-                {files.length > 0 && (
+                {post.files.length > 0 && (
                   <div>
-                    {files.map(file => (
+                    {post.files.map(file => (
                       <div>
-                        <img src={file.file} />
+                        {file}
+                        <img src={file} alt='Photo'/>
                       </div>
                     ))}
                   </div>
@@ -52,13 +58,11 @@ const Home = () => {
                       <button>
                         <MessageSquare />
                       </button>
-                      
                     </div>
                     <div className='center'>
                       <button>
                         <Share2 />                        
                       </button>
-
                     </div>
                   </span>
                 </div>

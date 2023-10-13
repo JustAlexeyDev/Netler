@@ -10,6 +10,8 @@ import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import Login from "./Pages/Login";
 import Profile from "./Pages/Profile";
+import AddPost from "./Pages/AddPost";
+import Notifications from "./Pages/Notifications";
 // Import Css
 import './Assets/Css/Reset.css';
 import './Assets/Css/Global.css';
@@ -24,6 +26,8 @@ ReactDOM.render(
         <Route path="/Home" element={<Home />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/AddPost" element={<AddPost />} />
+        <Route path="/Notifications" element={<Notifications />} />
       </Routes>
       <Footer />
     </BrowserRouter>

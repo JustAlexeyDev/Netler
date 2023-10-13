@@ -13,14 +13,14 @@ const Footer = () => {
         <Link to='/Home'>
           <img src={HomeIcon} alt="Home" />
         </Link>
-        <Link to='/'>
+        <Link to='/Friends'>
           <img src={FriendsIcon} alt="frends" />
         </Link>
-        <Link to='/'>
+        <Link to='/AddPost'>
           <img src={AddPost} alt="addPost" />
         </Link>
-        <Link to='/'>
-          <img src={notificationIcon} alt="notification" />
+        <Link to='/Notifications'>
+          <img src={notificationIcon} alt="Notifications" />
         </Link>
         <Link to='/Profile'>
           <img alt="profile" />
