@@ -23,8 +23,11 @@ const Home = () => {
             {posts.map(post => (
               <div className="Post-Container">
                 <div className="Post-Header">
-                  <span>ID: {post.id}</span>
-                  <span>Author: {post.author}</span>
+                  <span>Avatar: </span>
+                  <span>Author: {post.author_name}</span>
+                </div>
+                <div className="Post-Image">
+                  <img src="" alt="" />
                 </div>
                 <div className="Post-Nav">
                   <span>Likes: {post.likes}</span>
