@@ -9,7 +9,7 @@ const SignUpComponent = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: 'React Hooks POST Request Example' })
     };
-    fetch('http://10.40.4.189:8000/auth/users/', requestOptions)
+    fetch('http://127.0.0.1:8000/auth/users/?format=json', requestOptions)
         .then(response => response.json())
         .then(data => setPostId(data.id));
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
@@ -17,7 +17,7 @@ const SignUpComponent = () => {
 
   return(
     <div>
-      <form method="POST" action="" className="LoginForm">
+      <form method="POST" className="LoginForm">
         <div className="LoginForm_Inputs">
           <input 
             type="text"
