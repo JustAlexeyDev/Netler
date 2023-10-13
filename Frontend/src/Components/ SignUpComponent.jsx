@@ -6,11 +6,11 @@ const SignUpComponent = () => {
 
   const getApiData = async () => {
     const response = await fetch(
-     "http://127.0.0.1:8000/auth/users/?format=json"
+     "http://127.0.0.1:8000/posts/"
     ).then((response) => response.json()).then(data => {
       setUsers(data)
     });
-    console.log(response);
+    console.log(users);
     return response;
   };
   useEffect(() => {
@@ -22,9 +22,9 @@ const SignUpComponent = () => {
   //   const requestOptions = {
   //       method: 'POST',
   //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+  //       body: JSON.stringify({ title: 'React Hooks POST Request Example',  })
   //   };
-  //   fetch('http://127.0.0.1:8000/auth/users/?format=json', requestOptions)
+  //   fetch('http://127.0.0.1:8000/auth/token/login/', requestOptions)
   //       .then(response => response.json())
   //       .then(data => setPostId(data.id));
   //   // empty dependency array means this effect will only run once (like componentDidMount in classes)
