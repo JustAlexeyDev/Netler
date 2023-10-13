@@ -11,6 +11,10 @@ class Post(models.Model):
     publish_date = models.DateTimeField(default=timezone.now)
 
     @property
+    def author_name(self):
+        return User.objects.get(pk=self.author.pk).get_username()
+
+    @property
     def files(self):
         return PostFile.objects.filter(post=self.pk)
 
