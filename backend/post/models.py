@@ -20,7 +20,7 @@ class Post(models.Model):
 
     @property
     def files(self):
-        return PostFile.objects.filter(post=self.pk)
+        return PostFile.objects.filter(post=self.pk).all()
 
     def __str__(self) -> str:
         return f"{self.author} | {self.publish_date}"
