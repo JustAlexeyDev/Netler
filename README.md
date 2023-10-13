@@ -29,6 +29,7 @@
 - react
 - reactDOM
 - react-router
+- lucide-react
 
 ## 
 ## Установка и запуск Frontend части:
