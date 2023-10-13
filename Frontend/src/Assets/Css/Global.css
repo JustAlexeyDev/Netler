@@ -26,7 +26,11 @@
   src: url(../Fonts/SFProDisplay-Bold.ttf);
 }
 body {
-  background-color: var(--darkBackground);
+  background: rgb(10,10,10);
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
   color: var(--whiteText);
   font-family: RegularFont;
 }
@@ -61,13 +65,18 @@ body {
   left: 0;
   bottom: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 60px;
   padding: 16px;
   background-color: var(--darkBackground);
   box-shadow: 0px -1px 0px var(--HorizontalLine);
+}
+.Footer_Box {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  justify-content: space-between;
 }
 .LoginPage_Enter {
   display: flex;
@@ -167,4 +176,16 @@ body {
 .Post-Description {
   display: flex;
   flex-direction: column;
+}
+.Profile-Banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.Prifile-Banner_image {
+  display: flex;
+  height: 130px;
+  width: 430px;
+  background-color: #1890FF;
 }

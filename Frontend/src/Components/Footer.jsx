@@ -9,21 +9,23 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return(
     <div className="Footer_Container">
-      <Link to='/Home'>
-        <img src={HomeIcon} alt="Home" />
-      </Link>
-      <Link to='/'>
-        <img src={FriendsIcon} alt="frends" />
-      </Link>
-      <Link to='/'>
-        <img src={AddPost} alt="addPost" />
-      </Link>
-      <Link to='/'>
-        <img src={notificationIcon} alt="notification" />
-      </Link>
-      <Link to='/'>
-        <img alt="profile" />
-      </Link>
+      <div className='Footer_Box'>
+        <Link to='/Home'>
+          <img src={HomeIcon} alt="Home" />
+        </Link>
+        <Link to='/'>
+          <img src={FriendsIcon} alt="frends" />
+        </Link>
+        <Link to='/'>
+          <img src={AddPost} alt="addPost" />
+        </Link>
+        <Link to='/'>
+          <img src={notificationIcon} alt="notification" />
+        </Link>
+        <Link to='/Profile'>
+          <img alt="profile" />
+        </Link>        
+      </div>
     </div>
   );
 }

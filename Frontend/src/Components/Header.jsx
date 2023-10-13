@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const Header = () => {
   const location = useLocation();
@@ -9,7 +9,9 @@ const Header = () => {
     pageTitle = 'Главная';
   } else if (currentPath === '/Home') {
     pageTitle = 'Главная';
-  } 
+  } else if (currentPath === '/Profile') {
+    pageTitle = 'Профиль'
+  }
   return(
     <div className="Header_Container">
       <div className="Header_Content">
@@ -17,9 +19,9 @@ const Header = () => {
           {pageTitle}
         </span>
         <span className='Header_Avatar'>
-          <button>
+          <Link to='Profile'>
             <img alt="profile" />
-          </button>
+          </Link>
         </span>
       </div>
     </div>
