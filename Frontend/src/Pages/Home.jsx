@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 
-const baseURL = 'http://127.0.0.1:8000/posts/?format=json';
+const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
 const Home = () => {
 
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    axios.get(postsURL).then((response) => {
       setPosts(response.data);
     });
   }, []);

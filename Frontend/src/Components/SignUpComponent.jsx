@@ -1,7 +1,8 @@
+// Impoer React Libs
 import { useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
-const SignUpComponent = () => {
 
+const SignUpComponent = () => {
   const [users, setUsers] = useState([]);
 
   const getApiData = async () => {
