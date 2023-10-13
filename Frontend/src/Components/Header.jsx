@@ -9,9 +9,7 @@ const Header = () => {
     pageTitle = 'Главная';
   } else if (currentPath === '/Home') {
     pageTitle = 'Главная';
-  } else if (currentPath === '/Login') {
-    pageTitle = 'Вход / Регистраия';
-  }
+  } 
   return(
     <div className="Header_Container">
       <div className="Header_Content">
