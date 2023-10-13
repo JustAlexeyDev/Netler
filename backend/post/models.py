@@ -13,6 +13,10 @@ class Post(models.Model):
     @property
     def author_name(self):
         return User.objects.get(pk=self.author.pk).get_username()
+    
+    @property
+    def avatar(self):
+        return User.objects.get(pk=self.author.pk).avatar
 
     @property
     def files(self):
