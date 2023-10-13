@@ -6,21 +6,34 @@ import React from "react";
 const baseURL = 'http://127.0.0.1:8000/posts/?format=json';
 const Home = () => {
 
-  const [post, setPost] = useState(null);
+  const [posts, setPosts] = useState(null);
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setPost(response.data);
+      setPosts(response.data);
     });
   }, []);
 
-  if (!post) return null;
+  console.log(posts);
+
+  if (!posts) return null;
 
   return(
     <div className="Page">
       Посты
       <div>
-        {post.description}
+        {posts.length > 0 && (
+          <div>
+            {posts.map(post => (
+              <div className="Post-Container">
+                <span>ID: {post.id}</span>
+                <span>Likes: {post.likes}</span>
+                <span>Author: {post.author}</span>
+                <span>Desc: {post.description}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
