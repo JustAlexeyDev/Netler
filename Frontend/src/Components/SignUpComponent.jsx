@@ -9,12 +9,12 @@ const SignUpComponent = () => {
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/r', { email, password });
+      const response = await axios.post('http://127.0.0.1:8000/auth/users/', { email, password });
       const token = response.data.token;
-      localStorage.setItem('token', token); // Сохранение токена в локальном хранилище
-      console.log(response.data); // Обработка успешного ответа от сервера
+      localStorage.setItem('token', token); 
+      console.log(response.data); 
     } catch (error) {
-      console.error(error); // Обработка ошибки
+      console.error(error);
     }
   };
 
@@ -22,10 +22,10 @@ const SignUpComponent = () => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/auth/users/', { email, password });
       const token = response.data.token;
-      localStorage.setItem('token', token); // Сохранение токена в локальном хранилище
-      console.log(response.data); // Обработка успешного ответа от сервера
+      localStorage.setItem('token', token);
+      console.log(response.data);
     } catch (error) {
-      console.error(error); // Обработка ошибки
+      console.error(error);
     }
   };
   return(
