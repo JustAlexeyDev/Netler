@@ -10,6 +10,10 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name="post_likes", blank=True)
     publish_date = models.DateTimeField(default=timezone.now)
 
+    @property
+    def files(self):
+        return PostFile.objects.filter(post=self.pk)
+
     def __str__(self) -> str:
         return f"{self.author} | {self.publish_date}"
 
@@ -33,6 +37,7 @@ class Comment(models.Model):
 
     @property
     def children(self):
+        return 'Fix this in post.models'
         return Comment.objects.filter(parent=self).reverse()
     
     @property

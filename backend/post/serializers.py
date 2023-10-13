@@ -5,7 +5,7 @@ from .models import Post, PostFile, Comment
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ("__all__")
+        fields = ("author", "description", "likes", "publish_date", "files")
 
 class PostFileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,5 +15,5 @@ class PostFileSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ("__all__")
+        fields = ("author", "post", "likes", "text", "post_date", "parent", "is_parent", "children")
         
