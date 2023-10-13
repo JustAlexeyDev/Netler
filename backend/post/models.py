@@ -42,11 +42,6 @@ class Comment(models.Model):
 
     def __str__(self) -> str:
         return f"{self.post} | {self.author} | {self.post_date}"
-
-    @property
-    def children(self):
-        return 'Fix this in post.models'
-        return Comment.objects.filter(parent=self).reverse()
     
     @property
     def is_parent(self):
