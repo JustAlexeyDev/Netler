@@ -5,13 +5,15 @@ const Header = () => {
   const currentPath = location.pathname;
   let pageTitle = '';
 
-  if (currentPath === '/') {
-    pageTitle = 'Главная';
-  } else if (currentPath === '/Home') {
-    pageTitle = 'Главная';
-  } else if (currentPath === '/Profile') {
-    pageTitle = 'Профиль'
-  }
+  // if (currentPath === '/') {
+  //   pageTitle = 'Главная';
+  // } else if (currentPath === '/Home') {
+  //   pageTitle = 'Главная';
+  // } else if (currentPath === '/Profile') {
+  //   pageTitle = 'Профиль'
+  // } else if (currentPath === '/Notifications') {
+  //   pageTitle = 'Уведомления'
+  // }
   return(
     <div className="Header_Container">
       <div className="Header_Content">

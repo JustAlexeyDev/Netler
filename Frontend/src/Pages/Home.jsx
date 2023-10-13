@@ -1,4 +1,4 @@
-import {ThumbsUp} from 'lucide-react'
+import {ThumbsUp, MessageSquare, Share2 } from 'lucide-react'
 
 // Import React Libs
 import { useState, useEffect } from "react";
@@ -6,6 +6,7 @@ import axios from "axios";
 import React from "react";
 // Vars
 const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
+const imagesURL = 'http://127.0.0.1:8000/posts_files/'
 // Render
 const Home = () => {
   const [posts, setPosts] = useState(null);
@@ -13,6 +14,10 @@ const Home = () => {
   useEffect(() => {
     axios.get(postsURL).then((response) => {
       setPosts(response.data);
+    });
+  }, []);
+  useEffect(() => {
+    axios.get(imagesURL).then((response) => {
       setFiles(response.data);
     });
   }, []);
@@ -28,20 +33,38 @@ const Home = () => {
             {posts.map(post => (
               <div className="Post-Container">
                 <div className="Post-Header">
-                  <span>Avatar: </span>
-                  <span>Author: {post.author_name}</span>
+                  <span><img src={post.avatar}/></span>
+                  <span>{post.author_name}</span>
                 </div>
-                {files.length > 0 && (
+                {post.files.length > 0 && (
                   <div>
-                    {files.map(file => (
+                    {post.files.map(file => (
                       <div>
-                        <img src={file.file} />
+                        {file}
+                        <img src={file} alt='Photo'/>
                       </div>
                     ))}
                   </div>
                 )}
                 <div className="Post-Nav">
-                  <span>Likes: {post.likes}</span>
+                  <span className='center'>
+                    <div className='center'>
+                      <button>
+                        <ThumbsUp />                      
+                      </button>
+                      {post.likes}                      
+                    </div>
+                    <div className='center'>
+                      <button>
+                        <MessageSquare />
+                      </button>
+                    </div>
+                    <div className='center'>
+                      <button>
+                        <Share2 />                        
+                      </button>
+                    </div>
+                  </span>
                 </div>
                 <div className="Post-Description">
                    <span>Desc: {post.description}</span>

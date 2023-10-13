@@ -3,6 +3,11 @@
 .hidden {
   display: none;
 }
+.center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 :root {
   --whiteBackground: #fff;
@@ -163,12 +168,20 @@ body {
 }
 .Post-Box {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 20px;
+  
 }
 .Post-Header {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 20px;
+}
+.Post-Header img {
+  width: 40px; /* Задайте нужную ширину */
+  height: 40px; /* Задайте нужную высоту */
+  object-fit: cover;
+  border-radius: 999px;
 }
 .Post-Nav {
   display: flex;
@@ -188,4 +201,12 @@ body {
   height: 130px;
   width: 430px;
   background-color: #1890FF;
+}
+.Notification {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  background-color: #1890FF;
+  border-radius: 10px;
+  align-items: center;
 }
