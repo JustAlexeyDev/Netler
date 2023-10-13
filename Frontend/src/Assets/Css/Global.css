@@ -3,6 +3,11 @@
 .hidden {
   display: none;
 }
+.center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 :root {
   --whiteBackground: #fff;
@@ -163,8 +168,9 @@ body {
 }
 .Post-Box {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 20px;
+  
 }
 .Post-Header {
   display: flex;

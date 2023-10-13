@@ -1,4 +1,4 @@
-import {ThumbsUp} from 'lucide-react'
+import {ThumbsUp, MessageSquare, Share2} from 'lucide-react'
 
 // Import React Libs
 import { useState, useEffect } from "react";
@@ -41,7 +41,26 @@ const Home = () => {
                   </div>
                 )}
                 <div className="Post-Nav">
-                  <span>Likes: {post.likes}</span>
+                  <span className='center'>
+                    <div className='center'>
+                      <button>
+                        <ThumbsUp />                      
+                      </button>
+                      {post.likes}                      
+                    </div>
+                    <div className='center'>
+                      <button>
+                        <MessageSquare />
+                      </button>
+                      
+                    </div>
+                    <div className='center'>
+                      <button>
+                        <Share2 />                        
+                      </button>
+
+                    </div>
+                  </span>
                 </div>
                 <div className="Post-Description">
                    <span>Desc: {post.description}</span>
