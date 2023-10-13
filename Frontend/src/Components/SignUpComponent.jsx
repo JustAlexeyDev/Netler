@@ -1,54 +1,48 @@
 // Impoer React Libs
-import { useState, useEffect } from "react";
+import React, { useState } from 'react';
+
 import {Link} from 'react-router-dom';
 import axios from "axios";
 const SignUpComponent = () => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const userSignUp = async (credentials) => {
+  const handleRegistration = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/', credentials);
-      localStorage.setItem('token', response.data.auth_token);
-    } catch(error) {
-      console.log(error)
-    }
-  }
-  // Auth request
-  const fetchUserData = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get('', {
-        headers: {
-          Authorization: `Token ${token}`,
-        }
-      });
+      const response = await axios.post('http://127.0.0.1:8000/auth/users/r', { email, password });
+      const token = response.data.token;
+      localStorage.setItem('token', token); // Сохранение токена в локальном хранилище
+      console.log(response.data); // Обработка успешного ответа от сервера
     } catch (error) {
-      console.log(error)
+      console.error(error); // Обработка ошибки
     }
-  }
+  };
 
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/auth/users/', { email, password });
+      const token = response.data.token;
+      localStorage.setItem('token', token); // Сохранение токена в локальном хранилище
+      console.log(response.data); // Обработка успешного ответа от сервера
+    } catch (error) {
+      console.error(error); // Обработка ошибки
+    }
+  };
   return(
     <div>
-      <form method="POST" className="LoginForm">
+      <form className="LoginForm">
         <div className="LoginForm_Inputs">
           <input 
-            type="text"
-            placeholder="Электронная почта" 
-            id="Email"
-            required
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input 
-            type="Password" 
+            type="password"
             placeholder="Пароль"
-            id="Password" 
-            required
-          />
-          <input 
-            type="Password" 
-            placeholder="Подтвердите пароль"
-            id="PasswordSubmit" 
-            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="LoginPage_Options">
@@ -60,7 +54,7 @@ const SignUpComponent = () => {
         </div>
         <div className="buttonSubmit_Container">
           <span className="buttonSubmit">
-            <button type="submit">Зарегистрироваться</button>
+            <button onClick={handleRegistration}>Зарегистрироваться</button>
           </span>          
         </div>
       </form>
