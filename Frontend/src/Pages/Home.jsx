@@ -1,35 +1,37 @@
-
+// Import React Libs
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-
+// Vars
 const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
+// Render
 const Home = () => {
-
   const [posts, setPosts] = useState(null);
-
   useEffect(() => {
     axios.get(postsURL).then((response) => {
       setPosts(response.data);
     });
   }, []);
-
   console.log(posts);
-
   if (!posts) return null;
-
+  // Page
   return(
     <div className="Page">
-      Посты
       <div>
         {posts.length > 0 && (
-          <div>
+          <div className="Post-Box">
             {posts.map(post => (
               <div className="Post-Container">
-                <span>ID: {post.id}</span>
-                <span>Likes: {post.likes}</span>
-                <span>Author: {post.author}</span>
-                <span>Desc: {post.description}</span>
+                <div className="Post-Header">
+                  <span>ID: {post.id}</span>
+                  <span>Author: {post.author}</span>
+                </div>
+                <div className="Post-Nav">
+                  <span>Likes: {post.likes}</span>
+                </div>
+                <div className="Post-Description">
+                   <span>Desc: {post.description}</span>
+                </div>
               </div>
             ))}
           </div>

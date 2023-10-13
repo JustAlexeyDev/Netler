@@ -12,7 +12,7 @@ import Login from "./Pages/Login";
 // Import Css
 import './Assets/Css/Reset.css';
 import './Assets/Css/Global.css';
-// Render
+// Render SIte
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

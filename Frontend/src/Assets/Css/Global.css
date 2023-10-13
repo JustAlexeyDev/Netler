@@ -11,6 +11,7 @@
   --darkText: #1c1c1c;
   --accent: #1890FF;
   --HorizontalLine: #454545;
+  --darkSecondBackground: #151515;
 }
 @font-face {
   font-family: RegularFont;
@@ -60,6 +61,8 @@ body {
   left: 0;
   bottom: 0;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 60px;
   padding: 16px;
@@ -142,9 +145,26 @@ body {
 .Post-Container {
   display: flex;
   flex-direction: columns;
-  background-color: var(--accent);
+  background-color: var(--darkSecondBackground);
   border-radius: 10px;
   padding: 16px;
   gap: 10px;
-  
+  width: 350px;
+  height: auto;
+}
+.Post-Box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.Post-Header {
+  display: flex;
+  gap: 10px;
+}
+.Post-Nav {
+  display: flex;
+}
+.Post-Description {
+  display: flex;
+  flex-direction: column;
 }
