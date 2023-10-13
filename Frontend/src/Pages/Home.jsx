@@ -1,3 +1,5 @@
+import {ThumbsUp} from 'lucide-react'
+
 // Import React Libs
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -38,7 +40,6 @@ const Home = () => {
                     ))}
                   </div>
                 )}
-
                 <div className="Post-Nav">
                   <span>Likes: {post.likes}</span>
                 </div>
