@@ -168,7 +168,14 @@ body {
 }
 .Post-Header {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 20px;
+}
+.Post-Header img {
+  width: 40px; /* Задайте нужную ширину */
+  height: 40px; /* Задайте нужную высоту */
+  object-fit: cover;
+  border-radius: 999px;
 }
 .Post-Nav {
   display: flex;

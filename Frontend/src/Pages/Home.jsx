@@ -28,8 +28,8 @@ const Home = () => {
             {posts.map(post => (
               <div className="Post-Container">
                 <div className="Post-Header">
-                  <span>Avatar: </span>
-                  <span>Author: {post.author_name}</span>
+                  <span><img src={post.avatar}/></span>
+                  <span>{post.author_name}</span>
                 </div>
                 {files.length > 0 && (
                   <div>
