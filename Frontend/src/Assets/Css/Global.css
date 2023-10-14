@@ -182,7 +182,7 @@ body {
   width: 100%;
 }
 .Prifile-Banner_image {
-  display: flex;
+  object-fit: cover;
   height: 130px;
   width: 430px;
   background-color: #1890FF;
@@ -230,4 +230,13 @@ hr {
   gap: 50px;
   background-color: var(--darkBackground);
   box-shadow: 0px -1px 0px var(--HorizontalLine);
+}
+.Prifile-Avatar_image {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+}
+.ProfilePage {
+  background-color: #1890FF;
 }
