@@ -1,7 +1,9 @@
+// Import React Libs
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+// Render
 const Profile = () => {
+ // API
  const userURL = 'http://127.0.0.1:8000/users/1/'
  const [userData, setUserData] = useState({});
  useEffect(() => {
@@ -11,6 +13,7 @@ const Profile = () => {
  }, []);
  console.log(userData.username)
  console.log(userData.avatar)
+ 
  return(
   <div className="ProfilePage">
    <div className="Profile-Banner">
