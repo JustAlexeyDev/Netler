@@ -97,6 +97,7 @@ const Home = () => {
                 </div>
                 <div className="Post-Description">
                   <span>{post.description}</span>
+                  <span>{post.views} views</span> {/*Перекинуть эту строчку в отдельный класс*/}
                 </div>
               </div>
             ))}

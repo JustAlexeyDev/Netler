@@ -34,4 +34,5 @@ urlpatterns = [
     path(r'auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
     path('', include(router.urls)),
+    path('get_user/', user_view.get_user)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
