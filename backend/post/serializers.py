@@ -9,9 +9,16 @@ class PostFileSerializer(serializers.ModelSerializer):
         fields = ("__all__")
 
 class CommentSerializer(serializers.ModelSerializer):
+    children = serializers.SerializerMethodField()
+    
+    def get_children(self, obj):
+        children_queryset = Comment.objects.filter(parent=obj.pk)
+        serializer = CommentSerializer(children_queryset, many=True)
+        return serializer.data
+
     class Meta:
         model = Comment
-        fields = ("id", "author", "post", "likes", "text", "post_date", "parent", "is_parent")
+        fields = ("id", "author", "post", "likes", "text", "post_date", "parent", "is_parent", "children")
         
 class PostSerializer(serializers.ModelSerializer):
     avatar = serializers.ImageField(read_only=True)
