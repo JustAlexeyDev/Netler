@@ -24,7 +24,7 @@ const Home = () => {
     const interval = setInterval(() => {
       fetchPosts();
       fetchFiles();
-    }, 3000);
+    }, 1500);
 
     fetchPosts();
     fetchFiles();

@@ -18,8 +18,8 @@ const Login = () => {
           <button>Регистрация</button>
         </div>
         <div className="LoginPage_Enter">
-          {/* <SignUpComponent /> */}
-          <SignInComponent />
+          <SignUpComponent />
+          {/* <SignInComponent /> */}
         </div>        
       </div>
     </div>

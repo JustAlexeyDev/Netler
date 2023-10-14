@@ -12,6 +12,7 @@ import Login from "./Pages/Login";
 import Profile from "./Pages/Profile";
 import AddPost from "./Pages/AddPost";
 import Notifications from "./Pages/Notifications";
+import PeopleList from "./Pages/PeopleList";
 // Import Css
 import './Assets/Css/Reset.css';
 import './Assets/Css/Global.css';
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path="/Profile" element={<Profile />} />
         <Route path="/AddPost" element={<AddPost />} />
         <Route path="/Notifications" element={<Notifications />} />
+        <Route path="/PeopleList" element={<PeopleList />} />
       </Routes>
       <Footer />
     </BrowserRouter>

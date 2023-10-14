@@ -1,13 +1,15 @@
 // Impoer React Libs
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const SignUpComponent = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [avatar, setAvatar] = useState(null);
-
+  const navigate = useNavigate();
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -20,8 +22,9 @@ const SignUpComponent = () => {
       formData.append('avatar', avatar);
 
       const response = await axios.post('http://127.0.0.1:8000/auth/users/', formData);
-        // const token = response.data.auth_token;
+        const token = response.data.auth_token;
         console.log(response.data);
+        navigate('/Home')
       } catch (error) {
         console.error(error);
       }

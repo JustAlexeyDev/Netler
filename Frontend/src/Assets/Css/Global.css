@@ -239,3 +239,27 @@ hr {
 .ProfilePage {
   background-color: #1890FF;
 }
+.User-Container {
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+}
+.User-Box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--darkSecondBackground);
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 120px;
+  min-height: 180px;
+  text-align: center;
+  
+}
+.User-Box_avatar img {
+  border-radius: 999px;
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
+}

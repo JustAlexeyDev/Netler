@@ -11,7 +11,7 @@ const Footer = () => {
     <div className="Footer">
       <div className='Footer_Container'>
         <Link to='/Home'><img src={HomeIcon} alt='icon'/></Link>
-        <Link to='/'><img src={FriendsIcon} alt='icon'/></Link>
+        <Link to='/PeopleList'><img src={FriendsIcon} alt='icon'/></Link>
         <Link to='/AddPost'><img src={AddPost} alt='icon'/></Link>
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>    
         <Link to='/Profile'>Profile</Link>    
