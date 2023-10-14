@@ -137,17 +137,11 @@ body {
 .Post-Container {
   display: flex;
   flex-direction: column;
-  
-}
-.Post-Container {
-  display: flex;
-  flex-direction: columns;
   background-color: var(--darkSecondBackground);
   border-radius: 10px;
   padding: 16px;
   gap: 10px;
-  
-  width: 350px;
+  width: 100%;
   height: auto;
 }
 .Post-Box {
@@ -254,6 +248,7 @@ hr {
   padding: 16px;
   min-width: 120px;
   min-height: 180px;
+
   text-align: center;
   
 }
