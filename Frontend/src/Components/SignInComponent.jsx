@@ -4,7 +4,7 @@ import axios from 'axios';
 const SignInComponent = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  
   const handleLogin = async (e) => { // Добавляем параметр e для предотвращения перезагрузки страницы при отправке формы
     e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
     try {
@@ -17,6 +17,7 @@ const SignInComponent = () => {
       );
       const token = response.data.auth_token;
       localStorage.setItem('token', token);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
