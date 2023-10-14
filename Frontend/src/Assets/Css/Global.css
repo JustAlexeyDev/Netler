@@ -17,28 +17,6 @@
   --accent: #1890FF;
   --HorizontalLine: #454545;
   --darkSecondBackground: #151515;
-
-
-  --blue-50: #e3f2fd;
-  --blue-100: #bbdefb;
-  --blue-A700: #2962ff;
-  --green-50: #e8f5e9;
-  --green-100: #c8e6c9;
-  --green-A700: #00c853;
-  --purple-50: #f3e5f5;
-  --purple-100: #e1bee7;
-  --purple-A700: #aa00ff;
-  --orange-50: #fff3e0;
-  --orange-100: #ffe0b2;
-  --orange-A700: #ff6d00;
-  --orange-700: #f57c00;
-  --grey-900: #212121;
-  --round-button-active-color: #212121;
-  --translate-main-slider: 100%;
-  --main-slider-color: #e3f2fd;
-  --translate-filters-slider: 0;
-  --filters-container-height: 3.8rem;
-  --filters-wrapper-opacity: 1;
 }
 @font-face {
   font-family: RegularFont;
@@ -53,8 +31,9 @@
   src: url(../Fonts/SFProDisplay-Bold.ttf);
 }
 body {
-  background: rgb(10,10,10);
-  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%);
+  /* background: rgb(10,10,10);
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%); */
+  background-color: var(--darkBackground);
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100%;
@@ -159,6 +138,7 @@ body {
 .Post-Container {
   display: flex;
   flex-direction: column;
+  
 }
 .Post-Container {
   display: flex;
@@ -167,6 +147,7 @@ body {
   border-radius: 10px;
   padding: 16px;
   gap: 10px;
+  
   width: 350px;
   height: auto;
 }
@@ -237,7 +218,6 @@ hr {
   justify-content: center;
   align-items: center;
   color: #fff;
-  width: 100%;
   height: 60px;
   padding: 16px;
   gap: 50px;
