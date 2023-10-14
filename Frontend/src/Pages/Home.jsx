@@ -1,29 +1,40 @@
-import {ThumbsUp, MessageSquare, Share2 } from 'lucide-react'
-
-// Import React Libs
+import { ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-// Vars
-const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
-const imagesURL = 'http://127.0.0.1:8000/posts_files/'
-// Render
+import { w3cwebsocket as WebSocket } from 'websocket';
+
+// WebSocket connection
+const ws = new WebSocket('ws://127.0.0.1:8000/ws/');
+
 const Home = () => {
   const [posts, setPosts] = useState(null);
-  const [files, setFiles] = useState(null);
+
   useEffect(() => {
-    axios.get(postsURL).then((response) => {
+    // WebSocket message handler
+    ws.onmessage = (message) => {
+      const data = JSON.parse(message.data);
+
+      // Check if the WebSocket message type is for like update
+      if (data.type === 'like_update') {
+        const updatedPosts = posts.map(post => {
+          if (post.id === data.post_id) {
+            // Update the likes count for the specific post
+            return { ...post, likes: data.likes_count };
+          }
+          return post;
+        });
+
+        setPosts(updatedPosts);
+      }
+    };
+  }, [posts]); // Update the effect when posts change
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/posts/?format=json').then((response) => {
       setPosts(response.data);
     });
   }, []);
-  
-  useEffect(() => {
-    axios.get(imagesURL).then((response) => {
-      setFiles(response.data);
-    });
-  }, []);
-  
-  if (!posts || !files) return null;
 
   const toggleLike = async (post_id) => {
     if (localStorage.getItem('token') !== null) {
@@ -38,6 +49,10 @@ const Home = () => {
           }
         );
         console.log(response.data);
+
+        // Send WebSocket message for like update
+        ws.send(JSON.stringify({ type: 'like_update', post_id }));
+
       } catch (error) {
         console.error(error);
       }
@@ -45,15 +60,15 @@ const Home = () => {
       console.log('Not authorized');
     }
   };
-  
 
-  // Page
+  if (!posts) return null;
+
+
   return(
     <div className="Page">
       <div>
         {posts.length > 0 && (
           <div className="Post-Box">
-
             {posts.map(post => (
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
@@ -72,9 +87,10 @@ const Home = () => {
                 <div className="Post-Nav">
                   <span className='center'>
                     <div className='center'>
-                      <button onClick={() => toggleLike(post.id)}>
-                        <ThumbsUp />                      
-                      </button>
+                    <button onClick={() => toggleLike(post.id)}>
+                      <ThumbsUp />
+                      {post.likes}
+                    </button>
                       {post.likes.length}                      
                     </div>
                     <div className='center'>
