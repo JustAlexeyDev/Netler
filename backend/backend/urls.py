@@ -21,11 +21,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import post.views as post_view
+import user.views as user_view
 
 router = routers.DefaultRouter()
 router.register(r"posts", post_view.PostViewSet)
 router.register(r"posts_files", post_view.PostFileViewSet)
 router.register(r"comments", post_view.CommentViewSet)
+router.register(r"users", user_view.UserViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
