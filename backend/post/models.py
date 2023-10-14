@@ -25,6 +25,12 @@ class Post(models.Model):
     @property
     def comments(self):
         return Comment.objects.filter(post=self.pk).all()
+    
+    def toggle_like(self, user):
+        if user in self.likes.all():
+            self.likes.remove(user)
+        else:
+            self.likes.add(user)
 
     def __str__(self) -> str:
         return f"{self.author} | {self.publish_date}"
