@@ -29,11 +29,12 @@ const Home = () => {
     if (localStorage.getItem('token') !== null) {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/auth/users/" + post_id + "/like",
+          "http://127.0.0.1:8000/posts/" + post_id + "/like/",
           {
             headers: {
               Authorization: `Token ${localStorage.getItem('token')}`
-            }
+            },
+            id: post_id
           }
         );
         // Обработка успешной регистрации
@@ -71,8 +72,8 @@ const Home = () => {
                 <div className="Post-Nav">
                   <span className='center'>
                     <div className='center'>
-                      <button>
-                        <ThumbsUp onClick={() => toggleLike(post.id)}/>                      
+                      <button onClick={() => toggleLike(post.id)}>
+                        <ThumbsUp />                      
                       </button>
                       {post.likes.length}                      
                     </div>
