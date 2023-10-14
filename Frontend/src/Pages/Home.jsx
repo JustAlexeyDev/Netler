@@ -16,37 +16,36 @@ const Home = () => {
       setPosts(response.data);
     });
   }, []);
+  
   useEffect(() => {
     axios.get(imagesURL).then((response) => {
       setFiles(response.data);
     });
   }, []);
-  console.log(posts);
-  if (!posts) return null;
-  if (!files) return null;
+  
+  if (!posts || !files) return null;
 
   const toggleLike = async (post_id) => {
     if (localStorage.getItem('token') !== null) {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/posts/" + post_id + "/like/",
+          `http://127.0.0.1:8000/posts/${parseInt(post_id)}/like/`,
+          null,
           {
             headers: {
               Authorization: `Token ${localStorage.getItem('token')}`
-            },
-            id: post_id
+            }
           }
         );
-        // Обработка успешной регистрации
         console.log(response.data);
       } catch (error) {
-        // Обработка ошибок регистрации
         console.error(error);
       }
     } else {
-      console.log('Not authorized')
+      console.log('Not authorized');
     }
-  }
+  };
+  
 
   // Page
   return(
@@ -54,8 +53,9 @@ const Home = () => {
       <div>
         {posts.length > 0 && (
           <div className="Post-Box">
+
             {posts.map(post => (
-              <div id={post.id} className="Post-Container">
+              <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
                   <span><img src={post.avatar}/></span>
                   <span>{post.author_name}</span>
@@ -90,7 +90,7 @@ const Home = () => {
                   </span>
                 </div>
                 <div className="Post-Description">
-                   <span>Desc: {post.description}</span>
+                   <span>{post.description}</span>
                 </div>
               </div>
             ))}
