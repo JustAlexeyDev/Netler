@@ -39,9 +39,9 @@ const Home = () => {
                 <hr />
                 {post.files.length > 0 && (
                   <div className='Post-image'>
-                      {post.files.map(file => (
-                          <img src={file.file} alt='Photo'/>
-                      ))}
+                    {post.files.map(file => (
+                      <img src={file.file} alt='Photo'/>
+                    ))}
                   </div>
                 )}
                 <hr />
