@@ -9,6 +9,7 @@ class Post(models.Model):
     description = models.CharField(max_length=2200)
     likes = models.ManyToManyField(User, related_name="post_likes", blank=True)
     publish_date = models.DateTimeField(default=timezone.now)
+    views = models.IntegerField(default=0)
 
     @property
     def author_name(self):
