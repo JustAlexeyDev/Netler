@@ -1,26 +1,35 @@
 // Impoer React Libs
 import React, { useState } from 'react';
+import axios from 'axios';
 
-import {Link} from 'react-router-dom';
-import axios from "axios";
 const SignUpComponent = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [avatar, setAvatar] = useState(null);
 
-  const handleRegistration = async () => {
+  const handleRegistration = async (e) => {
+    e.preventDefault();
+
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/', { email, password });
-      const token = response.data.token;
-      localStorage.setItem('token', token); 
-      console.log(response.data); 
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('avatar', avatar);
+
+      const response = await axios.post('http://127.0.0.1:8000/auth/users/', formData);
+      // Обработка успешной регистрации
+      console.log(response.data);
     } catch (error) {
+      // Обработка ошибок регистрации
       console.error(error);
     }
   };
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/', { email, password });
+      const response = await axios.post('http://127.0.0.1:8000/auth/users/', { username, email, password, avatar });
       const token = response.data.token;
       localStorage.setItem('token', token);
       console.log(response.data);
@@ -28,35 +37,38 @@ const SignUpComponent = () => {
       console.error(error);
     }
   };
+
   return(
     <div>
-      <form className="LoginForm">
-        <div className="LoginForm_Inputs">
-          <input 
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input 
-            type="password"
-            placeholder="Пароль"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="LoginPage_Options">
-          <div className="LoginPage_Options-Inputs">
-            <input type="checkbox" id="" />
-            <p>Запомнить</p>
-          </div>
-          <Link>Забыли пароль</Link>
-        </div>
-        <div className="buttonSubmit_Container">
-          <span className="buttonSubmit">
-            <button onClick={handleRegistration}>Зарегистрироваться</button>
-          </span>          
-        </div>
+      <form onSubmit={handleRegistration}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="file"
+          alt="avatar"
+          onChange={(e) => setAvatar(e.target.files[0])}
+          required
+        />
+        <button type="submit">Register</button>
       </form>
     </div>
   );
