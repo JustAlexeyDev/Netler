@@ -26,13 +26,24 @@ const Home = () => {
   if (!files) return null;
 
   const toggleLike = async (post_id) => {
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/users/" + post_id + "/like");
-      // Обработка успешной регистрации
-      console.log(response.data);
-    } catch (error) {
-      // Обработка ошибок регистрации
-      console.error(error);
+    if (localStorage.getItem('token') !== null) {
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:8000/auth/users/" + post_id + "/like",
+          {
+            headers: {
+              Authorization: `Token ${localStorage.getItem('token')}`
+            }
+          }
+        );
+        // Обработка успешной регистрации
+        console.log(response.data);
+      } catch (error) {
+        // Обработка ошибок регистрации
+        console.error(error);
+      }
+    } else {
+      console.log('Not authorized')
     }
   }
 
