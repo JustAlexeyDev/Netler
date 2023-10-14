@@ -26,27 +26,6 @@ const SignUpComponent = () => {
         console.error(error);
       }
     };
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/token/login/', { username, password });
-      const token = response.data.auth_token;
-      localStorage.setItem('token', token);
-      axios.get('http://localhost:8000/api/user/', {
-        headers: {
-          Authorization: `Token ${token}`
-        }
-      })
-        .then(response => {
-          console.log('yay')
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return(
     <div className='LoginPage_Container'>

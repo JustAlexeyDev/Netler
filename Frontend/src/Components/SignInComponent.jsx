@@ -1,31 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
 const SignInComponent = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => { // Добавляем параметр e для предотвращения перезагрузки страницы при отправке формы
+    e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/', {
-        email,
-        password,
-      });
-      // Обработка успешного входа в систему
-      console.log(response.data);
+      const response = await axios.post(
+        'http://127.0.0.1:8000/auth/token/login/',
+        { 
+          username: username,
+          password: password,
+        }
+      );
+      const token = response.data.auth_token;
+      localStorage.setItem('token', token);
     } catch (error) {
-      // Обработка ошибок входа в систему
       console.error(error);
     }
   };
-  return(
+
+  return (
     <div>
       <form onSubmit={handleLogin}>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          placeholder="Имя пользователя"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
@@ -37,5 +41,6 @@ const SignInComponent = () => {
       </form>
     </div>
   );
-}
+};
+
 export default SignInComponent;
