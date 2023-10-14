@@ -204,9 +204,10 @@ hr {
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
+  background-color: #000;
+  object-fit: scale-down;
 }
 .Post-image img{
-  display: flex;
   width: 320px;
   height: auto;
 }
