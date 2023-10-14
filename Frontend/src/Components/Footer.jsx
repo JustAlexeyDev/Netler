@@ -16,7 +16,6 @@ const Footer = () => {
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>    
         <Link to='/Profile'>Profile</Link>    
       </div>
-
     </div>
   );
 }
