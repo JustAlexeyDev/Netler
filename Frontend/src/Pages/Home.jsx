@@ -51,7 +51,7 @@ const Home = () => {
                       <button>
                         <ThumbsUp />                      
                       </button>
-                      {post.likes}                      
+                      {post.likes.length}                      
                     </div>
                     <div className='center'>
                       <button>
