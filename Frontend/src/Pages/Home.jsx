@@ -2,38 +2,34 @@ import { ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-import { w3cwebsocket as WebSocket } from 'websocket';
 
-// WebSocket connection
-const ws = new WebSocket('ws://127.0.0.1:8000/ws/');
+const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
+const imagesURL = 'http://127.0.0.1:8000/posts_files/';
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
+  const [files, setFiles] = useState(null);
 
   useEffect(() => {
-    // WebSocket message handler
-    ws.onmessage = (message) => {
-      const data = JSON.parse(message.data);
-
-      // Check if the WebSocket message type is for like update
-      if (data.type === 'like_update') {
-        const updatedPosts = posts.map(post => {
-          if (post.id === data.post_id) {
-            // Update the likes count for the specific post
-            return { ...post, likes: data.likes_count };
-          }
-          return post;
-        });
-
-        setPosts(updatedPosts);
-      }
-    };
-  }, [posts]); // Update the effect when posts change
-
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/posts/?format=json').then((response) => {
+    const fetchPosts = async () => {
+      const response = await axios.get(postsURL);
       setPosts(response.data);
-    });
+    };
+
+    const fetchFiles = async () => {
+      const response = await axios.get(imagesURL);
+      setFiles(response.data);
+    };
+
+    const interval = setInterval(() => {
+      fetchPosts();
+      fetchFiles();
+    }, 3000);
+
+    fetchPosts();
+    fetchFiles();
+
+    return () => clearInterval(interval);
   }, []);
 
   const toggleLike = async (post_id) => {
@@ -49,10 +45,6 @@ const Home = () => {
           }
         );
         console.log(response.data);
-
-        // Send WebSocket message for like update
-        ws.send(JSON.stringify({ type: 'like_update', post_id }));
-
       } catch (error) {
         console.error(error);
       }
@@ -61,10 +53,9 @@ const Home = () => {
     }
   };
 
-  if (!posts) return null;
+  if (!posts || !files) return null;
 
-
-  return(
+  return (
     <div className="Page">
       <div>
         {posts.length > 0 && (
@@ -72,41 +63,40 @@ const Home = () => {
             {posts.map(post => (
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
-                  <span><img src={post.avatar}/></span>
+                  <span><img src={post.avatar} alt="Avatar" /></span>
                   <span>{post.author_name}</span>
                 </div>
                 <hr />
                 {post.files.length > 0 && (
-                  <div className='Post-image'>
+                  <div className="Post-image">
                     {post.files.map(file => (
-                      <img src={file.file} alt='Photo'/>
+                      <img src={file.file} alt="Photo" key={file.id} />
                     ))}
                   </div>
                 )}
                 <hr />
                 <div className="Post-Nav">
-                  <span className='center'>
-                    <div className='center'>
-                    <button onClick={() => toggleLike(post.id)}>
-                      <ThumbsUp />
-                      {post.likes}
-                    </button>
-                      {post.likes.length}                      
+                  <span className="center">
+                    <div className="center">
+                      <button onClick={() => toggleLike(post.id)}>
+                        <ThumbsUp />
+                      </button>
+                      {post.likes.length}
                     </div>
-                    <div className='center'>
+                    <div className="center">
                       <button>
                         <MessageSquare />
                       </button>
                     </div>
-                    <div className='center'>
+                    <div className="center">
                       <button>
-                        <Share2 />                        
+                        <Share2 />
                       </button>
                     </div>
                   </span>
                 </div>
                 <div className="Post-Description">
-                   <span>{post.description}</span>
+                  <span>{post.description}</span>
                 </div>
               </div>
             ))}
@@ -115,5 +105,6 @@ const Home = () => {
       </div>
     </div>
   );
-}
-export default Home
+};
+
+export default Home;
