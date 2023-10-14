@@ -20,7 +20,7 @@ const SignUpComponent = () => {
       formData.append('avatar', avatar);
 
       const response = await axios.post('http://127.0.0.1:8000/auth/users/', formData);
-        const token = response.data.auth_token;
+        // const token = response.data.auth_token;
         console.log(response.data);
       } catch (error) {
         console.error(error);
@@ -33,7 +33,7 @@ const SignUpComponent = () => {
       localStorage.setItem('token', token);
       axios.get('http://localhost:8000/api/user/', {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Token ${token}`
         }
       })
         .then(response => {
