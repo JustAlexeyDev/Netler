@@ -3,7 +3,10 @@ const Notification = () => {
  
  return(
   <div className="Notification">
-   1
+   <img alt="Photo" />
+   <span>
+    <p>Подписался(ась) на вас</p>
+   </span>
   </div>
  );
 }
