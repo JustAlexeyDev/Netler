@@ -24,6 +24,18 @@ const Home = () => {
   console.log(posts);
   if (!posts) return null;
   if (!files) return null;
+
+  const toggleLike = async (post_id) => {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/auth/users/" + post_id + "/like");
+      // Обработка успешной регистрации
+      console.log(response.data);
+    } catch (error) {
+      // Обработка ошибок регистрации
+      console.error(error);
+    }
+  }
+
   // Page
   return(
     <div className="Page">
@@ -31,7 +43,7 @@ const Home = () => {
         {posts.length > 0 && (
           <div className="Post-Box">
             {posts.map(post => (
-              <div className="Post-Container">
+              <div id={post.id} className="Post-Container">
                 <div className="Post-Header">
                   <span><img src={post.avatar}/></span>
                   <span>{post.author_name}</span>
@@ -49,7 +61,7 @@ const Home = () => {
                   <span className='center'>
                     <div className='center'>
                       <button>
-                        <ThumbsUp />                      
+                        <ThumbsUp onClick={() => toggleLike(post.id)}/>                      
                       </button>
                       {post.likes.length}                      
                     </div>
