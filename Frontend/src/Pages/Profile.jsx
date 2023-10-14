@@ -4,7 +4,7 @@ import axios from "axios";
 // Render
 const Profile = () => {
  // API
- const userURL = 'http://127.0.0.1:8000/users/1/'
+ const userURL = 'http://127.0.0.1:8000/users/'
  const [userData, setUserData] = useState({});
  useEffect(() => {
   axios.get(userURL).then((response) => {
