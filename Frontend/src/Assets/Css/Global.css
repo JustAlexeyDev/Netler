@@ -205,6 +205,11 @@ hr {
   overflow-y: hidden;
   overflow-x: scroll;
 }
+.Post-image img{
+  display: flex;
+  width: 320px;
+  height: auto;
+}
 .Footer {
   position: fixed;
   left: 0;
