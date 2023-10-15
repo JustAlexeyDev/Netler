@@ -26,17 +26,21 @@ class UserViewset(viewsets.ModelViewSet):
 # @permission_classes([IsAuthenticated])
 def get_user(request):
     user = request.user
-    if user.avatar:
-        return Response({
-            'id': user.id,
-            'email': user.email,
-            'username': user.username,
-            'avatar': user.avatar.url,
-        })
+    
+    if user.avatar.url:
+        avatar = user.avatar.url
     else:
-        return Response({
-            'id': user.id,
-            'email': user.email,
-            'username': user.username,
-            'avatar': None,
-        })
+        avatar = None
+
+    if user.banner.url:
+        banner = user.banner.url
+    else:
+        banner = None
+    
+    return Response({
+        'id': user.id,
+        'email': user.email,
+        'username': user.username,
+        'avatar': avatar,
+        'banner': banner,
+    })
