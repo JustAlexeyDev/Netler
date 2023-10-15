@@ -33,6 +33,8 @@ const Footer = () => {
     getUserData();
   }, [userDataURL]);
 
+  console.log(userData)  
+
   return(
     <div className="Footer">
       <div className='Footer_Container'>
@@ -41,7 +43,7 @@ const Footer = () => {
         <Link to='/AddPost'><img src={AddPost} alt='icon'/></Link>
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>    
         <Link to='/Profile'>
-          <img src={userData.avatar} alt="avatar" />
+          <img src={userData.avatar} alt="avatar"/>
         </Link>    
       </div>
     </div>
