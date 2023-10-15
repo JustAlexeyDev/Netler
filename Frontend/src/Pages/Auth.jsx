@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 const Auth = () => {
   // State variables for form inputs
   const [username, setUsername] = useState('');
