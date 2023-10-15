@@ -1,0 +1,260 @@
+/* Test */
+/* ONLY FOR DEV */
+.hidden {
+  display: none;
+}
+.center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+:root {
+  --whiteBackground: #fff;
+  --darkBackground: #1c1c1c;
+  --whiteText: #fff;
+  --darkText: #1c1c1c;
+  --accent: #1890FF;
+  --HorizontalLine: #454545;
+  --darkSecondBackground: #151515;
+}
+@font-face {
+  font-family: RegularFont;
+  src: url(../Fonts/SFProDisplay-Regular.ttf);
+}
+@font-face {
+  font-family: LightFont;
+  src: url(../Fonts/SFProDisplay-Light.ttf);
+}
+@font-face {
+  font-family: BoldFont;
+  src: url(../Fonts/SFProDisplay-Bold.ttf);
+}
+body {
+  /* background: rgb(10,10,10);
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%); */
+  background-color: var(--darkBackground);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: var(--whiteText);
+  font-family: RegularFont;
+}
+.Page {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+.Header_Container {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  box-shadow: 0px 1px 0px var(--HorizontalLine);
+}
+.Header_Content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.Header_Avatar {
+  display: flex;
+  width: 35px;
+  height: 35px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+.LoginPage_Enter {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.LoginPage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  background: rgb(10,10,10);
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%);
+}
+.LoginPage_Container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+}
+.LoginForm_Methods {
+  display: flex;
+  width: 90%;
+  gap: 30px;
+}
+.LoginForm_Inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 90%;
+}
+.LoginForm_Inputs input{
+  display: flex;
+  background-color: var(--whiteBackground);
+  padding: 12px;
+  border-radius: 10px;
+  color: var(--darkText);
+}
+.LoginPage_Options {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.LoginPage_Options-Inputs {
+  display: flex;
+  gap: 8px;
+}
+.buttonSubmit {
+  background-color: var(--accent);
+  padding: 8px;
+  border-radius: 10px;
+}
+.buttonSubmit_Container {
+  display: flex;
+  width: 90%;
+}
+.Post-Container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--darkSecondBackground);
+  border-radius: 10px;
+  padding: 16px;
+  gap: 10px;
+  width: 100%;
+  height: auto;
+}
+.Post-Box {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+  
+}
+.Post-Header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.Post-Header img {
+  width: 40px; /* Задайте нужную ширину */
+  height: 40px; /* Задайте нужную высоту */
+  object-fit: cover;
+  border-radius: 999px;
+}
+.Post-Nav {
+  display: flex;
+}
+.Post-Description {
+  display: flex;
+  flex-direction: column;
+}
+.Profile-Banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.Prifile-Banner_image {
+  object-fit: cover;
+  height: 130px;
+  width: 430px;
+  background-color: #1890FF;
+}
+.Notification {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  background-color: #1890FF;
+  border-radius: 10px;
+  align-items: center;
+  gap: 20px;
+}
+hr {
+  border: 1px solid #3a3a3a;
+}
+.Post-image {
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  background-color: #000;
+}
+.Post-image img{
+  width: 320px;
+  height: auto;
+  object-fit: scale-down;
+}
+.Footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+}
+.Footer_Container,
+.Footer_Container svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: 60px;
+  padding: 16px;
+  width: 100%;
+  gap: 50px;
+  background-color: var(--darkBackground);
+  box-shadow: 0px -1px 0px var(--HorizontalLine);
+}
+.Prifile-Avatar_image {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+}
+.ProfilePage {
+  background-color: #1890FF;
+}
+.User-Container {
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+}
+.User-Box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--darkSecondBackground);
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 120px;
+  min-height: 180px;
+
+  text-align: center;
+  
+}
+.User-Box_avatar img {
+  border-radius: 999px;
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
+}
