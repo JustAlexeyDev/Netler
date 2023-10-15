@@ -10,6 +10,11 @@ const Home = () => {
   const [posts, setPosts] = useState(null);
   const [files, setFiles] = useState(null);
 
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+  };
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await axios.get(postsURL);
@@ -45,6 +50,8 @@ const Home = () => {
           }
         );
         console.log(response.data);
+        var toggleLikeIcon = document.getElementById('likeIcon');
+        toggleLikeIcon.setAttribute('fill', '#fff')
       } catch (error) {
         console.error(error);
       }
@@ -76,10 +83,11 @@ const Home = () => {
                 )}
                 <hr />
                 <div className="Post-Nav">
-                  <span className="center">
                     <div className="center">
                       <button onClick={() => toggleLike(post.id)}>
-                        <ThumbsUp />
+                        <ThumbsUp         
+                          onClick={handleLikeClick}
+                        />
                       </button>
                       {post.likes.length}
                     </div>
@@ -93,7 +101,6 @@ const Home = () => {
                         <Share2 />
                       </button>
                     </div>
-                  </span>
                 </div>
                 <div className="Post-Description">
                   <span>{post.description}</span>

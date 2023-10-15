@@ -34,7 +34,7 @@ class Post(models.Model):
             self.likes.add(user)
 
     def __str__(self) -> str:
-        return f"{self.author} | {self.publish_date}"
+        return f"{self.id} | {self.author} | {self.publish_date}"
 
 class PostFile(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="files")

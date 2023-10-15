@@ -24,7 +24,7 @@ if (!peoples) return null;
     <div className="User-Container">
 
      {peoples.map(people => (
-      <button className="User-Box">
+      <button className="User-Box" onClick={() => window.location.href=`/Profile/${people.id}/`}>
         <span className="User-Box_avatar">
           <img src={people.avatar}/>          
         </span>
