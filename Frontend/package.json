@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=3000 react-scripts --max_old_space_size=8128 start"
+    "start": "react-scripts start"
   },
   "keywords": [],
   "author": "",
