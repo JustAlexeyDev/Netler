@@ -4,11 +4,14 @@ import FriendsIcon from '../Assets/Icons/friendsIcon.svg';
 import AddPost from '../Assets/Icons/addPostIcon.svg';
 import NotificationIcon from '../Assets/Icons/notificationIcon.svg';
 // Import React Libs
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+ 
 
 const Footer = () => {
+  const location = useLocation();
   const userDataURL = 'http://127.0.0.1:8000/get_user/';
   const [userData, setUserData] = useState({});
   useEffect(() => {
@@ -32,6 +35,7 @@ const Footer = () => {
     getUserData();
   }, [userDataURL]);
   const avatar = 'http://127.0.0.1:8000' + userData.avatar;
+  const profileLink = `/Profile/${userData.id}/`
 
   return(
     <div className="Footer">
@@ -41,7 +45,7 @@ const Footer = () => {
         <Link to='/AddPost'><img src={AddPost} alt='icon'/></Link>
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>    
         
-        <Link to='/Profile' className='Footer_Avatar'>
+        <Link to={profileLink} onClick={() => window.location.href=`/Profile/${userData.id}/`} className='Footer_Avatar'>
           <img src={avatar} alt="profile" /> 
         </Link>
       </div>

@@ -287,16 +287,11 @@ hr {
   width: 430px;
   height: 130px;
 }
-.ProfilePagecdcd kdajnfksource :vertical {
+.ProfilePage_Banner-Container img {
   display: flex;
-  background-color: #7d8286;
   flex-direction: column;
-  width: 90px;
-  height: 90px;
-  border-radius: 9999px;
-  position: absolute;
-  top: 150px;
-  gap: 20px;
+  width: 430px;
+  height: 180px;
 }
 .ProfilePage_Avatar-Containe img {
   display: flex;
@@ -309,6 +304,7 @@ hr {
   display: flex;
   justify-content: center;
   width: 100%;
+  gap: 35px;
 }
 .ProfilePage_UserInfo-Container p {
   font-size: 20px;
