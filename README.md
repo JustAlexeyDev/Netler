@@ -23,7 +23,7 @@
 - ReactJS
 #### Библиотеки Python
 - Rest Framework
-- django-taggit
+- channels
 ### База данных
 - PostgreSQL
 ### Пакеты Node.js
