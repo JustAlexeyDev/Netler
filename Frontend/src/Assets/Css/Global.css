@@ -184,8 +184,8 @@ hr {
   padding: 8px;
 }
 .Post-Header img {
-  width: 40px; /* Задайте нужную ширину */
-  height: 40px; /* Задайте нужную высоту */
+  width: 40px; 
+  height: 40px; 
   object-fit: cover;
   border-radius: 999px;
 }
@@ -221,9 +221,9 @@ hr {
   background-color: #000;
 }
 .Post-image img{
-  width: 320px;
+  width: 340px;
   height: auto;
-  object-fit: scale-down;
+  object-fit: cover;
 }
 
 /* Footer */
