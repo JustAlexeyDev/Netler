@@ -1,39 +1,52 @@
-// Import React Libs
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-// Render
+
 const Profile = () => {
- // API
- const userURL = 'http://127.0.0.1:8000/users/1/'
- const [userData, setUserData] = useState({});
- useEffect(() => {
-  axios.get(userURL).then((response) => {
-    setUserData(response.data);
-  });
- }, []);
- console.log(userData.username)
- console.log(userData.avatar)
- 
- return(
-  <div className="ProfilePage">
-   <div className="Profile-Banner">
-    <img 
-     className="Prifile-Banner_image" 
-     alt="banner" 
-     src={userData.avatar}
-    />
-   </div>
-   <div>
-    <img 
-      className="Prifile-Avatar_image" 
-      alt="banner" 
-      src={userData.avatar}
-     />
-   </div>
-   <div>
-    {userData.username}
-   </div>
-  </div>
- );
+  const userDataURL = 'http://127.0.0.1:8000/get_user/';
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const response = await axios.get(userDataURL, {
+            headers: {
+              Authorization: `Token ${token}`
+            }
+          });
+          setUserData(response.data);
+        } catch (error) {
+          console.log('Error:', error);
+        }
+      } else {
+        console.log('Not authorized');
+      }
+    };
+    getUserData();
+  }, [userDataURL]);
+
+  return (
+    <div className="ProfilePage">
+      <div className="Profile-Banner">
+        <img 
+          className="Profile-Banner_image" 
+          alt="banner" 
+          src={userData.avatar}
+        />
+      </div>
+      <div>
+        <img 
+          className="Profile-Avatar_image" 
+          alt="avatar" 
+          src={userData.avatar}
+        />
+      </div>
+      <div>
+        {userData.username}
+      </div>
+    </div>
+  );
 }
+
 export default Profile;
