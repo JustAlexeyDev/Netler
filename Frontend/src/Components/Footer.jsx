@@ -27,6 +27,7 @@ const Footer = () => {
           console.log('Error:', error);
         }
       } else {
+        alert('Вы не авторизированы!');
         console.log('Not authorized');
       }
     };
