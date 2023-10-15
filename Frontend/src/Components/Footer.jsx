@@ -15,9 +15,14 @@ const Footer = () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get(userDataURL, {
-            headers: { Authorization: `Token ${token}` },
-          });
+          const response = await axios.get(
+            userDataURL, 
+            {
+              headers: {
+                Authorization: `Token ${token}` 
+              },
+            }
+          );
           setUserData(response.data);
         } catch (error) {
           console.log('Ошибка:', error);
