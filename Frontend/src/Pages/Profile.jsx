@@ -27,23 +27,15 @@ const Profile = () => {
   }, [userDataURL]);
 
   return (
-    <div className="ProfilePage">
-      <div className="Profile-Banner">
-        <img 
-          className="Profile-Banner_image" 
-          alt="banner" 
-          src={userData.banner}
-        />
+    <div className="ProfilePage-Container">
+      <div className="ProfilePage_Banner-Container">
+        <img src={userData.banner} alt="Banner_image"/>
       </div>
-      <div className="Profile-Avatar">
-        <img 
-          className="Profile-Avatar_image" 
-          alt="avatar" 
-          src={userData.avatar}
-        />
-      </div>
-      <div className="Profile-UserInfo">
-        {userData.username}
+      <div className="ProfilePage_Avatar-Container">
+        <img src={userData.avatar} alt="Avatar_image" />
+      </div>  
+      <div className="ProfilePage_UserInfo-Container">
+
       </div>
     </div>
   );
