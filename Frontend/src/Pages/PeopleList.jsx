@@ -18,19 +18,24 @@ useEffect(() => {
 
 if (!peoples) return null;
  return(
-  <div>
+  <div className="User-Container_Main Page">
     <h1>Список пользователей</h1>    
    {peoples.length > 0 && (
     <div className="User-Container">
 
      {peoples.map(people => (
-      <button className="User-Box" onClick={() => window.location.href=`/Profile/${people.id}/`}>
+      <div className="User-Box">
         <span className="User-Box_avatar">
           <img src={people.avatar}/>          
         </span>
-
-       {people.username}
-      </button>
+        <span>
+          {people.username}
+        </span>
+        <span className="User-Box_Button">
+          <button onClick={() => window.location.href=`/Profile/${people.id}/`}>Посмотреть</button>
+        </span>
+       
+      </div>
      ))}
     </div>
    )}

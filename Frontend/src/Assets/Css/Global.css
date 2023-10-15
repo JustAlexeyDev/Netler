@@ -256,13 +256,21 @@ hr {
 }
 
 /* User List */
+.User-Container_Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 .User-Container {
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
   gap: 20px;
   justify-content: center;
-  width: 100%;
+  width: 200px;
   padding: 16px;
 }
 .User-Box {
@@ -271,6 +279,7 @@ hr {
   background-color: var(--darkSecondBackground);
   border-radius: 10px;
   padding: 16px;
+  gap: 30px;
   min-width: 120px;
   min-height: 180px;
   text-align: center;
@@ -280,6 +289,13 @@ hr {
   object-fit: cover;
   width: 80px;
   height: 80px;
+}
+.User-Box_Button button {
+  background-color: #fff;
+  padding: 4px;
+  border-radius: 20px;
+  color: var(--darkText);
+  width: 100px;
 }
 
 /* Profile Page */
