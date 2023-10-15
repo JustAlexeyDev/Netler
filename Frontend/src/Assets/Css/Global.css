@@ -39,6 +39,10 @@ body {
   color: var(--whiteText);
   font-family: RegularFont;
 }
+hr {
+  border: 1px solid #3a3a3a;
+}
+/* Page */
 .Page {
   display: flex;
   flex-direction: column;
@@ -46,6 +50,7 @@ body {
   margin-bottom: 50px;
   align-items: center;
 }
+/* Header */
 .Header_Container {
   display: flex;
   width: 100%;
@@ -65,6 +70,8 @@ body {
   border-radius: 999px;
   border: 1px solid;
 }
+
+/* Login Page */
 .LoginPage_Enter {
   display: flex;
   flex-direction: column;
@@ -91,6 +98,8 @@ body {
   height: 100%;
   width: 100%;
 }
+
+/* Login Form */
 .LoginForm {
   display: flex;
   flex-direction: column;
@@ -116,6 +125,8 @@ body {
   border-radius: 10px;
   color: var(--darkText);
 }
+
+/* Login Page */
 .LoginPage_Options {
   display: flex;
   width: 90%;
@@ -125,6 +136,8 @@ body {
   display: flex;
   gap: 8px;
 }
+
+/* Buttons */
 .buttonSubmit {
   background-color: var(--accent);
   padding: 8px;
@@ -134,6 +147,8 @@ body {
   display: flex;
   width: 90%;
 }
+
+/* Post */
 .Post-Container {
   display: flex;
   flex-direction: column;
@@ -148,7 +163,6 @@ body {
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
-  
 }
 .Post-Header {
   display: flex;
@@ -168,18 +182,8 @@ body {
   display: flex;
   flex-direction: column;
 }
-.Profile-Banner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.Prifile-Banner_image {
-  object-fit: cover;
-  height: 130px;
-  width: 430px;
-  background-color: #1890FF;
-}
+
+/* Trash */
 .Notification {
   display: flex;
   width: 100%;
@@ -189,9 +193,8 @@ body {
   align-items: center;
   gap: 20px;
 }
-hr {
-  border: 1px solid #3a3a3a;
-}
+
+/* Post */
 .Post-image {
   width: 100%;
   display: flex;
@@ -204,6 +207,8 @@ hr {
   height: auto;
   object-fit: scale-down;
 }
+
+/* Footer */
 .Footer {
   position: fixed;
   left: 0;
@@ -224,15 +229,8 @@ hr {
   background-color: var(--darkBackground);
   box-shadow: 0px -1px 0px var(--HorizontalLine);
 }
-.Prifile-Avatar_image {
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-  border-radius: 999px;
-}
-.ProfilePage {
-  background-color: #1890FF;
-}
+
+/* User List */
 .User-Container {
   display: flex;
   overflow-x: scroll;
@@ -248,9 +246,7 @@ hr {
   padding: 16px;
   min-width: 120px;
   min-height: 180px;
-
   text-align: center;
-  
 }
 .User-Box_avatar img {
   border-radius: 999px;

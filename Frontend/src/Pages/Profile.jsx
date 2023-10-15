@@ -32,17 +32,17 @@ const Profile = () => {
         <img 
           className="Profile-Banner_image" 
           alt="banner" 
-          src={userData.avatar}
+          src={userData.banner}
         />
       </div>
-      <div>
+      <div className="Profile-Avatar">
         <img 
           className="Profile-Avatar_image" 
           alt="avatar" 
           src={userData.avatar}
         />
       </div>
-      <div>
+      <div className="Profile-UserInfo">
         {userData.username}
       </div>
     </div>
