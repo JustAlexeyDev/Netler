@@ -76,7 +76,6 @@ const Home = () => {
                 )}
                 <hr />
                 <div className="Post-Nav">
-                  <span className="center">
                     <div className="center">
                       <button onClick={() => toggleLike(post.id)}>
                         <ThumbsUp />
@@ -93,7 +92,6 @@ const Home = () => {
                         <Share2 />
                       </button>
                     </div>
-                  </span>
                 </div>
                 <div className="Post-Description">
                   <span>{post.description}</span>

@@ -182,6 +182,8 @@ hr {
 }
 .Post-Nav {
   display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .Post-Description {
   display: flex;
@@ -267,7 +269,6 @@ hr {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  position: absolute;
 }
 .ProfilePage_Banner-Container {
   display: flex;
