@@ -27,11 +27,14 @@ const Footer = () => {
           console.log('Error:', error);
         }
       } else {
+        alert('Вы не авторизированы!');
         console.log('Not authorized');
       }
     };
     getUserData();
   }, [userDataURL]);
+
+  console.log(userData)  
 
   return(
     <div className="Footer">
@@ -41,7 +44,7 @@ const Footer = () => {
         <Link to='/AddPost'><img src={AddPost} alt='icon'/></Link>
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>    
         <Link to='/Profile'>
-          <img src={userData.avatar} alt="avatar" />
+          <img src={userData.avatar} alt="avatar"/>
         </Link>    
       </div>
     </div>
