@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import React from "react";
+import React, { useRef } from 'react';
 
 const postSendURL = 'http://127.0.0.1:8000/create_post/' 
 const AddPost = () => {
     const [desc, setDesc] = useState('');
     const [files, setFiles] = useState('');
+
+    const fileInputRef = useRef(null);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+  
+    const handleBrowseClick = () => {
+      fileInputRef.current.click();
+    };
+  
+    const handleFileChange = (event) => {
+      const files = Array.from(event.target.files);
+      setSelectedFiles(files);
+    };
 
     const sendPost = async (e) => {
         e.preventDefault();
@@ -20,6 +32,7 @@ const AddPost = () => {
                 {
                     headers: {
                         Authorization: `Token ${localStorage.getItem('token')}`,
+                        "Content-Type": "multipart/form-data",
                     },
                 },
             );
@@ -27,18 +40,26 @@ const AddPost = () => {
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     return(
         <div className="Page">
-            <form onSubmit={sendPost}>
-                <input 
-                    type="file"
-                    placeholder="Фотографии" 
-                    // value={files}
-                    onChange={(e) => Array.from(e.target.files)} 
-                    multiple
-                />
+            <form onSubmit={sendPost} method="POST">
+            <div>
+            <button onClick={handleBrowseClick}>Выбрать файлы</button>
+            <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+                multiple
+            />
+            <ul>
+                {selectedFiles.map((file, index) => (
+                <li key={index}>{file.name}</li>
+                ))}
+            </ul>
+            </div>
                 <input 
                     type="text"
                     placeholder="Описание" 
