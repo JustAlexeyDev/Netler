@@ -86,7 +86,6 @@ const Home = () => {
                     <div className="center">
                       <button onClick={() => toggleLike(post.id)}>
                         <ThumbsUp         
-                          style={{ fill: isLiked ? 'white' : '' }}
                           onClick={handleLikeClick}
                         />
                       </button>
