@@ -15,7 +15,7 @@
   --whiteText: #fff;
   --darkText: #1c1c1c;
   --accent: #1890FF;
-  --HorizontalLine: #1e374e;
+  --HorizontalLine: #454545;
   --darkSecondBackground: #0c1720;
 }
 /* Import Fonts */
@@ -43,7 +43,7 @@ body {
   font-family: RegularFont;
 }
 hr {
-  border: 1px solid var(--HorizontalLine);
+  border: 1px solid #9c9c9c;
 }
 .liked {
   fill: #fff;
