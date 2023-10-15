@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import axios from "axios";
+import React, { useState, useRef } from 'react';
+import axios from 'axios';
 
 const postSendURL = 'http://127.0.0.1:8000/create_post/';
 
@@ -30,7 +30,7 @@ const AddPost = () => {
       const response = await axios.post(postSendURL, formData, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
 

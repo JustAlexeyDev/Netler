@@ -5,8 +5,8 @@ import axios from 'axios';
 const Header = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  let user = '';
-
+  var user = '';
+  var PageName = ''
   const userDataURL = 'http://127.0.0.1:8000/get_user/';
   const [userData, setUserData] = useState({});
   useEffect(() => {
@@ -34,8 +34,9 @@ const Header = () => {
     user = ''
   } else if (currentPath === `/Profile/${userData.id}/`) {
     user = userData.username
-  } else {
-    
+  } else if (currentPath === '/AddPost') {
+    user = '';
+    PageName = 'Новый пост'
   }
   return(
     <div className="Header_Container">
@@ -45,6 +46,7 @@ const Header = () => {
         </span>
         <span className='Header_Name'>
           {user}
+          {PageName}
         </span>
         <span className='Header_Avatar'>
 
