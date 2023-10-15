@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-
+import LogoBanner from '../Assets/Icons/LogoBanner.svg';
 const LoginIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -27,8 +27,11 @@ const LoginIn = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className='Page LoginPage_Container'>
+       <div className="LoginPage_Banner">
+        <img width={200} src={LogoBanner} alt="Banner" />
+      </div>   
+      <form onSubmit={handleLogin} className='LoginForm_Inputs'>
         <input
           type="text"
           placeholder="Имя пользователя"
@@ -41,7 +44,10 @@ const LoginIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <span className='buttonSubmit'>
+         <button type="submit">Войти</button>         
+        </span>
+
       </form>
     </div>
   );

@@ -62,7 +62,7 @@ const SignUpComponent = () => {
             required
           />          
         </div>
-        <span className='buttonSubmit'><button type="submit">Регистрация</button></span>
+        <span><button className='buttonSubmit' type="submit">Регистрация</button></span>
         
       </form>
     </div>

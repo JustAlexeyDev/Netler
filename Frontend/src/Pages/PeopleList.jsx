@@ -19,8 +19,10 @@ useEffect(() => {
 if (!peoples) return null;
  return(
   <div>
+    <h1>Список пользователей</h1>    
    {peoples.length > 0 && (
     <div className="User-Container">
+
      {peoples.map(people => (
       <button className="User-Box">
         <span className="User-Box_avatar">

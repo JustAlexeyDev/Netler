@@ -19,7 +19,6 @@ const Login = () => {
         </div>
         <div className="LoginPage_Enter">
           <SignUpComponent />
-          {/* <SignInComponent /> */}
         </div>        
       </div>
     </div>

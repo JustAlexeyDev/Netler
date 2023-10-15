@@ -24,7 +24,7 @@ ReactDOM.render(
       <Header/>
       <Routes>
         <Route path="/*" element={<NotFound />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LoginIn />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Profile" element={<Profile />} />
