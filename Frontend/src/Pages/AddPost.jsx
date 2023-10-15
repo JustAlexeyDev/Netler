@@ -41,7 +41,6 @@ const AddPost = () => {
             console.error(error);
         }
     };
-
     return(
         <div className="Page">
             <form onSubmit={sendPost} method="POST">
@@ -53,6 +52,7 @@ const AddPost = () => {
                 style={{ display: 'none' }}
                 onChange={handleFileChange}
                 multiple
+                value={files}
             />
             <ul>
                 {selectedFiles.map((file, index) => (
