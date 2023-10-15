@@ -1,10 +1,10 @@
 import { useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import {ArrowLeft } from 'lucide-react'
 import axios from 'axios';
 const Header = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  let pageTitle = '';
   let user = '';
 
   const userDataURL = 'http://127.0.0.1:8000/get_user/';
@@ -31,21 +31,19 @@ const Header = () => {
   }, [userDataURL]);
   
   if (currentPath === '/*') {
-    pageTitle = '',
     user = ''
   } else if (currentPath === `/Profile/${userData.id}/`) {
-    pageTitle = 'Профиль',
     user = userData.username
   } else {
-    pageTitle = ''
+    
   }
   return(
     <div className="Header_Container">
       <div className="Header_Content">
-        <span>
-          {pageTitle}
+        <span className='pointer'>
+          <ArrowLeft onClick={() => {window.history.back()}} />
         </span>
-        <span className=''>
+        <span className='Header_Name'>
           {user}
         </span>
         <span className='Header_Avatar'>

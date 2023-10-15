@@ -48,6 +48,9 @@ hr {
 .liked {
   fill: #fff;
 }
+.pointer {
+  cursor: pointer;
+}
 
 /* Page */
 .Page {
@@ -76,7 +79,10 @@ hr {
   display: flex;
   width: 35px;
   height: 35px;
-
+}
+.Header_Name {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 /* Login Page */
@@ -252,8 +258,10 @@ hr {
 /* User List */
 .User-Container {
   display: flex;
+  flex-direction: column;
   overflow-x: scroll;
   gap: 20px;
+  justify-content: center;
   width: 100%;
   padding: 16px;
 }
@@ -284,7 +292,6 @@ hr {
 }
 .ProfilePage_Banner-Container {
   display: flex;
-  border: 2px solid;
   flex-direction: column;
   width: 100%;;
   height: auto;
