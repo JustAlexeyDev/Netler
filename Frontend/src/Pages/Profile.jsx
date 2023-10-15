@@ -35,11 +35,10 @@ const Profile = () => {
         <span className="ProfilePage_Avatar">
           <img src={avatar} alt="Изображение аватара" />          
         </span>
+        <div className="ProfilePage_UserInfo-Container">
+          <p>{userData.username}</p>
+        </div>
       </div>  
-      <div className="ProfilePage_UserInfo-Container">
-        {userData.username}
-        {userData.email}
-      </div>
     </div>
   );
 }
