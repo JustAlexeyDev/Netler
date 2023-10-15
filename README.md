@@ -21,7 +21,7 @@
 - Django
 #### Библиотека Frontend
 - ReactJS
-#### Билиотеки Python
+#### Библиотеки Python
 - Rest Framework
 - django-taggit
 ### База данных
