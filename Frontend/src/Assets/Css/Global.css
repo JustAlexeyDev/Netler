@@ -11,7 +11,7 @@
 /* Root */
 :root {
   --whiteBackground: #fff;
-  --darkBackground: #1c1c1c;
+  --darkBackground: #0C1720;
   --whiteText: #fff;
   --darkText: #1c1c1c;
   --accent: #1890FF;
@@ -223,6 +223,12 @@ hr {
   display: flex;
   width: 100%;
 }
+.Footer_Avatar img {
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+}
 .Footer_Container,
 .Footer_Container svg {
   display: flex;
@@ -264,28 +270,29 @@ hr {
 
 /* Profile Page */
 .ProfilePage-Container {
-  background-color: #99d72d;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  align-items: center;
 }
 .ProfilePage_Banner-Container {
   display: flex;
-  background-color: #1890FF;
+  border: 2px solid;
   flex-direction: column;
-  width: 100%;
+  width: 430px;
   height: 130px;
 }
-.ProfilePage_Avatar-Container {
+.ProfilePagecdcd kdajnfksource :vertical {
   display: flex;
   background-color: #7d8286;
   flex-direction: column;
   width: 90px;
   height: 90px;
   border-radius: 9999px;
-  margin-left: 20px;
-  transform: translateY(-50px);
+  position: absolute;
+  top: 150px;
+  gap: 20px;
 }
 .ProfilePage_Avatar-Containe img {
   display: flex;
@@ -296,7 +303,15 @@ hr {
 }
 .ProfilePage_UserInfo-Container {
   display: flex;
-  background-color: chocolate;
+  justify-content: center;
   width: 100%;
-  height: 50px;
+}
+.ProfilePage_UserInfo-Container p {
+  font-size: 20px;
+}
+.ProfilePage_Avatar img {
+  object-fit: cover;
+  width: 90px;
+  height: 90px;
+  border-radius: 9999px;
 }

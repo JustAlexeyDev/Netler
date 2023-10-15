@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react';
 const Footer = () => {
   const userDataURL = 'http://127.0.0.1:8000/get_user/';
   const [userData, setUserData] = useState({});
-
   useEffect(() => {
     const getUserData = async () => {
       const token = localStorage.getItem('token');
@@ -24,17 +23,15 @@ const Footer = () => {
           });
           setUserData(response.data);
         } catch (error) {
-          console.log('Error:', error);
+          console.log('Ошибка:', error);
         }
       } else {
-        alert('Вы не авторизированы!');
-        console.log('Not authorized');
+        console.log('Не авторизован');
       }
     };
     getUserData();
   }, [userDataURL]);
-
-  console.log(userData)  
+  const avatar = 'http://127.0.0.1:8000' + userData.avatar;
 
   return(
     <div className="Footer">
@@ -43,9 +40,10 @@ const Footer = () => {
         <Link to='/PeopleList'><img src={FriendsIcon} alt='icon'/></Link>
         <Link to='/AddPost'><img src={AddPost} alt='icon'/></Link>
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>    
-        <Link to='/Profile'>
-          <img src={userData.avatar} alt="avatar"/>
-        </Link>    
+        
+        <Link to='/Profile' className='Footer_Avatar'>
+          <img src={avatar} alt="profile" /> 
+        </Link>
       </div>
     </div>
   );
