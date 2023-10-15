@@ -11,12 +11,12 @@
 /* Root */
 :root {
   --whiteBackground: #fff;
-  --darkBackground: #0C1720;
+  --darkBackground: #000911;
   --whiteText: #fff;
   --darkText: #1c1c1c;
   --accent: #1890FF;
   --HorizontalLine: #454545;
-  --darkSecondBackground: #151515;
+  --darkSecondBackground: #0c1720;
 }
 /* Import Fonts */
 @font-face {
@@ -45,6 +45,9 @@ body {
 hr {
   border: 1px solid #3a3a3a;
 }
+.liked {
+  fill: #fff;
+}
 
 /* Page */
 .Page {
@@ -61,6 +64,7 @@ hr {
   width: 100%;
   padding: 16px;
   box-shadow: 0px 1px 0px var(--HorizontalLine);
+  background-color: var(--darkSecondBackground);
 }
 .Header_Content {
   display: flex;
@@ -72,8 +76,7 @@ hr {
   display: flex;
   width: 35px;
   height: 35px;
-  border-radius: 999px;
-  border: 1px solid;
+
 }
 
 /* Login Page */
@@ -222,6 +225,7 @@ hr {
   bottom: 0;
   display: flex;
   width: 100%;
+  background-color: var(--darkSecondBackground);
 }
 .Footer_Avatar img {
   object-fit: cover;

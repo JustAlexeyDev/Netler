@@ -10,6 +10,11 @@ const Home = () => {
   const [posts, setPosts] = useState(null);
   const [files, setFiles] = useState(null);
 
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+  };
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await axios.get(postsURL);
@@ -45,6 +50,8 @@ const Home = () => {
           }
         );
         console.log(response.data);
+        var toggleLikeIcon = document.getElementById('likeIcon');
+        toggleLikeIcon.setAttribute('fill', '#fff')
       } catch (error) {
         console.error(error);
       }
@@ -78,7 +85,10 @@ const Home = () => {
                 <div className="Post-Nav">
                     <div className="center">
                       <button onClick={() => toggleLike(post.id)}>
-                        <ThumbsUp />
+                        <ThumbsUp         
+                          style={{ fill: isLiked ? 'white' : '' }}
+                          onClick={handleLikeClick}
+                        />
                       </button>
                       {post.likes.length}
                     </div>
