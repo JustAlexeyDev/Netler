@@ -28,12 +28,15 @@ if (!peoples) return null;
         <span className="User-Box_avatar">
           <img src={people.avatar}/>          
         </span>
-        <span>
-          {people.username}
-        </span>
-        <span className="User-Box_Button">
-          <button onClick={() => window.location.href=`/Profile/${people.id}/`}>Посмотреть</button>
-        </span>
+        <div className="User-Box_Nav">
+          <span>
+            {people.username}
+          </span>
+          <span className="User-Box_Button">
+            <button onClick={() => window.location.href=`/Profile/${people.id}/`}>Посмотреть</button>
+          </span>          
+        </div>
+
        
       </div>
      ))}
