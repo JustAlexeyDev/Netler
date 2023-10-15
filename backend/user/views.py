@@ -34,12 +34,12 @@ class UserViewset(viewsets.ModelViewSet):
 def get_user(request):
     user = request.user
     
-    if user.avatar.url:
+    if user.avatar:
         avatar = user.avatar.url
     else:
         avatar = None
 
-    if user.banner.url:
+    if user.banner:
         banner = user.banner.url
     else:
         banner = None

@@ -15,7 +15,7 @@
   --whiteText: #fff;
   --darkText: #1c1c1c;
   --accent: #1890FF;
-  --HorizontalLine: #454545;
+  --HorizontalLine: #1e374e;
   --darkSecondBackground: #0c1720;
 }
 /* Import Fonts */
@@ -43,7 +43,7 @@ body {
   font-family: RegularFont;
 }
 hr {
-  border: 1px solid #9c9c9c;
+  border: 1px solid var(--HorizontalLine);
 }
 .liked {
   fill: #fff;
@@ -92,11 +92,11 @@ hr {
   width: 100%;
 }
 .LoginPage {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   left: 0;
-  top: 0;  
+  top: 0;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   z-index: 99;
@@ -279,7 +279,7 @@ hr {
   background-color: var(--darkSecondBackground);
   border-radius: 10px;
   min-width: 120px;
-  min-height: 200px;
+  min-height: 180px;
   text-align: center;
 }
 .User-Box_avatar img {
@@ -288,18 +288,18 @@ hr {
   width: 200px;
   height: 200px;
 }
-.User-Box_SubMenu {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  gap: 20px;
-}
 .User-Box_Button button {
   background-color: #c7cde7;
   padding: 4px;
   border-radius: 20px;
   color: var(--darkText);
   width: 100px;
+}
+.User-Box_Nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 20px;
 }
 
 /* Profile Page */

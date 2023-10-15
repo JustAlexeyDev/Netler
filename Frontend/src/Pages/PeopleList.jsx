@@ -28,7 +28,7 @@ if (!peoples) return null;
         <span className="User-Box_avatar">
           <img src={people.avatar}/>          
         </span>
-        <div className="User-Box_SubMenu">
+        <div className="User-Box_Nav">
           <span>
             {people.username}
           </span>
@@ -36,6 +36,8 @@ if (!peoples) return null;
             <button onClick={() => window.location.href=`/Profile/${people.id}/`}>Посмотреть</button>
           </span>          
         </div>
+
+       
       </div>
      ))}
     </div>
