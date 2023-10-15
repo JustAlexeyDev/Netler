@@ -27,7 +27,6 @@ if (!peoples) return null;
           <img src={people.avatar}/>          
         </span>
 
-        
        {people.username}
       </button>
      ))}

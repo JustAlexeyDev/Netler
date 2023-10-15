@@ -24,7 +24,7 @@ const SignUpComponent = () => {
       const response = await axios.post('http://127.0.0.1:8000/auth/users/', formData);
         const token = response.data.auth_token;
         console.log(response.data);
-        navigate('/Home')
+        navigate('/LoginIn')
       } catch (error) {
         console.error(error);
       }
