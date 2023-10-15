@@ -8,7 +8,7 @@ import Footer from "./Components/Footer";
 // Import Pages
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
-import Login from "./Pages/Login";
+import Auth from "./Pages/Auth";
 import Profile from "./Pages/Profile";
 import AddPost from "./Pages/AddPost";
 import Notifications from "./Pages/Notifications";
@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<LoginIn />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/Auth" element={<Auth />} />
         <Route path="/Profile/:id" element={<Profile />} />
         <Route path="/AddPost" element={<AddPost />} />
         <Route path="/Notifications" element={<Notifications />} />

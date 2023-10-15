@@ -17,6 +17,7 @@ const SignInComponent = () => {
       );
       const token = response.data.auth_token;
       localStorage.setItem('token', token);
+
       console.log(response);
     } catch (error) {
       console.error(error);
