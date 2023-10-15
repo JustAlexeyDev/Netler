@@ -8,6 +8,7 @@
   align-items: center;
   gap: 8px;
 }
+/* Root */
 :root {
   --whiteBackground: #fff;
   --darkBackground: #1c1c1c;
@@ -17,6 +18,7 @@
   --HorizontalLine: #454545;
   --darkSecondBackground: #151515;
 }
+/* Import Fonts */
 @font-face {
   font-family: RegularFont;
   src: url(../Fonts/SFProDisplay-Regular.ttf);
@@ -29,6 +31,7 @@
   font-family: BoldFont;
   src: url(../Fonts/SFProDisplay-Bold.ttf);
 }
+/* All def CSS */
 body {
   /* background: rgb(10,10,10);
   background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(30,55,78,1) 100%); */
@@ -42,6 +45,7 @@ body {
 hr {
   border: 1px solid #3a3a3a;
 }
+
 /* Page */
 .Page {
   display: flex;
