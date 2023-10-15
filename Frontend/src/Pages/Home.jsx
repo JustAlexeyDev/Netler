@@ -9,9 +9,24 @@ const imagesURL = 'http://127.0.0.1:8000/posts_files/';
 const Home = () => {
   const [posts, setPosts] = useState(null);
   const [files, setFiles] = useState(null);
-
   const [isLiked, setIsLiked] = useState(false);
 
+  
+  const [peoples, setPeoples] = useState([]);
+  const peoplesListApi = async () => {
+  const response = await fetch(
+    "http://127.0.0.1:8000/users/?format=json"
+  ).then((response) => response.json()).then(data => {
+    setPeoples(data)
+  });
+    console.log(response);
+    return response;
+  };
+  useEffect(() => {
+    peoplesListApi()
+  }, [])
+
+  
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
   };
@@ -61,7 +76,7 @@ const Home = () => {
   };
 
   if (!posts || !files) return null;
-
+  if (!peoples) return null;
   return (
     <div className="Page">
       <div>
@@ -71,7 +86,7 @@ const Home = () => {
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
                   <span><img src={post.avatar} alt="Avatar" /></span>
-                  <span>{post.author_name}</span>
+                  <span onClick={() => window.location.href=`/Profile/${post.id}/`}>{post.author_name}</span>
                 </div>
                 <hr />
                 {post.files.length > 0 && (
