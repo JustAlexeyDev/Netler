@@ -58,18 +58,15 @@ const Profile = () => {
           <img src={avatar} alt="Изображение аватара" />          
         </span>
       </div>
+      <hr />
         <div className="ProfilePage_UserInfo-Container">
           <div>
             <p>Публикации</p>
-            <p></p>
+            <p>0</p>
           </div>
           <div>
             <p>Подписчики</p>
             <p>{subscribers.length}</p>
-          </div>
-          <div>
-            <p>Подписки</p>
-            <p></p>
           </div>
           <div>
             <p>Друзья</p>

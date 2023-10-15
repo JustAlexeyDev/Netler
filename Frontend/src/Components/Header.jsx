@@ -33,7 +33,7 @@ const Header = () => {
   if (currentPath === '/*') {
     pageTitle = '',
     user = ''
-  } else if (currentPath === '/Profile') {
+  } else if (currentPath === `/Profile/${userData.id}/`) {
     pageTitle = 'Профиль',
     user = userData.username
   } else {
@@ -45,7 +45,9 @@ const Header = () => {
         <span>
           {pageTitle}
         </span>
-        <span className=''>{user}</span>
+        <span className=''>
+          {user}
+        </span>
         <span className='Header_Avatar'>
 
         </span>

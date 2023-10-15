@@ -43,7 +43,7 @@ body {
   font-family: RegularFont;
 }
 hr {
-  border: 1px solid #3a3a3a;
+  border: 1px solid #9c9c9c;
 }
 .liked {
   fill: #fff;
@@ -162,7 +162,6 @@ hr {
   flex-direction: column;
   background-color: var(--darkSecondBackground);
   border-radius: 10px;
-  padding: 16px;
   gap: 10px;
   width: 340px;
   height: auto;
@@ -176,6 +175,7 @@ hr {
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 8px;
 }
 .Post-Header img {
   width: 40px; /* Задайте нужную ширину */
@@ -187,10 +187,12 @@ hr {
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 8px;
 }
 .Post-Description {
   display: flex;
   flex-direction: column;
+  padding: 8px;
 }
 
 /* Trash */
@@ -284,16 +286,24 @@ hr {
   display: flex;
   border: 2px solid;
   flex-direction: column;
-  width: 430px;
-  height: 130px;
+  width: 100%;;
+  height: auto;
+  position: relative;
 }
 .ProfilePage_Banner-Container img {
   display: flex;
   flex-direction: column;
-  width: 430px;
+  width: 100%;
+  object-fit: cover;
   height: 180px;
 }
-.ProfilePage_Avatar-Containe img {
+.ProfilePage_Avatar-Container {
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}  
+.ProfilePage_Avatar-Container img {
   display: flex;
   object-fit: cover;
   width: 90px;
@@ -305,9 +315,15 @@ hr {
   justify-content: center;
   width: 100%;
   gap: 35px;
+  margin-top: 60px;
+  text-align: center;
+  border-top: 1px solid;
+  padding: 16px;
+  border-bottom: 1px solid;
+  border-color: #0c1720;
 }
 .ProfilePage_UserInfo-Container p {
-  font-size: 20px;
+  font-size: 16px;
 }
 .ProfilePage_Avatar img {
   object-fit: cover;
