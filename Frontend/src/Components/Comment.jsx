@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
-import getUserData from "../scripts/functions";
+import { userData } from "../scripts/functions";
 
-const Comment = ({author, likes, text}) => {
- return(
-  <div className="Comment">
-   <p>{author}: {text}</p>
-   <p>{likes.length}</p>
-  </div>
- );
+const Comment = ({author, text}) => {
+    const [authorData, setAuthorData] = useState({})
+
+    useEffect(() => {
+        userData(author)
+        .then((value) => setAuthorData(value))
+        .catch((error) => console.error(error))
+    }, []);
+
+    return(
+        <div className="Comment">
+        <p>{authorData.username}: {text}</p>
+        </div>
+    );
 }
 export default Comment;

@@ -114,7 +114,6 @@ const Home = () => {
                     <button onClick={() => toggleLike(post.id)}>
                       <ThumbsUp fill={likedPosts.includes(post.id) ? '#fff' : ' '} />
                     </button>
-                    {post.likes.length}
                   </div>
                   <div className="center">
                     <button>
@@ -128,6 +127,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="Post-Description">
+                  <p>Лайки: {post.likes.length}</p>
                   <span>{post.description}</span>
                   {/* <span>{post.views} views</span> Перекинуть эту строчку в отдельный класс */}
                 </div>
@@ -135,8 +135,7 @@ const Home = () => {
                   {post.comments.length > 0 && (
                     <div className="Comments">
                       {post.comments.map(comment => (
-                        // <p>{comment.text}</p>
-                        <Comment key={comment.id} author={comment.author} text={comment.text} likes={comment.likes}  />
+                        <Comment key={comment.id} author={comment.author} text={comment.text}  />
                       ))}
                     </div>
                   )}

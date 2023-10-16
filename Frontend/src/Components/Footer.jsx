@@ -7,13 +7,13 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import backendIP from '../vars'
-import getUserData from '../scripts/functions';
+import currentUserData from '../scripts/functions';
 
 const Footer = () => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    getUserData()
+    currentUserData()
     .then((value) => setUserData(value))
     .catch((error) => console.log(error))
   }, []);

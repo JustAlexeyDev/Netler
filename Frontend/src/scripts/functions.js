@@ -2,7 +2,7 @@ import backendIP from "../vars";
 import axios from "axios";
 
 const userDataURL = `${backendIP}/get_user/`;
-const getUserData = async () => {
+const currentUserData = async () => {
   const token = localStorage.getItem('token');
   if (token) {
     try {
@@ -23,4 +23,16 @@ const getUserData = async () => {
   }
 };
 
-export default getUserData
+const userData = async (id) => {
+  try {
+    const response = await axios.get(
+      `${backendIP}/users/${id}/`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  };
+};
+
+export default currentUserData;
+export { userData };
