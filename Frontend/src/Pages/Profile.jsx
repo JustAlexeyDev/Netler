@@ -17,6 +17,7 @@ const Profile = () => {
           `http://127.0.0.1:8000/users/${id}/`,
         );
         setUserData(response.data);
+        // Add Window restart
       } catch (error) {
         console.error(error);
       };
