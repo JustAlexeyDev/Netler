@@ -92,7 +92,7 @@ const Home = () => {
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
                   <span><img src={post.avatar} alt="Avatar" /></span>
-                  <span onClick={() => window.location.href=`/Profile/${post.id}/`}>{post.author_name}</span>
+                  <span onClick={() => window.location.href=`/Profile/${post.author}/`}>{post.author_name}</span>
                 </div>
                 <hr />
                 {post.files.length > 0 && (

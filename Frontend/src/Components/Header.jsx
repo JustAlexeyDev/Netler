@@ -1,4 +1,4 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {ArrowLeft, Menu } from 'lucide-react'
 import axios from 'axios';
@@ -6,10 +6,10 @@ import ModalWindowUser from './ModalWindowUser';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleModal = () => {
+  const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  
+  const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
   var user = '';
@@ -57,15 +57,16 @@ const Header = () => {
         </span>
         <span className='Header_Avatar'>
           
-        <div>
-          <button onClick={toggleModal}><Menu /></button>
+        <div className="dropdown">
+          <button className="dropdown-toggle" onClick={toggleMenu}>
+            <Menu />
+          </button>
           {isOpen && (
-            <div className="modal">
-              <div className="modal-content">
-                <span className="close" onClick={toggleModal}>&times;</span>
-                <p>Привет! Это модальное окно.</p>
-              </div>
-            </div>
+            <ul className="dropdown-menu">
+              <li>Пункт 1</li>
+              <li>Пункт 2</li>
+              <li onClick={() => {localStorage.removeItem('token'); navigate('/Auth')}}><button >Выйти</button></li>
+            </ul>
           )}
         </div>
         </span>
