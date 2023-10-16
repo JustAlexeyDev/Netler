@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+import backendIP from '../vars'
+
 const Footer = () => {
-  const userDataURL = 'http://127.0.0.1:8000/get_user/';
+  const userDataURL = `${backendIP}/get_user/`;
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Footer = () => {
 
   if (!userData) return null;
 
-  const avatar = 'http://127.0.0.1:8000' + userData.avatar;
+  const avatar = `${backendIP}` + userData.avatar;
   const profileLink = `/Profile/${userData.id}/`;
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import backendIP from '../vars'
 
 const SignInComponent = () => {
   const [username, setUsername] = useState('');
@@ -9,7 +10,7 @@ const SignInComponent = () => {
     e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/auth/token/login/',
+        `${backendIP}/auth/token/login/`,
         { 
           username: username,
           password: password,

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
+import backendIP from '../vars'
 
 const Profile = () => {
-  // const userDataURL = 'http://127.0.0.1:8000/get_user/';
+  // const userDataURL = `${backendIP}/get_user/';
   const [userData, setUserData] = useState({});
   const [subscribers, setSubscribers] = useState({});
   const [friends, setFriends] = useState({});
@@ -14,7 +15,7 @@ const Profile = () => {
     const getUserData = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/users/${id}/`,
+          `${backendIP}/users/${id}/`,
         );
         setUserData(response.data);
         // Add Window restart
@@ -25,7 +26,7 @@ const Profile = () => {
 
     const getFriends = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/users/${id}/friends/`);
+        const response = await axios.get(`${backendIP}/users/${id}/friends/`);
         setFriends(response.data);
       } catch (error) {
         console.log('Ошибка:', error);
@@ -33,7 +34,7 @@ const Profile = () => {
     };
     const getSubscribers = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/users/${id}/subscribers/`);
+        const response = await axios.get(`${backendIP}/users/${id}/subscribers/`);
         setSubscribers(response.data);
       } catch (error) {
         console.log('Ошибка:', error);

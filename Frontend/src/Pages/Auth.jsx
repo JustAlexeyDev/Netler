@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import LogoBanner from '../Assets/Icons/LogoBanner.svg';
+import backendIP from '../vars'
 
 const Auth = () => {
   // State variables for form inputs
@@ -15,7 +16,7 @@ const Auth = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/token/login/', {
+      const response = await axios.post(`${backendIP}/auth/token/login/`, {
         username: username,
         password: password,
       });
@@ -39,7 +40,7 @@ const Auth = () => {
       formData.append('password', password);
       formData.append('avatar', avatar);
 
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/', formData);
+      const response = await axios.post(`${backendIP}/auth/users/`, formData);
       console.log(response.data);
       navigate('/Home');
     } catch (error) {

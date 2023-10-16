@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-const postSendURL = 'http://127.0.0.1:8000/create_post/';
+import backendIP from '../vars'
+const postSendURL = `${backendIP}/create_post/`;
 
 const AddPost = () => {
   const [desc, setDesc] = useState('');

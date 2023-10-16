@@ -5,7 +5,7 @@ const PeopleList = () => {
  const [peoples, setPeoples] = useState([]);
  const peoplesListApi = async () => {
   const response = await fetch(
-   "http://127.0.0.1:8000/users/?format=json"
+   `http://${location.host.slice(0, -4)}8000/users/?format=json`
   ).then((response) => response.json()).then(data => {
     setPeoples(data)
   });

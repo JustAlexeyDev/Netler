@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import LogoBanner from '../Assets/Icons/LogoBanner.svg';
+import backendIP from '../vars'
 const LoginIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +12,7 @@ const LoginIn = () => {
     e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/auth/token/login/',
+        `${backendIP}/auth/token/login/`,
         { 
           username: username,
           password: password,
