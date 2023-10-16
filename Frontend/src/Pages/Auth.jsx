@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import LogoBanner from '../Assets/Icons/LogoBanner.svg'
 const Auth = () => {
   // State variables for form inputs
   const [username, setUsername] = useState('');
@@ -56,57 +57,64 @@ const Auth = () => {
 
   // Render the login form
   return (
-    <div className='LoginPage_Container'>
+    <div className="LoginPage">
+      <div className='LoginPage_Container'>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Имя пользователя"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-
-      <form onSubmit={handleRegistration} className='LoginForm'>
-        <div className='LoginForm_Inputs'>
+        {/* <form onSubmit={handleLogin}>
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Имя пользователя"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
-          <input
-            type="file"
-            alt="avatar"
-            onChange={(e) => setAvatar(e.target.files[0])}
-            required
-          />
-        </div>
-        <span><button className='buttonSubmit' type="submit">Регистрация</button></span>
-      </form>
+          <button type="submit">Login</button>
+        </form> */}
+        <div className="LoginPage_Banner">
+          <img width={200} src={LogoBanner} alt="Banner" />
+        </div> 
+        <form onSubmit={handleRegistration} className='LoginForm'>
+          <div className='LoginForm_Inputs'>
+            <input
+              type="text"
+              placeholder="Name"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <input
+              type="file"
+              alt="avatar"
+              
+              onChange={(e) => setAvatar(e.target.files[0])}
+              required
+            />
+            
+          </div>
+          <span><button className='buttonSubmit' type="submit">Регистрация</button></span>
+        </form>
+      </div>      
     </div>
+
   );
 };
 

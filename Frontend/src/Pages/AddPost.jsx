@@ -1,25 +1,20 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-
 const postSendURL = 'http://127.0.0.1:8000/create_post/';
 
 const AddPost = () => {
   const [desc, setDesc] = useState('');
   const fileInputRef = useRef(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
-
   const handleBrowseClick = () => {
     fileInputRef.current.click();
   };
-
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     setSelectedFiles(files);
   };
-
   const sendPost = async (e) => {
     e.preventDefault();
-
     try {
       const formData = new FormData();
       selectedFiles.forEach((file) => {
@@ -39,7 +34,6 @@ const AddPost = () => {
       console.error(error);
     }
   };
-
   return (
     <div className="Page">
       <form onSubmit={sendPost} method="POST">

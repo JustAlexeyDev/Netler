@@ -1,6 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import {ArrowLeft } from 'lucide-react'
+import {ArrowLeft, Menu } from 'lucide-react'
 import axios from 'axios';
 const Header = () => {
   const location = useLocation();
@@ -49,7 +49,7 @@ const Header = () => {
           {PageName}
         </span>
         <span className='Header_Avatar'>
-
+          <Menu />
         </span>
       </div>
     </div>
