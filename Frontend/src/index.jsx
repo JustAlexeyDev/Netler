@@ -14,6 +14,7 @@ import AddPost from "./Pages/AddPost";
 import Notifications from "./Pages/Notifications";
 import PeopleList from "./Pages/PeopleList";
 import LoginIn from "./Pages/LoginIn";
+import Chat from "./Pages/Chat";
 // Import Css
 import './Assets/Css/Reset.css';
 import './Assets/Css/Global.css';
@@ -32,6 +33,7 @@ ReactDOM.render(
         <Route path="/Notifications" element={<Notifications />} />
         <Route path="/PeopleList" element={<PeopleList />} />
         <Route path="/LoginIn" element={<LoginIn />} />
+        <Route path="/Chat/:room_id" element={<Chat />} />
       </Routes>
       <Footer />
     </BrowserRouter>
