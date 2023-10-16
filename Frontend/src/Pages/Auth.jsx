@@ -55,7 +55,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (token !== null) {
-      window.location.href=`/Home`
+      window.location.href=`/LoginIn`
     }
   }, [token, navigate]);
 
