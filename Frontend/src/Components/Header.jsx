@@ -4,6 +4,12 @@ import {ArrowLeft, Menu } from 'lucide-react'
 import axios from 'axios';
 import ModalWindowUser from './ModalWindowUser';
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+  
   const location = useLocation();
   const currentPath = location.pathname;
   var user = '';
@@ -50,7 +56,18 @@ const Header = () => {
           {PageName}
         </span>
         <span className='Header_Avatar'>
-          <Menu />
+          
+        <div>
+          <button onClick={toggleModal}><Menu /></button>
+          {isOpen && (
+            <div className="modal">
+              <div className="modal-content">
+                <span className="close" onClick={toggleModal}>&times;</span>
+                <p>Привет! Это модальное окно.</p>
+              </div>
+            </div>
+          )}
+        </div>
         </span>
       </div>
     </div>
