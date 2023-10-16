@@ -33,6 +33,7 @@ const AddPost = () => {
       console.log(response);
     } catch (error) {
       console.error(error);
+      alert('Вы не авторизованы')
     }
   };
   return (
