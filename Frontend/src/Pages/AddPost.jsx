@@ -72,7 +72,7 @@ const AddPost = () => {
   };
   return (
     <div className="Page">
-      <form onSubmit={handleSubmit} method="POST">
+      <form onSubmit={handleSubmit}>
         <div>
           <button onClick={handleBrowseClick}>Выбрать файлы</button>
           <input
