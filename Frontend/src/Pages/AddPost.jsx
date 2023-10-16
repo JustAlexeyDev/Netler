@@ -74,11 +74,9 @@ const AddPost = () => {
     <div className="Page">
       <form onSubmit={handleSubmit}>
         <div>
-          <button onClick={handleBrowseClick}>Выбрать файлы</button>
           <input
             type="file"
             ref={fileInputRef}
-            style={{ display: 'none' }}
             onChange={handleFileChange}
             multiple
           />
