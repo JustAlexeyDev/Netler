@@ -65,6 +65,7 @@ const AddPost = () => {
       });
 
       console.log(response);
+      naviagte('/Home')
     } catch (error) {
       console.error(error);
       alert('Вы не авторизованы')
