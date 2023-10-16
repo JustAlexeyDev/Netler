@@ -45,6 +45,10 @@ const LoginIn = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <div className="LoginForm_ifAccount">
+            <p>Нет аккаунта?</p>
+            <button onClick={() => {navigate('/Auth')}}>Зарегистрироваться</button>
+          </div>
           <span className='buttonSubmit'>
           <button type="submit">Войти</button>         
           </span>

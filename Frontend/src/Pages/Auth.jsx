@@ -73,7 +73,7 @@ const Auth = () => {
           </div>
           <div className="LoginForm_ifAccount">
             <p>Уже есть аккаунт?</p>
-            <p>Войти</p>
+            <button onClick={() => {navigate('/LoginIn')}}>Войти</button>
           </div>
           <span>
             <p key="loginError">{error}</p>
