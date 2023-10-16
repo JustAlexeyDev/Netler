@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import backendIP from '../vars'
 
 const SignUpComponent = () => {
   const [username, setUsername] = useState('');
@@ -21,7 +21,7 @@ const SignUpComponent = () => {
       formData.append('password', password);
       formData.append('avatar', avatar);
 
-      const response = await axios.post(`http://${location.hostname}:8000/auth/users/`, formData);
+      const response = await axios.post(`${backendIP}/auth/users/`, formData);
         const token = response.data.auth_token;
         console.log(response.data);
         navigate('/LoginIn')

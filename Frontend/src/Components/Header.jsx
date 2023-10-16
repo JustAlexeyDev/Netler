@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import {ArrowLeft, Menu } from 'lucide-react'
 import axios from 'axios';
 import ModalWindowUser from './ModalWindowUser';
+import backendIP from '../vars'
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,7 +16,7 @@ const Header = () => {
   const currentPath = location.pathname;
   var user = '';
   var PageName = ''
-  const userDataURL = `http://${location.hostname}:8000/get_user/`;
+  const userDataURL = `${backendIP}/get_user/`;
   const [userData, setUserData] = useState({});
   useEffect(() => {
     const getUserData = async () => {
