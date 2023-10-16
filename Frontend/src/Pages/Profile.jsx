@@ -30,7 +30,6 @@ const Profile = () => {
         console.log('Ошибка:', error);
       }
     };
-
     const getSubscribers = async () => {
       try {
         const response = await axios.get(`http://${location.hostname}:8000/users/${id}/subscribers/`);
