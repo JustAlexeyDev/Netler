@@ -40,7 +40,6 @@ const Profile = () => {
         console.log('Ошибка:', error);
       }
     };
-
     getUserData();
     getFriends();
     getSubscribers();

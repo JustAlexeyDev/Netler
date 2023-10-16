@@ -333,7 +333,7 @@ hr {
   display: flex;
   flex-direction: column;
   width: 100%;;
-  height: auto;
+  height: 240px;
   position: relative;
 }
 .ProfilePage_Banner-Container img {
@@ -345,9 +345,9 @@ hr {
 }
 .ProfilePage_Avatar-Container {
   position: absolute;
-  bottom: 60%;
-  left: 50%;
-  transform: translate(-50%, 50%);
+  display: flex;
+  align-items: center;
+  top: 200px;
 }  
 .ProfilePage_Avatar-Container img {
   display: flex;
