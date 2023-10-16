@@ -27,29 +27,36 @@ const LoginIn = () => {
   };
 
   return (
-    <div className='Page LoginPage_Container'>
-       <div className="LoginPage_Banner">
-        <img width={200} src={LogoBanner} alt="Banner" />
-      </div>   
-      <form onSubmit={handleLogin} className='LoginForm_Inputs'>
-        <input
-          type="text"
-          placeholder="Имя пользователя"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <span className='buttonSubmit'>
-         <button type="submit">Войти</button>         
-        </span>
+    <div className='LoginPage'>
+      <div className='Page LoginPage_Container'>
+        <div className="LoginPage_Banner">
+          <img width={200} src={LogoBanner} alt="Banner" />
+        </div>   
+        <form onSubmit={handleLogin} className='LoginForm_Inputs'>
+          <input
+            type="text"
+            placeholder="Имя пользователя"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className="LoginForm_ifAccount">
+            <p>Нет аккаунта?</p>
+            <button onClick={() => {navigate('/Auth')}}>Зарегистрироваться</button>
+          </div>
+          <span className='buttonSubmit'>
+          <button type="submit">Войти</button>         
+          </span>
 
-      </form>
+        </form>
+      </div>      
     </div>
+
   );
 };
 

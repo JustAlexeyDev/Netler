@@ -51,7 +51,9 @@ hr {
 .pointer {
   cursor: pointer;
 }
-
+#loginError {
+  color: #d22d2d;
+}
 /* Page */
 .Page {
   display: flex;
@@ -111,6 +113,7 @@ hr {
   align-items: center;
   height: 100%;
   width: 100%;
+  gap: 100px;
 }
 
 /* Login Form */
@@ -134,13 +137,13 @@ hr {
 }
 .LoginForm_Inputs input{
   display: flex;
-  background-color: var(--whiteBackground);
+  background-color: var(--HorizontalLine);
   padding: 12px;
+  color: var(--whiteText);
   border-radius: 10px;
-  color: var(--darkText);
 }
 
-/* Login Page */
+/* Login Page */ 
 .LoginPage_Options {
   display: flex;
   width: 90%;
@@ -150,13 +153,24 @@ hr {
   display: flex;
   gap: 8px;
 }
+.LoginForm_ifAccount {
+  display: flex;
+  gap: 20px;
+}
 
 /* Buttons */
 .buttonSubmit {
   background-color: var(--accent);
   padding: 8px;
   border-radius: 10px;
+  width: 100%;
 }
+.buttonSubmit button {
+  background-color: var(--accent);
+  border-radius: 10px;
+  width: 100%;
+}
+
 .buttonSubmit_Container {
   display: flex;
   width: 90%;
@@ -206,7 +220,7 @@ hr {
   display: flex;
   width: 100%;
   padding: 16px;
-  background-color: #1890FF;
+  background-color: var(--HorizontalLine);
   border-radius: 10px;
   align-items: center;
   gap: 20px;

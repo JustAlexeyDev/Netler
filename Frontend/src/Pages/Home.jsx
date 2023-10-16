@@ -2,7 +2,7 @@ import { ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-
+import { useNavigate } from "react-router";
 const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
 const imagesURL = 'http://127.0.0.1:8000/posts_files/';
 
@@ -10,8 +10,7 @@ const Home = () => {
   const [posts, setPosts] = useState(null);
   const [files, setFiles] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
-
-  
+  const navigate = useNavigate();
   const [peoples, setPeoples] = useState([]);
   const peoplesListApi = async () => {
   const response = await fetch(
@@ -77,6 +76,13 @@ const Home = () => {
 
   if (!posts || !files) return null;
   if (!peoples) return null;
+
+  // useEffect(() => {
+  //   if (token !== null) {
+  //     navigate('/Home');
+  //   }
+  // }, [token, navigate]);
+
   return (
     <div className="Page">
       <div>
