@@ -405,3 +405,7 @@ hr {
 .dropdown-menu li:hover {
   background-color: #2a2a2a;
 }
+
+.Comments {
+  padding: 10px;
+}
