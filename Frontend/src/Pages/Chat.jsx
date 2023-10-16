@@ -6,8 +6,9 @@ const Chat = () => {
 
     return(
         <div className='Page'>
+
         </div>
     );
 }
 
-export default Chat
+export default Chat;

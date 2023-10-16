@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router";
+import Comment from '../Components/Comment';
 import backendIP from '../vars';
 
 const postsURL = `${backendIP}/posts/?format=json`;
@@ -129,6 +130,16 @@ const Home = () => {
                 <div className="Post-Description">
                   <span>{post.description}</span>
                   {/* <span>{post.views} views</span> Перекинуть эту строчку в отдельный класс */}
+                </div>
+                <div>
+                  {post.comments.length > 0 && (
+                    <div className="Comments">
+                      {post.comments.map(comment => (
+                        // <p>{comment.text}</p>
+                        <Comment key={comment.id} author={comment.author} text={comment.text} likes={comment.likes}  />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
