@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-const postSendURL = 'http://127.0.0.1:8000/create_post/';
+const postSendURL = `http://${location.hostname}:8000/create_post/`;
 
 const AddPost = () => {
   const [desc, setDesc] = useState('');

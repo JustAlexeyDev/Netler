@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const Footer = () => {
-  const userDataURL = 'http://127.0.0.1:8000/get_user/';
+  const userDataURL = `http://${location.hostname}:8000/get_user/`;
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Footer = () => {
 
   if (!userData) return null;
 
-  const avatar = 'http://127.0.0.1:8000' + userData.avatar;
+  const avatar = `http://${location.hostname}:8000` + userData.avatar;
   const profileLink = `/Profile/${userData.id}/`;
 
   return (

@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 
-const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
-const imagesURL = 'http://127.0.0.1:8000/posts_files/';
+const postsURL = `http://${location.hostname}:8000/posts/?format=json`;
+const imagesURL = `http://${location.hostname}:8000/posts_files/`;
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
@@ -15,7 +15,7 @@ const Home = () => {
   const [peoples, setPeoples] = useState([]);
   const peoplesListApi = async () => {
   const response = await fetch(
-    "http://127.0.0.1:8000/users/?format=json"
+    `http://${location.hostname}:8000/users/?format=json`
   ).then((response) => response.json()).then(data => {
     setPeoples(data)
   });
@@ -56,7 +56,7 @@ const Home = () => {
     if (localStorage.getItem('token') !== null) {
       try {
         const response = await axios.post(
-          `http://127.0.0.1:8000/posts/${parseInt(post_id)}/like/`,
+          `http://${location.hostname}:8000/posts/${parseInt(post_id)}/like/`,
           null,
           {
             headers: {

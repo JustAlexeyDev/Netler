@@ -13,7 +13,7 @@ const Auth = () => {
     e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/auth/token/login/',
+        `http://${location.hostname}:8000/auth/token/login/`,
         { 
           username: username,
           password: password,
@@ -45,7 +45,7 @@ const Auth = () => {
 
       // Make a POST request to register the user
       const response = await axios.post(
-        'http://127.0.0.1:8000/auth/users/', formData);
+        `http://${location.hostname}:8000/auth/users/`, formData);
       console.log(response.data);
 
       // Redirect to the login page after successful registration

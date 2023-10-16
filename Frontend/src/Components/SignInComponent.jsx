@@ -9,7 +9,7 @@ const SignInComponent = () => {
     e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/auth/token/login/',
+        `http://${location.hostname}:8000/auth/token/login/`,
         { 
           username: username,
           password: password,

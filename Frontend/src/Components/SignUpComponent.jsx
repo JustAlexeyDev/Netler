@@ -21,7 +21,7 @@ const SignUpComponent = () => {
       formData.append('password', password);
       formData.append('avatar', avatar);
 
-      const response = await axios.post('http://127.0.0.1:8000/auth/users/', formData);
+      const response = await axios.post(`http://${location.hostname}:8000/auth/users/`, formData);
         const token = response.data.auth_token;
         console.log(response.data);
         navigate('/LoginIn')

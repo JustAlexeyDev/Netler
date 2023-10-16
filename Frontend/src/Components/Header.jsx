@@ -7,7 +7,7 @@ const Header = () => {
   const currentPath = location.pathname;
   var user = '';
   var PageName = ''
-  const userDataURL = 'http://127.0.0.1:8000/get_user/';
+  const userDataURL = `http://${location.hostname}:8000/get_user/`;
   const [userData, setUserData] = useState({});
   useEffect(() => {
     const getUserData = async () => {
