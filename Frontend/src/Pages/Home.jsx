@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router";
-const postsURL = 'http://127.0.0.1:8000/posts/?format=json';
-const imagesURL = 'http://127.0.0.1:8000/posts_files/';
+import backendIP from '../vars'
+const postsURL = `${backendIP}/posts/?format=json`;
+const imagesURL = `${backendIP}/posts_files/`;
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
@@ -14,7 +15,7 @@ const Home = () => {
   const [peoples, setPeoples] = useState([]);
   const peoplesListApi = async () => {
   const response = await fetch(
-    "http://127.0.0.1:8000/users/?format=json"
+    `${backendIP}/users/?format=json`
   ).then((response) => response.json()).then(data => {
     setPeoples(data)
   });
@@ -55,7 +56,7 @@ const Home = () => {
     if (localStorage.getItem('token') !== null) {
       try {
         const response = await axios.post(
-          `http://127.0.0.1:8000/posts/${parseInt(post_id)}/like/`,
+          `${backendIP}/posts/${parseInt(post_id)}/like/`,
           null,
           {
             headers: {
@@ -92,7 +93,7 @@ const Home = () => {
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
                   <span><img src={post.avatar} alt="Avatar" /></span>
-                  <span onClick={() => window.location.href=`/Profile/${post.id}/`}>{post.author_name}</span>
+                  <span onClick={() => window.location.href=`/Profile/${post.author}/`}>{post.author_name}</span>
                 </div>
                 <hr />
                 {post.files.length > 0 && (

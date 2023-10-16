@@ -1,19 +1,54 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-const postSendURL = 'http://127.0.0.1:8000/create_post/';
+import backendIP from '../vars'
+const postSendURL = `${backendIP}/create_post/`;
 
 const AddPost = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [desc, setDesc] = useState('');
   const fileInputRef = useRef(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const handleBrowseClick = () => {
     fileInputRef.current.click();
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!isSubmitting) {
+      setIsSubmitting(true);
+
+      e.preventDefault();
+      try {
+        const formData = new FormData();
+        selectedFiles.forEach((file) => {
+          formData.append('files', file);
+        });
+        formData.append('description', desc);
+  
+        const response = axios.post(postSendURL, formData, {
+          headers: {
+            Authorization: `Token ${localStorage.getItem('token')}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+  
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+        alert('Вы не авторизованы')
+      }
+
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 3000); // Установите желаемое время задержки в миллисекундах
+    }
+  };
   const handleFileChange = (event) => {
+    event.stopPropagation();
     const files = Array.from(event.target.files);
     setSelectedFiles(files);
   };
-  const sendPost = async (e) => {
+  const sendPost = (e) => {
     e.preventDefault();
     try {
       const formData = new FormData();
@@ -22,7 +57,7 @@ const AddPost = () => {
       });
       formData.append('description', desc);
 
-      const response = await axios.post(postSendURL, formData, {
+      const response = axios.post(postSendURL, formData, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',
@@ -30,19 +65,19 @@ const AddPost = () => {
       });
 
       console.log(response);
+      naviagte('/Home')
     } catch (error) {
       console.error(error);
+      alert('Вы не авторизованы')
     }
   };
   return (
     <div className="Page">
-      <form onSubmit={sendPost} method="POST">
+      <form onSubmit={handleSubmit}>
         <div>
-          <button onClick={handleBrowseClick}>Выбрать файлы</button>
           <input
             type="file"
             ref={fileInputRef}
-            style={{ display: 'none' }}
             onChange={handleFileChange}
             multiple
           />
@@ -58,7 +93,9 @@ const AddPost = () => {
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
-        <button type="submit">Отправить</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Отправка...' : 'Отправить'}
+        </button>
       </form>
     </div>
   );

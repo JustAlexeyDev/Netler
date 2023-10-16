@@ -25,7 +25,7 @@ ReactDOM.render(
       <Header/>
       <Routes>
         <Route path="/*" element={<NotFound />} />
-        <Route path="/" element={<LoginIn />} />
+        <Route path="/" element={<Auth />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Auth" element={<Auth />} />
         <Route path="/Profile/:id" element={<Profile />} />
