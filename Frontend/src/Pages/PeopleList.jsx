@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import backendIP from "../vars";
 
 
 const PeopleList = () => {
  const [peoples, setPeoples] = useState([]);
  const peoplesListApi = async () => {
   const response = await fetch(
-   `http://${location.host.slice(0, -4)}8000/users/?format=json`
+   `${backendIP}/users/?format=json`
   ).then((response) => response.json()).then(data => {
     setPeoples(data)
   });
