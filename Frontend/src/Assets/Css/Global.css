@@ -51,7 +51,9 @@ hr {
 .pointer {
   cursor: pointer;
 }
-
+#loginError {
+  color: #d22d2d;
+}
 /* Page */
 .Page {
   display: flex;
@@ -151,6 +153,10 @@ hr {
   display: flex;
   gap: 8px;
 }
+.LoginForm_ifAccount {
+  display: flex;
+  gap: 20px;
+}
 
 /* Buttons */
 .buttonSubmit {
@@ -214,7 +220,7 @@ hr {
   display: flex;
   width: 100%;
   padding: 16px;
-  background-color: #1890FF;
+  background-color: var(--HorizontalLine);
   border-radius: 10px;
   align-items: center;
   gap: 20px;

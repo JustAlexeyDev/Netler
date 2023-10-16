@@ -2,6 +2,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {ArrowLeft, Menu } from 'lucide-react'
 import axios from 'axios';
+import ModalWindowUser from './ModalWindowUser';
 const Header = () => {
   const location = useLocation();
   const currentPath = location.pathname;
