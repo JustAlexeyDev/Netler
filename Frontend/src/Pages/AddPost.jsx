@@ -11,6 +11,7 @@ const AddPost = () => {
     fileInputRef.current.click();
   };
   const handleFileChange = (event) => {
+    event.stopPropagation();
     const files = Array.from(event.target.files);
     setSelectedFiles(files);
   };
