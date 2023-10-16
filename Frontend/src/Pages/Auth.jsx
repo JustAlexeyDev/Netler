@@ -42,7 +42,7 @@ const Auth = () => {
 
       const response = await axios.post(`${backendIP}/auth/users/`, formData);
       console.log(response.data);
-      navigate('/Home');
+      navigate('/LoginIn');
     } catch (error) {
       if (error.response.data.email) {
         setError(error.response.data.email)
