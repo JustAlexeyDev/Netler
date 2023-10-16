@@ -5,6 +5,7 @@ from rest_framework.response import Response
 
 from .models import User
 from .serializers import UserSerializer
+from chat.serializers import RoomSerializer
 
 class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -20,6 +21,12 @@ class UserViewset(viewsets.ModelViewSet):
     def friends(self, request, pk=None):
         queryset = User.objects.get(pk=pk).friends.all()
         serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['GET'])
+    def rooms(self, request, pk=None):
+        queryset = User.objects.get(pk=pk).rooms.all()
+        serializer = RoomSerializer(queryset, many=True)
         return Response(serializer.data)
 
 @api_view(['GET'])
