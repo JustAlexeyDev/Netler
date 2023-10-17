@@ -198,8 +198,15 @@ hr {
 .Post-Header {
   display: flex;
   align-items: center;
+}
+.Post-Header_Nav {
+  display: flex;
+  align-items: center;
   gap: 20px;
   padding: 8px;
+}
+.Post-Header button {
+  cursor: pointer;
 }
 .Post-Header img {
   width: 40px; 

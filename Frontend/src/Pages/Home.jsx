@@ -93,12 +93,14 @@ const Home = () => {
             {posts.map(post => (
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
-                  <span>
-                    <img src={post.avatar} alt="Avatar" />
-                  </span>
-                  <span onClick={() => window.location.href = `/Profile/${post.author}/`}>
-                    {post.author_name}
-                  </span>
+                  <button className='Post-Header_Nav' onClick={() => window.location.href = `/Profile/${post.author}/`}>
+                    <span>
+                      <img src={post.avatar} alt="Avatar" />
+                    </span>
+                    <span>
+                      {post.author_name}
+                    </span>                    
+                  </button>
                 </div>
                 <hr />
                 {post.files.length > 0 && (
