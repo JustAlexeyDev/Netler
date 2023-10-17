@@ -387,6 +387,22 @@ hr {
   height: 90px;
   border-radius: 9999px;
 }
+.Profile-ApproveNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+.Profile-ApproveNav button {
+  display: flex;
+  padding: 4px;
+  border-radius: 10px;
+}
+#save {
+  background-color: var(--accent);
+}
+#discard {
+  background-color: var(--warning);
+}
 .Subscribe-btn_Container {
   display: flex;
   width: 100%;

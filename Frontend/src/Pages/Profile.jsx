@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import backendIP from '../vars';
+import currentUserData from '../scripts/functions'
 
 const Profile = () => {
   // Consts
@@ -11,15 +12,15 @@ const Profile = () => {
   const [editMode, setEditMode] = useState(false);
   const [banner, setBanner] = useState(null);
   const [avatar, setAvatar] = useState(null);
+  const [currentUser, setCurrentUser] = useState('')
   const fileInputRef = useRef(null);
   const { id } = useParams();
 
-  // Buttin sub
-  const subscribe = async () => {
+  const toggleSub = async () => {
     if (localStorage.getItem('token') !== null) {
       try {
         const response = await axios.post(
-          `${backendIP}/users/${userData.id}/subscribe/`,
+          `${backendIP}/users/${id}/subscribe/`,
           null,
           {
             headers: {
@@ -27,50 +28,53 @@ const Profile = () => {
             }
           }
         );
-        console.log(response.data); 
+        console.log(response.data);
+        getFriends();
+        getSubscribers()
       } catch (error) {
         console.error(error);
       }
     } else {
       console.log('Not authorized');
     }
-  };
+  }
 
   // Get user data
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const response = await axios.get(`${backendIP}/users/${id}/`);
-        setUserData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(`${backendIP}/users/${id}/`);
+      setUserData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    // Get Friends
-    const getFriends = async () => {
-      try {
-        const response = await axios.get(`${backendIP}/users/${id}/friends/`);
-        setFriends(response.data);
-      } catch (error) {
-        console.log('Ошибка:', error);
-      }
-    };
+  // Get Friends
+  const getFriends = async () => {
+    try {
+      const response = await axios.get(`${backendIP}/users/${id}/friends/`);
+      setFriends(response.data);
+    } catch (error) {
+      console.log('Ошибка:', error);
+    }
+  };
 
-    // Get Subs
-    const getSubscribers = async () => {
-      try {
-        const response = await axios.get(`${backendIP}/users/${id}/subscribers/`);
-        setSubscribers(response.data);
-      } catch (error) {
-        console.log('Ошибка:', error);
-      }
-    };
+  // Get Subs
+  const getSubscribers = async () => {
+    try {
+      const response = await axios.get(`${backendIP}/users/${id}/subscribers/`);
+      setSubscribers(response.data);
+    } catch (error) {
+      console.log('Ошибка:', error);
+    }
+  };
 
+  useEffect(() => {  
     // Refresh
     getUserData();
     getFriends();
     getSubscribers();
+    currentUserData().then((data) => setCurrentUser(data)).catch((error) => console.error(error))
   }, []);
 
   // Edits
@@ -79,11 +83,13 @@ const Profile = () => {
     const selectedAvatar = Array.from(e.target.files);
     setAvatar(selectedAvatar[0]);
   };
+
   const handleFileChangeBanner = (e) => {
     e.stopPropagation();
     const selectedBanner = Array.from(e.target.files);
     setBanner(selectedBanner[0]);
   };
+
   // Turn on Edit Mode
   const toggleEdit = () => {
     setEditMode(!editMode);
@@ -116,9 +122,9 @@ const Profile = () => {
       {editMode ? (
         <form>
           <div>
-          <div className="ProfilePage_Banner-Container">
-            <img src={userData.banner} alt="Изображение баннера" />
-          </div>
+            <div className="ProfilePage_Banner-Container">
+              <img src={userData.banner} alt="Изображение баннера" />
+            </div>
             <div className="ProfilePage_Avatar-Container">
               <span className="ProfilePage_Avatar">
                 <img src={userData.avatar} alt="Изображение аватара" />
@@ -141,21 +147,15 @@ const Profile = () => {
             </div>
             <div>
               <p>аватар</p>
-              <input 
-                ref={fileInputRef} 
-                type="file" 
-                onChange={handleFileChangeAvatar} 
-              />
+              <input ref={fileInputRef} type="file" onChange={handleFileChangeAvatar} />
               <p>Банер</p>
-              <input 
-                ref={fileInputRef}
-                type="file"
-                onChange={handleFileChangeBanner}
-              />
+              <input ref={fileInputRef} type="file" onChange={handleFileChangeBanner} />
             </div>
           </div>
-          <button onClick={() => setEditMode(false)}>Cancel</button>
-          <button onClick={handleEditProfile}>Save</button>
+          <div className="Profile-ApproveNav">
+            <button id="discard" onClick={() => setEditMode(false)}>Отменить</button>
+            <button id="save" onClick={handleEditProfile}>Сохранить</button>
+          </div>
         </form>
       ) : (
         <div className="Profile">
@@ -167,10 +167,11 @@ const Profile = () => {
               <img src={userData.avatar} alt="Изображение аватара" />
             </span>
           </div>
-          <div className="Subscribe-btn_Container">
-            <button className="Subscribe-btn" onClick={subscribe}>Подписаться</button>
-          </div>
-
+          {currentUser.id !== parseInt(id) && (
+            <div className="Subscribe-btn_Container">
+              <button className="Subscribe-btn" onClick={() => toggleSub()}>Подписаться</button>
+            </div>
+          )}
           <div className="ProfilePage_UserInfo-Container">
             <div>
               <p>Публикации</p>
