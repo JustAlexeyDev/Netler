@@ -11,10 +11,6 @@ const AddPost = () => {
   const fileInputRef = useRef(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const handleBrowseClick = () => {
-    fileInputRef.current.click();
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isSubmitting && desc.trim() !== '') { // Add validation check for non-empty description
@@ -32,13 +28,14 @@ const AddPost = () => {
           },
         });
         console.log(response);
+        console.log(formData)
       } catch (error) {
         console.error(error);
         alert('Вы не авторизованы');
       }
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 1000); // Set your desired delay time in milliseconds
+      }, 1000);
     }
   };
 
@@ -48,27 +45,27 @@ const AddPost = () => {
     setSelectedFiles(files);
   };
 
-  const sendPost = (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      selectedFiles.forEach((file) => {
-        formData.append('files', file);
-      });
-      formData.append('description', desc);
-      const response = axios.post(postSendURL, formData, {
-        headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log(response);
-      naviagte('/Home');
-    } catch (error) {
-      console.error(error);
-      alert('Вы не авторизованы');
-    }
-  };
+  // const sendPost = (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const formData = new FormData();
+  //     selectedFiles.forEach((file) => {
+  //       formData.append('files', file);
+  //     });
+  //     formData.append('description', desc);
+  //     const response = axios.post(postSendURL, formData, {
+  //       headers: {
+  //         Authorization: `Token ${localStorage.getItem('token')}`,
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     });
+  //     console.log(response);
+  //     naviagte('/Home');
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert('Вы не авторизованы');
+  //   }
+  // };
 
   return (
     <div className="Page AddPost">

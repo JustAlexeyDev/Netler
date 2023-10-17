@@ -339,14 +339,17 @@ hr {
   align-items: center;
 }
 .ProfilePage_Avatar-Container {
-  position: absolute;
   display: flex;
   align-items: center;
-  top: 200px;
+
 }  
 .ProfilePage_Avatar-Container img {
   display: flex;
+  position: absolute;
+  top: 190px;
   object-fit: cover;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90px;
   height: 90px;
   border-radius: 9999px;
