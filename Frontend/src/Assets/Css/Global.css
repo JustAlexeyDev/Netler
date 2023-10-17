@@ -17,6 +17,7 @@
   --accent: #1890FF;
   --HorizontalLine: #1e374e;
   --darkSecondBackground: #0c1720;
+  --warning: #d22d2d;
 }
 /* Import Fonts */
 @font-face {
@@ -51,8 +52,11 @@ hr {
 .pointer {
   cursor: pointer;
 }
+.warn-button {
+  color: var(--warning);
+}
 #loginError {
-  color: #d22d2d;
+  color: var(--warning);
 }
 /* Page */
 .Page {
@@ -79,8 +83,6 @@ hr {
 }
 .Header_Avatar {
   display: flex;
-  width: 35px;
-  height: 35px;
 }
 .Header_Name {
   font-size: 20px;
@@ -184,6 +186,10 @@ hr {
   border-radius: 10px;
   gap: 10px;
   width: 340px;
+}
+.Post-image img{
+  display: flex;
+  width: 100%;
   height: auto;
 }
 .Post-Box {
@@ -194,8 +200,15 @@ hr {
 .Post-Header {
   display: flex;
   align-items: center;
+}
+.Post-Header_Nav {
+  display: flex;
+  align-items: center;
   gap: 20px;
   padding: 8px;
+}
+.Post-Header button {
+  cursor: pointer;
 }
 .Post-Header img {
   width: 40px; 
@@ -329,7 +342,7 @@ hr {
   display: flex;
   flex-direction: column;
   width: 100%;;
-  height: auto;
+  height: 240px;
   position: relative;
 }
 .ProfilePage_Banner-Container img {
@@ -341,9 +354,9 @@ hr {
 }
 .ProfilePage_Avatar-Container {
   position: absolute;
-  bottom: 60%;
-  left: 50%;
-  transform: translate(-50%, 50%);
+  display: flex;
+  align-items: center;
+  top: 200px;
 }  
 .ProfilePage_Avatar-Container img {
   display: flex;
@@ -357,7 +370,7 @@ hr {
   justify-content: center;
   width: 100%;
   gap: 35px;
-  margin-top: 60px;
+  margin-top: 0px;
   text-align: center;
   border-top: 1px solid;
   padding: 16px;
@@ -404,4 +417,13 @@ hr {
 
 .dropdown-menu li:hover {
   background-color: #2a2a2a;
+}
+
+.Comments {
+  padding: 10px;
+}
+
+.Comment {
+  border: 1px solid;
+  border-color: var(--HorizontalLine);
 }

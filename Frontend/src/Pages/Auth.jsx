@@ -55,7 +55,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (token !== null) {
-      window.location.href=`/LoginIn`
+      window.location.href=`/Home`
     }
   }, [token, navigate]);
 
@@ -70,7 +70,7 @@ const Auth = () => {
             <input type="text" placeholder="Name" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <input type="file" alt="avatar" onChange={(e) => setAvatar(e.target.files[0])} required />
+            <input type="file" alt="avatar" onChange={(e) => setAvatar(e.target.files[0])} placeholder="Аватарка" required />
           </div>
           <div className="LoginForm_ifAccount">
             <p>Уже есть аккаунт?</p>

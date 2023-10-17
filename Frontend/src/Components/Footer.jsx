@@ -7,35 +7,16 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import backendIP from '../vars'
+import currentUserData from '../scripts/functions';
 
 const Footer = () => {
-  const userDataURL = `${backendIP}/get_user/`;
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    const getUserData = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const response = await axios.get(
-            userDataURL, 
-            {
-              headers: {
-                Authorization: `Token ${token}` 
-              },
-            }
-          );
-          setUserData(response.data);
-        } catch (error) {
-          console.log('Ошибка:', error);
-        }
-      } else {
-        console.log('Не авторизован');
-      }
-    };
-
-    getUserData();
-  }, [userDataURL]);
+    currentUserData()
+    .then((value) => setUserData(value))
+    .catch((error) => console.log(error))
+  }, []);
 
   if (!userData) return null;
 

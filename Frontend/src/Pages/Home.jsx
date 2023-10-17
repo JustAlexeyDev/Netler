@@ -3,33 +3,40 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router";
-import backendIP from '../vars'
+import Comment from '../Components/Comment';
+import backendIP from '../vars';
+
 const postsURL = `${backendIP}/posts/?format=json`;
 const imagesURL = `${backendIP}/posts_files/`;
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
   const [files, setFiles] = useState(null);
-  const [isLiked, setIsLiked] = useState(false);
-  const navigate = useNavigate();
+  const [likedPosts, setLikedPosts] = useState([]);
   const [peoples, setPeoples] = useState([]);
+
   const peoplesListApi = async () => {
-  const response = await fetch(
-    `${backendIP}/users/?format=json`
-  ).then((response) => response.json()).then(data => {
-    setPeoples(data)
-  });
+    const response = await fetch(`${backendIP}/users/?format=json`)
+      .then((response) => response.json())
+      .then(data => {
+        setPeoples(data)
+      });
     console.log(response);
     return response;
   };
-  useEffect(() => {
-    peoplesListApi()
-  }, [])
 
-  
-  const handleLikeClick = () => {
-    setIsLiked(!isLiked);
+  useEffect(() => {
+    peoplesListApi();
+  }, []);
+
+  const handleLikeClick = (postId) => {
+    if (likedPosts.includes(postId)) {
+      setLikedPosts(likedPosts.filter(id => id !== postId));
+    } else {
+      setLikedPosts([...likedPosts, postId]);
+    }
   };
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await axios.get(postsURL);
@@ -65,8 +72,7 @@ const Home = () => {
           }
         );
         console.log(response.data);
-        var toggleLikeIcon = document.getElementById('likeIcon');
-        toggleLikeIcon.setAttribute('fill', '#fff')
+        handleLikeClick(post_id); // Toggle the like state for the specific post
       } catch (error) {
         console.error(error);
       }
@@ -78,12 +84,6 @@ const Home = () => {
   if (!posts || !files) return null;
   if (!peoples) return null;
 
-  // useEffect(() => {
-  //   if (token !== null) {
-  //     navigate('/Home');
-  //   }
-  // }, [token, navigate]);
-
   return (
     <div className="Page">
       <div>
@@ -92,8 +92,14 @@ const Home = () => {
             {posts.map(post => (
               <div key={post.id} className="Post-Container">
                 <div className="Post-Header">
-                  <span><img src={post.avatar} alt="Avatar" /></span>
-                  <span onClick={() => window.location.href=`/Profile/${post.author}/`}>{post.author_name}</span>
+                  <button className='Post-Header_Nav' onClick={() => window.location.href = `/Profile/${post.author}/`}>
+                    <span>
+                      <img src={post.avatar} alt="Avatar" />
+                    </span>
+                    <span>
+                      {post.author_name}
+                    </span>                    
+                  </button>
                 </div>
                 <hr />
                 {post.files.length > 0 && (
@@ -105,28 +111,35 @@ const Home = () => {
                 )}
                 <hr />
                 <div className="Post-Nav">
-                    <div className="center">
-                      <button onClick={() => toggleLike(post.id)}>
-                        <ThumbsUp         
-                          onClick={handleLikeClick}
-                        />
-                      </button>
-                      {post.likes.length}
-                    </div>
-                    <div className="center">
-                      <button>
-                        <MessageSquare />
-                      </button>
-                    </div>
-                    <div className="center">
-                      <button>
-                        <Share2 />
-                      </button>
-                    </div>
+                  <div className="center">
+                    <button onClick={() => toggleLike(post.id)}>
+                      <ThumbsUp />
+                    </button>
+                  </div>
+                  <div className="center">
+                    <button>
+                      <MessageSquare />
+                    </button>
+                  </div>
+                  <div className="center">
+                    <button>
+                      <Share2 />
+                    </button>
+                  </div>
                 </div>
                 <div className="Post-Description">
+                  <p>Лайки: {post.likes.length}</p>
                   <span>{post.description}</span>
                   {/* <span>{post.views} views</span> Перекинуть эту строчку в отдельный класс */}
+                </div>
+                <div>
+                  {post.comments.length > 0 && (
+                    <div className="Comments">
+                      {post.comments.map(comment => (
+                        <Comment key={comment.id} author={comment.author} text={comment.text}  />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
