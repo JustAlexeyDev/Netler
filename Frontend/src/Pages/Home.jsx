@@ -13,7 +13,6 @@ const Home = () => {
   const [posts, setPosts] = useState(null);
   const [files, setFiles] = useState(null);
   const [likedPosts, setLikedPosts] = useState([]);
-  const navigate = useNavigate();
   const [peoples, setPeoples] = useState([]);
 
   const peoplesListApi = async () => {
@@ -114,7 +113,7 @@ const Home = () => {
                 <div className="Post-Nav">
                   <div className="center">
                     <button onClick={() => toggleLike(post.id)}>
-                      <ThumbsUp fill={likedPosts.includes(post.id) ? '#fff' : ' '} />
+                      <ThumbsUp />
                     </button>
                   </div>
                   <div className="center">
