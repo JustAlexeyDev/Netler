@@ -30,9 +30,9 @@ const Footer = () => {
         <Link to='/PeopleList'><img src={FriendsIcon} alt='icon'/></Link>
         <Link to='/AddPost'><img src={AddPost} alt='icon'/></Link>
         <Link to='/Notifications'><img src={NotificationIcon} alt='icon'/></Link>
-        <Link to={profileLink} className='Footer_Avatar'>
+        <a href={profileLink} className='Footer_Avatar'>
           <img src={avatar} alt="profile" /> 
-        </Link>
+        </a>
       </div>
     </div>
   );
