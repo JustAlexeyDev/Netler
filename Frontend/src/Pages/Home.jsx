@@ -37,26 +37,19 @@ const Home = () => {
     }
   };
 
+  const fetchPosts = async () => {
+    const response = await axios.get(postsURL);
+    setPosts(response.data);
+  };
+
+  const fetchFiles = async () => {
+    const response = await axios.get(imagesURL);
+    setFiles(response.data);
+  };
+  
   useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await axios.get(postsURL);
-      setPosts(response.data);
-    };
-
-    const fetchFiles = async () => {
-      const response = await axios.get(imagesURL);
-      setFiles(response.data);
-    };
-
-    const interval = setInterval(() => {
-      fetchPosts();
-      fetchFiles();
-    }, 500);
-
     fetchPosts();
     fetchFiles();
-
-    return () => clearInterval(interval);
   }, []);
 
   const toggleLike = async (post_id) => {
@@ -73,6 +66,8 @@ const Home = () => {
         );
         console.log(response.data);
         handleLikeClick(post_id); // Toggle the like state for the specific post
+        fetchPosts();
+        fetchFiles();
       } catch (error) {
         console.error(error);
       }
