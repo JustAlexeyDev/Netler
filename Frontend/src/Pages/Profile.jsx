@@ -10,6 +10,7 @@ const Profile = () => {
   const [friends, setFriends] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [banner, setBanner] = useState(null);
+  const [avatar, setAvatar] = useState(null);
   const fileInputRef = useRef(null);
   const { id } = useParams();
 
@@ -51,12 +52,16 @@ const Profile = () => {
   }, []);
 
   // Edits
-  const handleFileChange = (e) => {
+  const handleFileChangeAvatar = (e) => {
     e.stopPropagation();
-    const selectedBanner = Array.from(e.target.files);
-    setBanner(selectedBanner[0]);
+    const selectedAvatar = Array.from(e.target.files);
+    setAvatar(selectedAvatar[0]);
   };
-
+  const handleFileChangeBanner = (e) => {
+    e.stopPropagation();
+    const selectedAvatar = Array.from(e.target.files);
+    setAvatar(selectedAvatar[0]);
+  };
   // Turn on Edit Mode
   const toggleEdit = () => {
     setEditMode(!editMode);
@@ -68,14 +73,16 @@ const Profile = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('banner', banner);
+    formData.append('avatar', avatar);
     try {
-      const response = await axios.post(`${backendIP}/update_banner/`, formData, {
+      const response = await axios.post(`${backendIP}/update_profile/`, formData, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log(response);
+      window.location.href = `/Profile/${userData.id}`;
       console.log(formData);
     } catch (error) {
       console.error(error);
@@ -114,7 +121,12 @@ const Profile = () => {
               <input 
                 ref={fileInputRef} 
                 type="file" 
-                onChange={handleFileChange} 
+                onChange={handleFileChangeAvatar} 
+              />
+              <input 
+                ref={fileInputRef}
+                type="file"
+                onChange={handleFileChangeBanner}
               />
             </div>
           </div>
