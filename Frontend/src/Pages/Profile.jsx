@@ -8,20 +8,19 @@ const Profile = () => {
   const [userData, setUserData] = useState({});
   const [subscribers, setSubscribers] = useState({});
   const [friends, setFriends] = useState({});
-  
-  const {id} = useParams();
+  const [editMode, setEditMode] = useState(false); // Track editing mode
+
+  const { id } = useParams();
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await axios.get(
-          `${backendIP}/users/${id}/`,
-        );
+        const response = await axios.get(`${backendIP}/users/${id}/`);
         setUserData(response.data);
         // Add Window restart
       } catch (error) {
         console.error(error);
-      };
+      }
     };
 
     const getFriends = async () => {
@@ -32,6 +31,7 @@ const Profile = () => {
         console.log('Ошибка:', error);
       }
     };
+
     const getSubscribers = async () => {
       try {
         const response = await axios.get(`${backendIP}/users/${id}/subscribers/`);
@@ -40,6 +40,7 @@ const Profile = () => {
         console.log('Ошибка:', error);
       }
     };
+
     getUserData();
     getFriends();
     getSubscribers();
@@ -48,32 +49,54 @@ const Profile = () => {
   const avatar = userData.avatar;
   const banner = userData.banner;
 
+  const handleEditProfile = () => {
+    // Implement your logic for editing the profile here
+    setEditMode(true);
+  };
+
   return (
     <div className="ProfilePage-Container">
       <div className="ProfilePage_Banner-Container">
-        <img src={banner} alt="Изображение баннера"/>
+        <img src={banner} alt="Изображение баннера" />
       </div>
-      <div className="ProfilePage_Avatar-Container">
-        <span className="ProfilePage_Avatar">
-          <img src={avatar} alt="Изображение аватара" />          
-        </span>
-      </div>
-      <hr />
-        <div className="ProfilePage_UserInfo-Container">
-          <div>
-            <p>Публикации</p>
-            <p>0</p>
-          </div>
-          <div>
-            <p>Подписчики</p>
-            <p>{subscribers.length}</p>
-          </div>
-          <div>
-            <p>Друзья</p>
-            <p>{friends.length}</p>
-          </div>
+      {editMode ? (
+        <div>
+          {/* Render edit profile form here */}
+          <button onClick={() => setEditMode(false)}>Cancel</button>
+          <button>Save</button>
         </div>
-      </div>  
+      ) : (
+        <div>
+          <div className="ProfilePage_Avatar-Container">
+            <span className="ProfilePage_Avatar">
+              <img src={avatar} alt="Изображение аватара" />
+            </span>
+          </div>
+          <hr />
+          <div className="ProfilePage_UserInfo-Container">
+            <div>
+              <p>Публикации</p>
+              <p>0</p>
+            </div>
+            <div>
+              <p>Подписчики</p>
+              <p>{subscribers.length}</p>
+            </div>
+            <div>
+              <p>Друзья</p>
+              <p>{friends.length}</p>
+            </div>
+          </div>
+          <div>
+            {userData && (
+              <button onClick={handleEditProfile}>Edit Profile</button>
+            )}            
+          </div>
+
+        </div>
+      )}
+    </div>
   );
-}
+};
+
 export default Profile;
