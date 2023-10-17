@@ -4,21 +4,36 @@ import backendIP from "../vars";
 const Comment = ({ author, text }) => {
   const [authorData, setAuthorData] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(backendIP + author);
-        setAuthorData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const handleComment = async (e) => { // Добавляем параметр e для предотвращения перезагрузки страницы при отправке формы
+    e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
+    try {
+      const response = await axios.post(
+        `${backendIP}//`,
+        { 
+          username: username,
+          password: password,
+        }
+      );
+      const token = response.data.auth_token;
+      localStorage.setItem('token', token);
 
-    fetchData();
-  }, [author]);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="Comment">
+      <form onSubmit={handleComment}>
+        <input
+          type="text"
+          placeholder="Комментарий"
+          value={text}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <button type="submit">Отпраить</button>
+      </form>
       <p>{authorData.username}: {text}</p>
     </div>
   );
