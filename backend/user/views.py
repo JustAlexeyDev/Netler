@@ -14,8 +14,14 @@ class UserViewset(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     @action(detail=True, methods=['GET'])
+    def subscriptions(self, request, pk=None):
+        queryset = User.objects.filter(subscribers=pk)
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+    @action(detail=True, methods=['GET'])
     def subscribers(self, request, pk=None):
-        queryset = User.objects.filter(subscriptions=pk)
+        queryset = User.objects.get(pk=pk).subscribers.all()
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
     
@@ -36,9 +42,15 @@ class UserViewset(viewsets.ModelViewSet):
         queryset = User.objects.get(pk=pk).posts.all()
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+    @action(detail=True, methods=['POST'])
+    def subscribe(self, request, pk=None):
+        user = self.get_object()
+        user.toggle_subscription(request.user)
+        return Response({'status': 'success'})
 
-@api_view(['GET'])
 # @permission_classes([IsAuthenticated])
+@api_view(['GET'])
 def get_user(request):
     user = request.user
     
