@@ -53,15 +53,16 @@ def get_user(request):
     })
 
 @api_view(['POST'])
-def update_banner(request):
+def update_profile(request):
     user = request.user
-    user.banner = request.FILES.get('banner')
-    user.save()
-    return Response(UserSerializer(user).data)
+    new_banner = request.FILES.get('banner')
+    new_avatar = request.FILES.get('avatar')
 
-@api_view(['POST'])
-def update_avatar(request):
-    user = request.user
-    user.avatar = request.FILES.get('avatar')
+    if new_banner:
+        user.banner = new_banner
+    if new_avatar:
+        user.avatar = new_avatar
+
     user.save()
+
     return Response(UserSerializer(user).data)
