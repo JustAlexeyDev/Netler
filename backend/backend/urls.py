@@ -40,4 +40,5 @@ urlpatterns = [
     path('get_user/', user_view.get_user),
     path('create_post/', post_view.create_post),
     path('update_banner/', user_view.update_banner),
+    path('update_avatar/', user_view.update_avatar),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
