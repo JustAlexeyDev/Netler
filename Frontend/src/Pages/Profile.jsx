@@ -14,6 +14,28 @@ const Profile = () => {
   const fileInputRef = useRef(null);
   const { id } = useParams();
 
+  // Buttin sub
+  const subscribe = async () => {
+    if (localStorage.getItem('token') !== null) {
+      try {
+        const response = await axios.post(
+          `${backendIP}/users/${userData.id}/subscribe/`,
+          null,
+          {
+            headers: {
+              Authorization: `Token ${localStorage.getItem('token')}`
+            }
+          }
+        );
+        console.log(response.data); 
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.log('Not authorized');
+    }
+  };
+
   // Get user data
   useEffect(() => {
     const getUserData = async () => {
@@ -136,7 +158,7 @@ const Profile = () => {
           <button onClick={handleEditProfile}>Save</button>
         </form>
       ) : (
-        <div>
+        <div className="Profile">
           <div className="ProfilePage_Banner-Container">
             <img src={userData.banner} alt="Изображение баннера" />
           </div>
@@ -145,7 +167,10 @@ const Profile = () => {
               <img src={userData.avatar} alt="Изображение аватара" />
             </span>
           </div>
-          <hr />
+          <div className="Subscribe-btn_Container">
+            <button className="Subscribe-btn" onClick={subscribe}>Подписаться</button>
+          </div>
+
           <div className="ProfilePage_UserInfo-Container">
             <div>
               <p>Публикации</p>
