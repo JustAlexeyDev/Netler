@@ -29,6 +29,7 @@ const AddPost = () => {
         });
         console.log(response);
         console.log(formData)
+        window.location('/Home')
       } catch (error) {
         console.error(error);
         alert('Вы не авторизованы');
