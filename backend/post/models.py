@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     description = models.CharField(max_length=2200)
     likes = models.ManyToManyField(User, related_name="post_likes", blank=True)
     publish_date = models.DateTimeField(default=timezone.now)
