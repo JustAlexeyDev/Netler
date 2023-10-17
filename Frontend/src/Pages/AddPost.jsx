@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import backendIP from '../vars'
+import backendIP from '../vars';
+
 const postSendURL = `${backendIP}/create_post/`;
 
 const AddPost = () => {
@@ -8,46 +9,44 @@ const AddPost = () => {
   const [desc, setDesc] = useState('');
   const fileInputRef = useRef(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
+
   const handleBrowseClick = () => {
     fileInputRef.current.click();
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!isSubmitting) {
+    if (!isSubmitting && desc.trim() !== '') { // Add validation check for non-empty description
       setIsSubmitting(true);
-
-      e.preventDefault();
       try {
         const formData = new FormData();
         selectedFiles.forEach((file) => {
           formData.append('files', file);
         });
         formData.append('description', desc);
-  
         const response = axios.post(postSendURL, formData, {
           headers: {
             Authorization: `Token ${localStorage.getItem('token')}`,
             'Content-Type': 'multipart/form-data',
           },
         });
-  
         console.log(response);
       } catch (error) {
         console.error(error);
-        alert('Вы не авторизованы')
+        alert('Вы не авторизованы');
       }
-
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 3000); // Установите желаемое время задержки в миллисекундах
+      }, 3000); // Set your desired delay time in milliseconds
     }
   };
+
   const handleFileChange = (event) => {
     event.stopPropagation();
     const files = Array.from(event.target.files);
     setSelectedFiles(files);
   };
+
   const sendPost = (e) => {
     e.preventDefault();
     try {
@@ -56,31 +55,25 @@ const AddPost = () => {
         formData.append('files', file);
       });
       formData.append('description', desc);
-
       const response = axios.post(postSendURL, formData, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',
         },
       });
-
       console.log(response);
-      naviagte('/Home')
+      naviagte('/Home');
     } catch (error) {
       console.error(error);
-      alert('Вы не авторизованы')
+      alert('Вы не авторизованы');
     }
   };
+
   return (
     <div className="Page">
       <form onSubmit={handleSubmit}>
         <div>
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileChange}
-            multiple
-          />
+          <input type="file" ref={fileInputRef} onChange={handleFileChange} multiple />
           <ul>
             {selectedFiles.map((file, index) => (
               <li key={index}>{file.name}</li>

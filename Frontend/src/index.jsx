@@ -18,6 +18,7 @@ import Chat from "./Pages/Chat";
 // Import Css
 import './Assets/Css/Reset.css';
 import './Assets/Css/Global.css';
+import './Assets/Css/Media.css';
 // Render SIte
 ReactDOM.render(
   <React.StrictMode>
