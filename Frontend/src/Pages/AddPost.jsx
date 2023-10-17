@@ -37,7 +37,7 @@ const AddPost = () => {
       }
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 3000); // Set your desired delay time in milliseconds
+      }, 1000); // Set your desired delay time in milliseconds
     }
   };
 
