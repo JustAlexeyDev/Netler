@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from post.serializers import PostSerializer
+
 from .models import User
 from .serializers import UserSerializer
 from chat.serializers import RoomSerializer
@@ -27,6 +29,12 @@ class UserViewset(viewsets.ModelViewSet):
     def rooms(self, request, pk=None):
         queryset = User.objects.get(pk=pk).rooms.all()
         serializer = RoomSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+    @action(detail=True, methods=['GET'])
+    def posts(self, request, pk=None):
+        queryset = User.objects.get(pk=pk).posts.all()
+        serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
 
 @api_view(['GET'])
