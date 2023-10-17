@@ -22,7 +22,7 @@ const LoginIn = () => {
       const token = response.data.auth_token;
       localStorage.setItem('token', token);
       console.log(response);
-      navigate('/Home')
+      window.location.href=`/Home`
     } catch (error) {
       console.error(error);
     }

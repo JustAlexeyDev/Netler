@@ -83,8 +83,6 @@ hr {
 }
 .Header_Avatar {
   display: flex;
-  width: 35px;
-  height: 35px;
 }
 .Header_Name {
   font-size: 20px;
