@@ -12,5 +12,11 @@ class User(AbstractUser):
     def toggle_subscription(self, user):
         if user in self.subscribers.all():
             self.subscribers.remove(user)
+            if user in self.friends.all():
+                self.friends.remove(user)
+                user.friends.remove(self)
         else:
             self.subscribers.add(user)
+            if self in user.subscribers.all():
+                self.friends.add(user)
+                user.friends.add(self)
