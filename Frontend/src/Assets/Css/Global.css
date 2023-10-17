@@ -263,6 +263,7 @@ hr {
   background-color: var(--darkSecondBackground);
 }
 .Footer_Avatar img {
+  display: flex;
   object-fit: cover;
   width: 30px;
   height: 30px;
@@ -338,6 +339,17 @@ hr {
   height: 100%;
   align-items: center;
 }
+.ProfilePage_Banner-Container {
+  display: flex;
+  flex-direction: column;
+  height: 240px;
+ }
+ .ProfilePage_Banner-Container img {
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
+  height: 180px;
+ }
 .ProfilePage_Avatar-Container {
   display: flex;
   align-items: center;

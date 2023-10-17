@@ -2,18 +2,10 @@
 
 @media screen and (max-width: 719px) {
  .ProfilePage_Banner-Container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;;
-  height: 240px;
-  position: relative;
+  width: 100%;
  }
  .ProfilePage_Banner-Container img {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  object-fit: cover;
-  height: 180px;
  }
 }
 
@@ -23,7 +15,6 @@
   flex-direction: column;
   width: 720px;
   height: 240px;
-  position: relative;
  }
  .ProfilePage_Banner-Container img {
   display: flex;

@@ -59,8 +59,8 @@ const Profile = () => {
   };
   const handleFileChangeBanner = (e) => {
     e.stopPropagation();
-    const selectedAvatar = Array.from(e.target.files);
-    setAvatar(selectedAvatar[0]);
+    const selectedBanner = Array.from(e.target.files);
+    setBanner(selectedBanner[0]);
   };
   // Turn on Edit Mode
   const toggleEdit = () => {
@@ -118,11 +118,13 @@ const Profile = () => {
               </div>
             </div>
             <div>
+              <p>аватар</p>
               <input 
                 ref={fileInputRef} 
                 type="file" 
                 onChange={handleFileChangeAvatar} 
               />
+              <p>Банер</p>
               <input 
                 ref={fileInputRef}
                 type="file"

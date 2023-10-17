@@ -71,7 +71,12 @@ const AddPost = () => {
     <div className="Page AddPost">
       <form onSubmit={handleSubmit} className='AddPost-Form'>
         <div>
-          <input type="file" ref={fileInputRef} onChange={handleFileChange} multiple />
+          <input 
+            type="file" 
+            accept='image/*'
+            ref={fileInputRef} 
+            onChange={handleFileChange} 
+            multiple />
           <ul>
             {selectedFiles.map((file, index) => (
               <li key={index}>{file.name}</li>
