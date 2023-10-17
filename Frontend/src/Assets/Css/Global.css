@@ -32,6 +32,15 @@
   font-family: BoldFont;
   src: url(../Fonts/SFProDisplay-Bold.ttf);
 }
+/* Edit scroll */
+::-webkit-scrollbar-thumb {
+  background-color: #1890FF;
+  color: #d22d2d;
+}
+/* Custon input file */
+input[type=file] {
+  content: none;
+}
 /* All def CSS */
 body {
   /* background: rgb(10,10,10);
@@ -295,19 +304,17 @@ hr {
 }
 .User-Container {
   display: flex;
-  flex-direction: column;
   overflow-x: scroll;
   gap: 20px;
-  justify-content: center;
-  width: 200px;
+  width: 100%;
   padding: 16px;
+
 }
 .User-Box {
   display: flex;
   flex-direction: column;
   background-color: var(--darkSecondBackground);
   border-radius: 10px;
-  min-width: 120px;
   min-height: 180px;
   text-align: center;
 }
@@ -343,6 +350,7 @@ hr {
   display: flex;
   flex-direction: column;
   height: 240px;
+  width: 100%;
  }
  .ProfilePage_Banner-Container img {
   display: flex;

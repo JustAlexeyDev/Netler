@@ -1,14 +1,5 @@
 
 
-@media screen and (max-width: 719px) {
- .ProfilePage_Banner-Container {
-  width: 100%;
- }
- .ProfilePage_Banner-Container img {
-  width: 100%;
- }
-}
-
 @media screen and (min-width: 720px) {
  .ProfilePage_Banner-Container {
   display: flex;
