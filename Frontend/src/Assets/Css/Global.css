@@ -17,6 +17,7 @@
   --accent: #1890FF;
   --HorizontalLine: #1e374e;
   --darkSecondBackground: #0c1720;
+  --warning: #d22d2d;
 }
 /* Import Fonts */
 @font-face {
@@ -51,8 +52,11 @@ hr {
 .pointer {
   cursor: pointer;
 }
+.warn-button {
+  color: var(--warning);
+}
 #loginError {
-  color: #d22d2d;
+  color: var(--warning);
 }
 /* Page */
 .Page {

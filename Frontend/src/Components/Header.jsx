@@ -1,16 +1,11 @@
 import { useLocation, Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import {ArrowLeft, Menu } from 'lucide-react'
+import {ArrowLeft } from 'lucide-react'
 import axios from 'axios';
-import ModalWindowUser from './ModalWindowUser';
+import DropDownMenu from './DropDownMenu';
 import backendIP from '../vars'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -58,19 +53,7 @@ const Header = () => {
           {PageName}
         </span>
         <span className='Header_Avatar'>
-          
-        <div className="dropdown">
-          <button className="dropdown-toggle" onClick={toggleMenu}>
-            <Menu />
-          </button>
-          {isOpen && (
-            <ul className="dropdown-menu">
-              <li>Пункт 1</li>
-              <li>Пункт 2</li>
-              <li onClick={() => {localStorage.removeItem('token'); navigate('/Auth')}}><button >Выйти</button></li>
-            </ul>
-          )}
-        </div>
+          <DropDownMenu />
         </span>
       </div>
     </div>
