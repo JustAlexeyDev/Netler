@@ -413,3 +413,27 @@ hr {
   border: 1px solid;
   border-color: var(--HorizontalLine);
 }
+
+
+/* AddPost */
+.AddPost-Form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.AddPost-Form input {
+  
+}
+.AddPost-Form_ButtonSubmit {
+  border-radius: 999px;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.AddPost-Form_ButtonSubmit button {
+  background-color: #1890FF;
+  border-radius: 9999px;
+  padding: 8px;
+}

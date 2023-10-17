@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import backendIP from '../vars';
+import { ArrowRight } from 'lucide-react'
 
 const postSendURL = `${backendIP}/create_post/`;
 
@@ -70,8 +71,8 @@ const AddPost = () => {
   };
 
   return (
-    <div className="Page">
-      <form onSubmit={handleSubmit}>
+    <div className="Page AddPost">
+      <form onSubmit={handleSubmit} className='AddPost-Form'>
         <div>
           <input type="file" ref={fileInputRef} onChange={handleFileChange} multiple />
           <ul>
@@ -86,9 +87,12 @@ const AddPost = () => {
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Отправка...' : 'Отправить'}
-        </button>
+        <div className='AddPost-Form_ButtonSubmit'>
+          <button  type="submit" disabled={isSubmitting}>
+            <ArrowRight />
+          </button>          
+        </div>
+
       </form>
     </div>
   );
