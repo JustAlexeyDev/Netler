@@ -164,10 +164,11 @@ const Profile = () => {
             <div className="Post-Box">
             {posts.map(post => (
               <div key={post.id} className="Post-Container">
+                {console.log(post)}
                 <div className="Post-Header">
                   <button className='Post-Header_Nav' onClick={() => window.location.href = `/Profile/${post.author}/`}>
                     <span>
-                      <img src={post.avatar} alt="Avatar" />
+                      <img src={`${backendIP}${post.avatar}`} alt="Avatar" />
                     </span>
                     <span>
                       {post.author_name}
@@ -178,7 +179,7 @@ const Profile = () => {
                 {post.files.length > 0 && (
                   <div className="Post-image">
                     {post.files.map(file => (
-                      <img src={file.file} alt="Photo" key={file.id} />
+                      <img src={`${backendIP}${file.file}`} alt="Photo" key={file.id} />
                     ))}
                   </div>
                 )}
