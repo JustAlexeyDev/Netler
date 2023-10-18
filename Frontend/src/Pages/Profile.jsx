@@ -164,7 +164,6 @@ const Profile = () => {
             <div className="Post-Box">
             {posts.map(post => (
               <div key={post.id} className="Post-Container">
-                {console.log(post)}
                 <div className="Post-Header">
                   <button className='Post-Header_Nav' onClick={() => window.location.href = `/Profile/${post.author}/`}>
                     <span>
