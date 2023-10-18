@@ -138,7 +138,7 @@ const Profile = () => {
   const isSubscribed = subscribers.some(subscriber => subscriber.id === currentUser.id);
 
   return (
-    <div className="ProfilePage-Container">
+    <div className="ProfilePage-Container Page">
       <div className="Profile">
         <div className="ProfilePage_Banner-Container">
           <img src={userData.banner} alt="Изображение баннера" />
