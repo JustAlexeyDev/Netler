@@ -77,6 +77,14 @@ const Home = () => {
     }
   };
 
+  const submitComment = (post_id, text) => {
+    if (localStorage.getItem('token') !== null) {
+      sendComment(post_id, text)
+    } else {
+      console.log('Not authorized');
+    }
+  }
+
   if (!posts || !files) return null;
   if (!peoples) return null;
 
@@ -130,7 +138,7 @@ const Home = () => {
                 <div>
                   <div className="Comments">
                   <p className='Comments-header'>Комментарии:</p>
-                  <form className="CommentForm" onSubmit={sendComment(83, 'no')}>
+                  <form key={post.id} className="CommentForm" onSubmit={() => submitComment(post.id, 'no')}>
                     <input type="text" className='CommentInput' placeholder='Введите комментарий'/>
                     <button type='submit'>Отправить</button>
                   </form>
