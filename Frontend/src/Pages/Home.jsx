@@ -5,6 +5,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import Comment from '../Components/Comment';
 import backendIP from '../vars';
+import { sendComment } from '../scripts/functions';
 
 const postsURL = `${backendIP}/posts/?format=json`;
 const imagesURL = `${backendIP}/posts_files/`;
@@ -125,16 +126,22 @@ const Home = () => {
                 <div className="Post-Description">
                   <p>Лайки: {post.likes.length}</p>
                   <span>{post.description}</span>
-                  {/* <span>{post.views} views</span> Перекинуть эту строчку в отдельный класс */}
                 </div>
                 <div>
-                  {post.comments.length > 0 && (
-                    <div className="Comments">
-                      {post.comments.map(comment => (
-                        <Comment key={comment.id} author={comment.author} text={comment.text}  />
-                      ))}
-                    </div>
-                  )}
+                  <div className="Comments">
+                  <p className='Comments-header'>Комментарии:</p>
+                  <form className="CommentForm" onSubmit={sendComment(83, 'no')}>
+                    <input type="text" className='CommentInput' placeholder='Введите комментарий'/>
+                    <button type='submit'>Отправить</button>
+                  </form>
+                    {post.comments.length > 0 && (
+                      <>
+                        {post.comments.map(comment => (
+                          <Comment key={comment.id} author={comment.author} text={comment.text}  />
+                          ))}
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

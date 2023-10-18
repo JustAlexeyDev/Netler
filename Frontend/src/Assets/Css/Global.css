@@ -13,6 +13,7 @@
   --whiteBackground: #fff;
   --darkBackground: #000911;
   --whiteText: #fff;
+  --greyText: #C7CDE7;
   --darkText: #1c1c1c;
   --accent: #1890FF;
   --HorizontalLine: #1e374e;
@@ -457,15 +458,35 @@ hr {
   background-color: #2a2a2a;
 }
 
+.CommentForm {
+  display: flex;
+  gap: 10px;
+}
+
 .Comments {
   padding: 10px;
 }
 
 .Comment {
-  border: 1px solid;
-  border-color: var(--HorizontalLine);
+  display: flex;
+  gap: 5px;
 }
 
+.Comments-header {
+  color: var(--greyText);
+  margin-bottom: 5px;
+}
+
+.CommentInput {
+  border-bottom: var(--greyText) 1px solid;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.CommentAuthor {
+  font-weight: 600;
+}
 
 /* AddPost */
 .AddPost-Form {

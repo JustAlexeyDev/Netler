@@ -1,3 +1,4 @@
+import { useState } from "react";
 import backendIP from "../vars";
 import axios from "axios";
 
@@ -34,5 +35,25 @@ const userData = async (id) => {
   };
 };
 
+const sendComment = async (post_id, text) => {
+  currentUserData()
+  .then( async (currentUser) => {
+    try {
+      const response = await axios.post(
+        `${backendIP}/comments/`,
+        {
+          'author': currentUser.id,
+          'post': post_id,
+          'text': text,
+        }
+      )
+      console.log(response);
+    } catch (error) {
+      console.error(error)
+    }
+  })
+  .catch((error) => console.error(error))
+}
+
 export default currentUserData;
-export { userData };
+export { userData, sendComment };
