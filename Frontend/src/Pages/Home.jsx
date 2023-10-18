@@ -2,10 +2,9 @@ import { ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-import { useNavigate } from "react-router";
-import Comment from '../Components/Comment';
+import { useNavigate } from "react-router";;
 import backendIP from '../vars';
-import { sendComment } from '../scripts/functions';
+import Comments from '../Components/Comments';
 
 const postsURL = `${backendIP}/posts/?format=json`;
 const imagesURL = `${backendIP}/posts_files/`;
@@ -77,14 +76,6 @@ const Home = () => {
     }
   };
 
-  const submitComment = (post_id, text) => {
-    if (localStorage.getItem('token') !== null) {
-      sendComment(post_id, text)
-    } else {
-      console.log('Not authorized');
-    }
-  }
-
   if (!posts || !files) return null;
   if (!peoples) return null;
 
@@ -136,20 +127,7 @@ const Home = () => {
                   <span>{post.description}</span>
                 </div>
                 <div>
-                  <div className="Comments">
-                  <p className='Comments-header'>Комментарии:</p>
-                  <form key={post.id} className="CommentForm" onSubmit={() => submitComment(post.id, 'no')}>
-                    <input type="text" className='CommentInput' placeholder='Введите комментарий'/>
-                    <button type='submit'>Отправить</button>
-                  </form>
-                    {post.comments.length > 0 && (
-                      <>
-                        {post.comments.map(comment => (
-                          <Comment key={comment.id} author={comment.author} text={comment.text}  />
-                          ))}
-                      </>
-                    )}
-                  </div>
+                  <Comments post={post} fetchPosts={fetchPosts}/>
                 </div>
               </div>
             ))}
