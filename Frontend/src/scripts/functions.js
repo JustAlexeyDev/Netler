@@ -35,6 +35,17 @@ const userData = async (id) => {
   };
 };
 
+const userPosts = async (id) => {
+  try {
+    const response = await axios.get(
+      `${backendIP}/users/${id}/posts/`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  };
+};
+
 const sendComment = async (post_id, text) => {
   currentUserData()
   .then( async (currentUser) => {
@@ -56,4 +67,4 @@ const sendComment = async (post_id, text) => {
 }
 
 export default currentUserData;
-export { userData, sendComment };
+export { userData, sendComment, userPosts };
