@@ -20,7 +20,7 @@ useEffect(() => {
 if (!peoples) return null;
  return(
   <div className="User-Container_Main Page">
-    <h1>Список пользователей</h1>    
+    <h1>Список пользователей (все)</h1>    
    {peoples.length > 0 && (
     <div className="User-Container">
 
