@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import backendIP from '../vars';
 import currentUserData, { userPosts } from '../scripts/functions'
+import Post from '../Components/Post';
 
 const Profile = () => {
   // Consts
@@ -17,12 +18,18 @@ const Profile = () => {
   const fileInputRef = useRef(null);
   const { id } = useParams();
   const [posts, setPosts] = useState([])
+  const [likedPosts, setLikedPosts] = useState([]);
+  const [files, setFiles] = useState(null);
   // Custom input
   const [selectedFile, setSelectedFile] = useState(null);
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
+  const fetchFiles = async () => {
+    const response = await axios.get(imagesURL);
+    setFiles(response.data);
+  };
 
   const toggleSub = async () => {
     if (localStorage.getItem('token') !== null) {
@@ -76,14 +83,16 @@ const Profile = () => {
       console.log('Ошибка:', error);
     }
   };
-
+  
+  const fetchPosts = () => userPosts(id).then((data) => setPosts(data)).catch((error) => console.error(error)); 
+  
   useEffect(() => {  
     // Refresh
     getUserData();
     getFriends();
     getSubscribers();
-    currentUserData().then((data) => setCurrentUser(data)).catch((error) => console.error(error))
-    userPosts(id).then((data) => setPosts(data)).catch((error) => console.error(error))
+    currentUserData().then((data) => setCurrentUser(data)).catch((error) => console.error(error));
+    fetchPosts();
   }, []);
 
   // Edits
@@ -171,65 +180,7 @@ const Profile = () => {
           {posts.length > 0 && (
             <div className="Post-Box">
             {posts.map(post => (
-              <div key={post.id} className="Post-Container">
-                <div className="Post-Header">
-                  <button className='Post-Header_Nav' onClick={() => window.location.href = `/Profile/${post.author}/`}>
-                    <span>
-                      <img src={`${backendIP}${post.avatar}`} alt="Avatar" />
-                    </span>
-                    <span>
-                      {post.author_name}
-                    </span>                
-                  </button>
-                </div>
-                <hr />
-                {post.files.length > 0 && (
-                  <div className="Post-image">
-                    {post.files.map(file => (
-                      <img src={`${backendIP}${file.file}`} alt="Photo" key={file.id} />
-                    ))}
-                  </div>
-                )}
-                <hr />
-                <div className="Post-Nav">
-                  <div className="center">
-                    <button onClick={() => toggleLike(post.id)}>
-                      <ThumbsUp />
-                    </button>
-                  </div>
-                  <div className="center">
-                    <button>
-                      <MessageSquare />
-                    </button>
-                  </div>
-                  <div className="center">
-                    <button>
-                      <Share2 />
-                    </button>
-                  </div>
-                </div>
-                <div className="Post-Description">
-                  <p>Лайки: {post.likes.length}</p>
-                  <span>{post.description}</span>
-                </div>
-                <div>
-                  <div className="Comments">
-                  <p className='Comments-header'>Комментарии:</p>
-                  <form key={post.id} className="CommentForm" onSubmit={() => submitComment(post.id, 'no')}>
-                    <input type="text" className='CommentInput' placeholder='Введите комментарий'/>
-                    <button type='submit'>Отправить</button>
-                  </form>
-                    {post.comments.length > 0 && (
-                      <>
-                        {post.comments.map(comment => (
-                          <Comment key={comment.id} author={comment.author} text={comment.text}  />
-                          ))}
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-
+              <Post post={post} fetchPosts={fetchPosts} setLikedPosts={setLikedPosts} likedPosts={likedPosts} fetchFiles={fetchFiles}/>
             ))}
             </div>
           )}

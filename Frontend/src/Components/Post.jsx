@@ -10,7 +10,7 @@ const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
         } else {
           setLikedPosts([...likedPosts, postId]);
         }
-      };
+    };
 
     const toggleLike = async (post_id) => {
         if (localStorage.getItem('token') !== null) {
@@ -41,7 +41,12 @@ const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
             <div className="Post-Header">
                 <button className='Post-Header_Nav' onClick={() => window.location.href = `/Profile/${post.author}/`}>
                 <span>
-                    <img src={post.avatar} alt="Avatar" />
+                    {post.avatar.startsWith('http') && (
+                        <img src={post.avatar} alt="Avatar" />
+                    )}
+                    {!post.avatar.startsWith('http') && (
+                        <img src={`${backendIP}${post.avatar}`} alt="Avatar" />
+                    )}
                 </span>
                 <span>
                     {post.author_name}
@@ -52,7 +57,14 @@ const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
             {post.files.length > 0 && (
                 <div className="Post-image">
                 {post.files.map(file => (
-                    <img src={file.file} alt="Photo" key={file.id} />
+                    <>
+                    {file.file.startsWith('http') && (
+                        <img src={file.file} alt="Photo" key={file.id} />
+                    )}
+                    {!file.file.startsWith('http') && (
+                        <img src={`${backendIP}${file.file}`} alt="Photo" key={file.id} />
+                    )}
+                    </>
                 ))}
                 </div>
             )}
