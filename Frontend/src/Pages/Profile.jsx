@@ -138,133 +138,98 @@ const Profile = () => {
   const isSubscribed = subscribers.some(subscriber => subscriber.id === currentUser.id);
 
   return (
-    <div className="ProfilePage-Container Page">
-      <div className="Profile">
-        <div className="ProfilePage_Banner-Container">
-          <img src={userData.banner} alt="Изображение баннера" />
-        </div>
-        <div className="ProfilePage_Avatar-Container">
-          <span className="ProfilePage_Avatar">
-            <img src={userData.avatar} alt="Изображение аватара" />
-          </span>
-        </div>
-        {(currentUser.id !== parseInt(id) && localStorage.getItem('token') !== null) && (
-          <div className="Subscribe-btn_Container">
-            {isSubscribed && (
-              <button className="Subscribe-btn_on" onClick={() => toggleSub()}>Отписаться</button>
-            )}
-            {!isSubscribed && (
-              <button className="Subscribe-btn_off" onClick={() => toggleSub()}>Подписаться</button>
-            )}
-          </div>
-        )}
-        <div className="ProfilePage_UserInfo-Container">
+    <div className="ProfilePage-Container">
+      {editMode ? (
+        <form>
           <div>
-            <p>Публикации</p>
-            <p>{posts.length}</p>
+            <div className="ProfilePage_Banner-Container">
+              <img src={userData.banner} alt="Изображение баннера" />
+            </div>
+            <div className="ProfilePage_Avatar-Container">
+              <span className="ProfilePage_Avatar">
+                <img src={userData.avatar} alt="Изображение аватара" />
+              </span>
+            </div>
+            <hr />
+            <div className="ProfilePage_UserInfo-Container">
+              <div>
+                <p>Публикации</p>
+                <p>0</p>
+              </div>
+              <div>
+                <p>Подписчики</p>
+                <p>{subscribers.length}</p>
+              </div>
+              <div>
+                <p>Друзья</p>
+                <p>{friends.length}</p>
+              </div>
+            </div>
+            <div>
+              <p>аватар</p>
+              <input ref={fileInputRef} type="file" onChange={handleFileChangeAvatar} />
+              <p>Банер</p>
+              <input ref={fileInputRef} type="file" onChange={handleFileChangeBanner} />
+            </div>
           </div>
-          <div>
-            <p>Подписчики</p>
-            <p>{subscribers.length}</p>
+          <div className="Profile-ApproveNav">
+            <button id="discard" onClick={() => setEditMode(false)}>Отменить</button>
+            <button id="save" onClick={handleEditProfile}>Сохранить</button>
           </div>
-          <div>
-            <p>Друзья</p>
-            <p>{friends.length}</p>
+        </form>
+      ) : (
+        <div className="ProfilePage-Container Page">
+        <div className="Profile">
+          <div className="ProfilePage_Banner-Container">
+            <img src={userData.banner} alt="Изображение баннера" />
           </div>
-        </div>
-        <div>
-          {userData && <button onClick={toggleEdit}>Edit</button>}
-        </div>
-
-        <div className="ProfilePosts">
-          {posts.length > 0 && (
-            <div className="Post-Box">
-            {posts.map(post => (
-              <Post post={post} fetchPosts={fetchPosts} setLikedPosts={setLikedPosts} likedPosts={likedPosts} fetchFiles={fetchFiles}/>
-            ))}
+          <div className="ProfilePage_Avatar-Container">
+            <span className="ProfilePage_Avatar">
+              <img src={userData.avatar} alt="Изображение аватара" />
+            </span>
+          </div>
+          {(currentUser.id !== parseInt(id) && localStorage.getItem('token') !== null) && (
+            <div className="Subscribe-btn_Container">
+              {isSubscribed && (
+                <button className="Subscribe-btn_on" onClick={() => toggleSub()}>Отписаться</button>
+              )}
+              {!isSubscribed && (
+                <button className="Subscribe-btn_off" onClick={() => toggleSub()}>Подписаться</button>
+              )}
             </div>
           )}
+          <div className="ProfilePage_UserInfo-Container">
+            <div>
+              <p>Публикации</p>
+              <p>{posts.length}</p>
+            </div>
+            <div>
+              <p>Подписчики</p>
+              <p>{subscribers.length}</p>
+            </div>
+            <div>
+              <p>Друзья</p>
+              <p>{friends.length}</p>
+            </div>
+          </div>
+          <div>
+            {userData && <button onClick={toggleEdit}>Edit</button>}
+          </div>
+  
+          <div className="ProfilePosts">
+            {posts.length > 0 && (
+              <div className="Post-Box">
+              {posts.map(post => (
+                <Post post={post} fetchPosts={fetchPosts} setLikedPosts={setLikedPosts} likedPosts={likedPosts} fetchFiles={fetchFiles}/>
+              ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
+    )}
     </div>
   );
-
-  // return (
-  //   <div className="ProfilePage-Container">
-  //     {editMode ? (
-  //       <form>
-  //         <div>
-  //           <div className="ProfilePage_Banner-Container">
-  //             <img src={userData.banner} alt="Изображение баннера" />
-  //           </div>
-  //           <div className="ProfilePage_Avatar-Container">
-  //             <span className="ProfilePage_Avatar">
-  //               <img src={userData.avatar} alt="Изображение аватара" />
-  //             </span>
-  //           </div>
-  //           <hr />
-  //           <div className="ProfilePage_UserInfo-Container">
-  //             <div>
-  //               <p>Публикации</p>
-  //               <p>0</p>
-  //             </div>
-  //             <div>
-  //               <p>Подписчики</p>
-  //               <p>{subscribers.length}</p>
-  //             </div>
-  //             <div>
-  //               <p>Друзья</p>
-  //               <p>{friends.length}</p>
-  //             </div>
-  //           </div>
-  //           <div>
-  //             <p>аватар</p>
-  //             <input ref={fileInputRef} type="file" onChange={handleFileChangeAvatar} />
-  //             <p>Банер</p>
-  //             <input ref={fileInputRef} type="file" onChange={handleFileChangeBanner} />
-  //           </div>
-  //         </div>
-  //         <div className="Profile-ApproveNav">
-  //           <button id="discard" onClick={() => setEditMode(false)}>Отменить</button>
-  //           <button id="save" onClick={handleEditProfile}>Сохранить</button>
-  //         </div>
-  //       </form>
-  //     ) : (
-  //       <div className="Profile">
-  //         <div className="ProfilePage_Banner-Container">
-  //           <img src={userData.banner} alt="Изображение баннера" />
-  //         </div>
-  //         <div className="ProfilePage_Avatar-Container">
-  //           <span className="ProfilePage_Avatar">
-  //             <img src={userData.avatar} alt="Изображение аватара" />
-  //           </span>
-  //         </div>
-  //         {currentUser.id !== parseInt(id) && (
-  //           <div className="Subscribe-btn_Container">
-  //             <button className="Subscribe-btn" onClick={() => toggleSub()}>Подписаться</button>
-  //           </div>
-  //         )}
-  //         <div className="ProfilePage_UserInfo-Container">
-  //           <div>
-  //             <p>Публикации</p>
-  //             <p>0</p>
-  //           </div>
-  //           <div>
-  //             <p>Подписчики</p>
-  //             <p>{subscribers.length}</p>
-  //           </div>
-  //           <div>
-  //             <p>Друзья</p>
-  //             <p>{friends.length}</p>
-  //           </div>
-  //         </div>
-  //         <div>
-  //           {userData && <button onClick={toggleEdit}>Edit</button>}
-  //         </div>
-  //       </div>
-  //     )}
-  //   </div>
-  // );
 };
 
 export default Profile;

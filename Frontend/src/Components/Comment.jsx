@@ -11,7 +11,7 @@ const Comment = ({ author, text }) => {
 
   return (
     <div className="Comment">
-      <space className="CommentAuthor">{authorData.username}:</space>
+      <div className="CommentAuthor">{authorData.username}:</div>
       <p>{text}</p>
     </div>
   );
