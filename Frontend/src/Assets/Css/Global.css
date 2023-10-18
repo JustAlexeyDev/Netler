@@ -206,6 +206,7 @@ hr {
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
+  align-items: center;
 }
 .Post-Header {
   display: flex;
@@ -406,6 +407,7 @@ hr {
   padding: 4px;
   border-radius: 10px;
 }
+
 #save {
   background-color: var(--accent);
 }
