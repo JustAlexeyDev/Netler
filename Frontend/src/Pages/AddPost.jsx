@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import backendIP from '../vars'
+import backendIP from '../vars';
+import { ArrowRight } from 'lucide-react'
+
 const postSendURL = `${backendIP}/create_post/`;
 
 const AddPost = () => {
@@ -8,79 +10,74 @@ const AddPost = () => {
   const [desc, setDesc] = useState('');
   const fileInputRef = useRef(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const handleBrowseClick = () => {
-    fileInputRef.current.click();
-  };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!isSubmitting) {
+    if (!isSubmitting && desc.trim() !== '') { // Add validation check for non-empty description
       setIsSubmitting(true);
-
-      e.preventDefault();
       try {
         const formData = new FormData();
         selectedFiles.forEach((file) => {
           formData.append('files', file);
         });
         formData.append('description', desc);
-  
-        const response = axios.post(postSendURL, formData, {
+        const response = await axios.post(postSendURL, formData, {
           headers: {
             Authorization: `Token ${localStorage.getItem('token')}`,
             'Content-Type': 'multipart/form-data',
           },
         });
-  
         console.log(response);
+        console.log(formData);
+        window.location.href='/Home'
       } catch (error) {
         console.error(error);
-        alert('Вы не авторизованы')
+        alert('Вы не авторизованы');
       }
-
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 3000); // Установите желаемое время задержки в миллисекундах
+      }, 1000);
     }
   };
+
   const handleFileChange = (event) => {
     event.stopPropagation();
     const files = Array.from(event.target.files);
     setSelectedFiles(files);
   };
-  const sendPost = (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      selectedFiles.forEach((file) => {
-        formData.append('files', file);
-      });
-      formData.append('description', desc);
 
-      const response = axios.post(postSendURL, formData, {
-        headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+  // const sendPost = (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const formData = new FormData();
+  //     selectedFiles.forEach((file) => {
+  //       formData.append('files', file);
+  //     });
+  //     formData.append('description', desc);
+  //     const response = axios.post(postSendURL, formData, {
+  //       headers: {
+  //         Authorization: `Token ${localStorage.getItem('token')}`,
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     });
+  //     console.log(response);
+  //     naviagte('/Home');
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert('Вы не авторизованы');
+  //   }
+  // };
 
-      console.log(response);
-      naviagte('/Home')
-    } catch (error) {
-      console.error(error);
-      alert('Вы не авторизованы')
-    }
-  };
   return (
-    <div className="Page">
-      <form onSubmit={handleSubmit}>
+    <div className="Page AddPost">
+      <form onSubmit={handleSubmit} className='AddPost-Form'>
         <div>
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileChange}
-            multiple
-          />
+          <input 
+            type="file" 
+            accept='image/*'
+            ref={fileInputRef} 
+            onChange={handleFileChange} 
+            multiple />
           <ul>
             {selectedFiles.map((file, index) => (
               <li key={index}>{file.name}</li>
@@ -93,9 +90,12 @@ const AddPost = () => {
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Отправка...' : 'Отправить'}
-        </button>
+        <div className='AddPost-Form_ButtonSubmit'>
+          <button  type="submit" disabled={isSubmitting}>
+            <ArrowRight />
+          </button>          
+        </div>
+
       </form>
     </div>
   );

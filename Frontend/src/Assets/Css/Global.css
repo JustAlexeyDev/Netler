@@ -13,6 +13,7 @@
   --whiteBackground: #fff;
   --darkBackground: #000911;
   --whiteText: #fff;
+  --greyText: #C7CDE7;
   --darkText: #1c1c1c;
   --accent: #1890FF;
   --HorizontalLine: #1e374e;
@@ -31,6 +32,15 @@
 @font-face {
   font-family: BoldFont;
   src: url(../Fonts/SFProDisplay-Bold.ttf);
+}
+/* Edit scroll */
+::-webkit-scrollbar-thumb {
+  background-color: #1890FF;
+  color: #d22d2d;
+}
+/* Custon input file */
+input[type=file] {
+  content: none;
 }
 /* All def CSS */
 body {
@@ -196,6 +206,7 @@ hr {
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
+  align-items: center;
 }
 .Post-Header {
   display: flex;
@@ -263,6 +274,7 @@ hr {
   background-color: var(--darkSecondBackground);
 }
 .Footer_Avatar img {
+  display: flex;
   object-fit: cover;
   width: 30px;
   height: 30px;
@@ -294,19 +306,17 @@ hr {
 }
 .User-Container {
   display: flex;
-  flex-direction: column;
   overflow-x: scroll;
   gap: 20px;
-  justify-content: center;
-  width: 200px;
+  width: 100%;
   padding: 16px;
+
 }
 .User-Box {
   display: flex;
   flex-direction: column;
   background-color: var(--darkSecondBackground);
   border-radius: 10px;
-  min-width: 120px;
   min-height: 180px;
   text-align: center;
 }
@@ -341,26 +351,27 @@ hr {
 .ProfilePage_Banner-Container {
   display: flex;
   flex-direction: column;
-  width: 100%;;
   height: 240px;
-  position: relative;
-}
-.ProfilePage_Banner-Container img {
+  width: 100%;
+ }
+ .ProfilePage_Banner-Container img {
   display: flex;
   flex-direction: column;
-  width: 100%;
   object-fit: cover;
   height: 180px;
-}
+ }
 .ProfilePage_Avatar-Container {
-  position: absolute;
   display: flex;
   align-items: center;
-  top: 200px;
+
 }  
 .ProfilePage_Avatar-Container img {
   display: flex;
+  position: absolute;
+  top: 190px;
   object-fit: cover;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90px;
   height: 90px;
   border-radius: 9999px;
@@ -386,7 +397,37 @@ hr {
   height: 90px;
   border-radius: 9999px;
 }
+.Profile-ApproveNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+.Profile-ApproveNav button {
+  display: flex;
+  padding: 4px;
+  border-radius: 10px;
+}
 
+#save {
+  background-color: var(--accent);
+}
+#discard {
+  background-color: var(--warning);
+}
+.Subscribe-btn_Container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.Subscribe-btn_Container button {
+  background-color: var(--accent);
+  padding: 8px;
+  border-radius: 10px;
+}
+.Subscribe-btn_Container button:focus {
+  background-color: var(--darkText);
+}
 /* Modal Window */
 .dropdown {
   position: relative;
@@ -419,11 +460,55 @@ hr {
   background-color: #2a2a2a;
 }
 
+.CommentForm {
+  display: flex;
+  gap: 10px;
+}
+
 .Comments {
   padding: 10px;
 }
 
 .Comment {
-  border: 1px solid;
-  border-color: var(--HorizontalLine);
+  display: flex;
+  gap: 5px;
+}
+
+.Comments-header {
+  color: var(--greyText);
+  margin-bottom: 5px;
+}
+
+.CommentInput {
+  border-bottom: var(--greyText) 1px solid;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.CommentAuthor {
+  font-weight: 600;
+}
+
+/* AddPost */
+.AddPost-Form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.AddPost-Form input {
+  
+}
+.AddPost-Form_ButtonSubmit {
+  border-radius: 999px;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.AddPost-Form_ButtonSubmit button {
+  background-color: #1890FF;
+  border-radius: 9999px;
+  padding: 8px;
 }

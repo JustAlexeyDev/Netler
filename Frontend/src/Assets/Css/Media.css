@@ -1,0 +1,17 @@
+
+
+@media screen and (min-width: 720px) {
+ .ProfilePage_Banner-Container {
+  display: flex;
+  flex-direction: column;
+  width: 720px;
+  height: 240px;
+ }
+ .ProfilePage_Banner-Container img {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  object-fit: cover;
+  height: 180px;
+ }
+}
