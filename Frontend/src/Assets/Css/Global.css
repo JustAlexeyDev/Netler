@@ -466,6 +466,8 @@ hr {
 }
 
 .Comments {
+  display: flex;
+  flex-direction: column-reverse;
   padding: 10px;
 }
 
