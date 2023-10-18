@@ -11,7 +11,7 @@ const AddPost = () => {
   const fileInputRef = useRef(null);
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isSubmitting && desc.trim() !== '') { // Add validation check for non-empty description
       setIsSubmitting(true);
@@ -21,15 +21,15 @@ const AddPost = () => {
           formData.append('files', file);
         });
         formData.append('description', desc);
-        const response = axios.post(postSendURL, formData, {
+        const response = await axios.post(postSendURL, formData, {
           headers: {
             Authorization: `Token ${localStorage.getItem('token')}`,
             'Content-Type': 'multipart/form-data',
           },
         });
         console.log(response);
-        console.log(formData)
-        window.location('/Home')
+        console.log(formData);
+        window.location.href='/Home'
       } catch (error) {
         console.error(error);
         alert('Вы не авторизованы');
