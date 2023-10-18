@@ -125,6 +125,8 @@ const Profile = () => {
       console.error(error);
     }
   };
+  
+  const isSubscribed = subscribers.some(subscriber => subscriber.id === currentUser.id);
 
   return (
     <div className="ProfilePage-Container">
@@ -137,9 +139,14 @@ const Profile = () => {
             <img src={userData.avatar} alt="Изображение аватара" />
           </span>
         </div>
-        {currentUser.id !== parseInt(id) && (
+        {(currentUser.id !== parseInt(id) && localStorage.getItem('token') !== null) && (
           <div className="Subscribe-btn_Container">
-            <button className="Subscribe-btn" onClick={() => toggleSub()}>Подписаться</button>
+            {isSubscribed && (
+              <button className="Subscribe-btn" onClick={() => toggleSub()}>Отписаться</button>
+            )}
+            {!isSubscribed && (
+              <button className="Subscribe-btn" onClick={() => toggleSub()}>Подписаться</button>
+            )}
           </div>
         )}
         <div className="ProfilePage_UserInfo-Container">
@@ -159,6 +166,7 @@ const Profile = () => {
         <div>
           {userData && <button onClick={toggleEdit}>Edit</button>}
         </div>
+
         <div className="ProfilePosts">
           {posts.length > 0 && (
             <div className="Post-Box">
