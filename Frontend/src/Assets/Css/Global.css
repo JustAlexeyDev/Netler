@@ -421,12 +421,17 @@ hr {
   justify-content: center;
 }
 .Subscribe-btn_Container button {
-  background-color: var(--accent);
   padding: 8px;
   border-radius: 10px;
 }
 .Subscribe-btn_Container button:focus {
   background-color: var(--darkText);
+}
+.Subscribe-btn_on {
+  background-color: var(--darkText);
+}
+.Subscribe-btn_off {
+  background-color: var(--accent);
 }
 /* Modal Window */
 .dropdown {

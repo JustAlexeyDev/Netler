@@ -151,10 +151,10 @@ const Profile = () => {
         {(currentUser.id !== parseInt(id) && localStorage.getItem('token') !== null) && (
           <div className="Subscribe-btn_Container">
             {isSubscribed && (
-              <button className="Subscribe-btn" onClick={() => toggleSub()}>Отписаться</button>
+              <button className="Subscribe-btn_on" onClick={() => toggleSub()}>Отписаться</button>
             )}
             {!isSubscribed && (
-              <button className="Subscribe-btn" onClick={() => toggleSub()}>Подписаться</button>
+              <button className="Subscribe-btn_off" onClick={() => toggleSub()}>Подписаться</button>
             )}
           </div>
         )}
