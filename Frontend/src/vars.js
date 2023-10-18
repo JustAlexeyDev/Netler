@@ -1,2 +1,2 @@
-const backendIP = `http://31.129.102.37:8000`
+const backendIP = `http://127.0.0.1:8000`
 export default backendIP
