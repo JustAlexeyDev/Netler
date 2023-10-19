@@ -151,20 +151,6 @@ const Profile = () => {
               </span>
             </div>
             <hr />
-            <div className="ProfilePage_UserInfo-Container">
-              <div>
-                <p>Публикации</p>
-                <p>0</p>
-              </div>
-              <div>
-                <p>Подписчики</p>
-                <p>{subscribers.length}</p>
-              </div>
-              <div>
-                <p>Друзья</p>
-                <p>{friends.length}</p>
-              </div>
-            </div>
             <div>
               <p>аватар</p>
               <input ref={fileInputRef} type="file" onChange={handleFileChangeAvatar} />
