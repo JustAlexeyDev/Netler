@@ -8,9 +8,10 @@ const Comments = ({post, fetchPosts}) => {
     const submitComment = (e) => {
         e.preventDefault();
         if (localStorage.getItem('token') !== null) {
-            sendComment(post.id, comment);
-            fetchPosts();
-            setComment('');
+            sendComment(post.id, comment).then(() => {
+                fetchPosts();
+                setComment('');
+            });
         } else {
             console.log('Not authorized');
             alert('Вы не авторизованы')
