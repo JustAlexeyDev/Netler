@@ -59,6 +59,7 @@ const sendComment = async (post_id, text) => {
         }
       )
       console.log(response);
+      return null
     } catch (error) {
       console.error(error)
     }

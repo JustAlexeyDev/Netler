@@ -13,7 +13,6 @@ const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
           setLikedPosts([...likedPosts, postId]);
         }
     };
-
     const toggleLike = async (post_id) => {
         if (localStorage.getItem('token') !== null) {
           try {
@@ -36,8 +35,7 @@ const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
         } else {
           console.log('Not authorized');
         }
-      };
-
+      };  
     return (
         <div key={post.id} className="Post-Container">
             <div className="Post-Header">

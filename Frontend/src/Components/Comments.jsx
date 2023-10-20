@@ -5,11 +5,12 @@ import { sendComment } from '../scripts/functions'
 const Comments = ({post, fetchPosts}) => {
     const [comment, setComment] = useState('')
 
-    const submitComment = (e) => {
+    const submitComment = async (e) => {
         e.preventDefault();
         if (localStorage.getItem('token') !== null) {
-            sendComment(post.id, comment);
-            fetchPosts();
+            await sendComment(post.id, comment);
+            await fetchPosts();
+            console.log('posts fetched')
             setComment('');
         } else {
             console.log('Not authorized');
