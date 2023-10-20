@@ -16,9 +16,9 @@ const DropDownMenu = () => {
     </button>
     {isOpen && (
       <ul className="dropdown-menu">
-        <li>Избранное</li>
-        <li>История действий</li>
+        <li >Редактировать профиль</li>
         <li>Настройки</li>
+        <li>Избранное</li>
         <li>Черновик</li>
         <li>Архив</li>
         <li className="warn-button" onClick={() => {localStorage.removeItem('token'); navigate('/Auth')}}><button >Выйти</button></li>

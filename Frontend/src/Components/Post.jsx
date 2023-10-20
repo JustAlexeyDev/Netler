@@ -1,8 +1,10 @@
+// Import React Lins
 import { ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
-import Comments from '../Components/Comments';
 import axios from "axios";
+// Import Components
+import Comments from '../Components/Comments';
+// Other
 import backendIP from '../vars';
-
 const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
     const handleLikeClick = (postId) => {
         if (likedPosts.includes(postId)) {
@@ -95,4 +97,4 @@ const Post = ({post, fetchPosts, setLikedPosts, likedPosts, fetchFiles}) => {
     )
 }
 
-export default Post
+export default Post 

@@ -3,7 +3,6 @@ import { userData } from "../scripts/functions";
 
 const Comment = ({ author, text }) => {
   const [authorData, setAuthorData] = useState({});
-
   useEffect(() => {
     userData(author)
     .then((data) => setAuthorData(data))
